@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
 * virologus osztaly
@@ -11,28 +12,39 @@ public class Virologist {
 
     private int maxEquipments;
     private String name;
-    private int maxAmino;
-    private int maxNukleotid;
+    private int maxSubstance;
+    private Field currentField;
 
 	/**
 	 * virologus konstruktor
 	 * mE:maxEquipments      n:name      mA:maxAmino     mN:maxNukleotid
 	 */
-    public Virologist(int mE,String n, int mA,int mN){
-        setSubstances(new ArrayList<Substance>());
-        setAgents(new ArrayList<Agent>());
+    public Virologist(int mE, String n, int mS, Field cF){
+        Substances = new ArrayList<Substance>();
+        Agents = new ArrayList<Agent>();
         Equipments = new ArrayList<Equipment>();
-        setGenetics(new ArrayList<Genetics>());
-        setMaxEquipments(mE);
-        name=n;
-        setMaxAmino(mA);
-        setMaxNukleotid(mN);
+        Genetics = new ArrayList<Genetics>();
+        maxEquipments = mE;
+        name = n;
+        maxSubstance = mS;
+        currentField = cF;
     }
     public String getName(){
         return name;
     }
     public void move(Field nf){
-        //TODO
+        ArrayList<Field> FieldNeighbours = currentField.getNeighbours();
+		if(FieldNeighbours.contains(nf)) {
+            Logger.addTab();
+            Logger.log(currentField, "leave", Arrays.asList("this"));
+            currentField.leave(this);
+            Logger.removeTab();
+
+            Logger.addTab();
+            Logger.log(nf, "enter", Arrays.asList("this"));
+            nf.enter(this);
+            Logger.removeTab();
+		}
     }
     public void loot(Field field){
         //TODO
@@ -115,17 +127,7 @@ public class Virologist {
 	public void setMaxEquipments(int maxEquipments) {
 		this.maxEquipments = maxEquipments;
 	}
-	public int getMaxAmino() {
-		return maxAmino;
-	}
-	public void setMaxAmino(int maxAmino) {
-		this.maxAmino = maxAmino;
-	}
-	public int getMaxNukleotid() {
-		return maxNukleotid;
-	}
-	public void setMaxNukleotid(int maxNukleotid) {
-		this.maxNukleotid = maxNukleotid;
-	}
-
+	public int getMaxSubstance() {
+		return maxSubstance;
+    }
 }

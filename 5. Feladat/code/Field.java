@@ -8,17 +8,16 @@ public class Field {
 	private ArrayList<Field> Neighbours;
 	
 	public Field() {
-		//setVirologists(new ArrayList<Virologist>());
+		Virologists = new ArrayList<Virologist>();
 		Neighbours = new ArrayList<Field>();
-		//setNeighbours(new ArrayList<Field>());
 	}
 	
-	public void Enter(Virologist Virologist) {
-		System.out.println("\t"+Virologist.getName()+" has entered");
+	public void enter(Virologist virologist) {
+		Virologists.add(virologist);
 	}
 	
-	public void Leave(Virologist Virologist) {
-		System.out.println("\t"+Virologist.getName()+" has left");
+	public void leave(Virologist virologist) {
+		Virologists.remove(virologist);
 	}
 
 	public ArrayList<Virologist> getVirologists() {

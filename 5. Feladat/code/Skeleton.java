@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -36,43 +37,26 @@ public class Skeleton {
 	 * virologus mozgasa
 	 */
 	public static void virologist_moves_to_a_field(){
-		Scanner scanner=new Scanner(System.in);
-		String name="";
-		int maxEquipments=0;
-		int maxAmino=0;
-		int maxNukleotid=0;
-		boolean areNeighbours=true;
+		Scanner scanner = new Scanner(System.in);
 
-		System.out.print("Maximum Equipment: ");
-		maxEquipments=scanner.nextInt();
-		System.out.print("Name: ");
-		name=scanner.next();
-		System.out.print("Maximum Amino: ");
-		maxAmino=scanner.nextInt();
-		System.out.print("Maximum Nukleotid: ");
-		maxNukleotid=scanner.nextInt();
+		boolean areNeighbours = false;
 		System.out.print("Are Field and NextField neighbours? y/n: ");
-		if(scanner.next().charAt(0)=='y')
-			areNeighbours=true;
-		else
-			areNeighbours=false;
-		Game Game = new Game();
-		Map Map = new Map();
-		Map.CreateMap(0, 0, 0, 0);
+		if(scanner.next().charAt(0) == 'y')
+			areNeighbours = true;
+
 		Field Field = new Field();
 		Field NextField = new Field();
-		if(areNeighbours){
+		if(areNeighbours) {
 			Field.setNeighbour(NextField);
 			NextField.setNeighbour(Field);
 		}
-		Virologist virologist=new Virologist(maxEquipments,name,maxAmino,maxNukleotid);
-		virologist.move(NextField);
-		ArrayList<Field> FieldNeighbours=Field.getNeighbours();
-		if(FieldNeighbours.contains(NextField)){
-			Field.Leave(virologist);
-			NextField.Enter(virologist);
-		}
 
+		Virologist virologist = new Virologist(0, "", 0, Field);
+
+		Logger.addTab();
+		Logger.log(virologist, "move", Arrays.asList("NextField"));
+		virologist.move(NextField);
+		Logger.removeTab();
 	}
 	
 	/**
@@ -108,7 +92,7 @@ public class Skeleton {
 	 * virologus nyer
 	 */
 	public static void virologist_wins() {
-		Virologist Virologist = new Virologist(1, "test", 1, 1);
+		Virologist Virologist = new Virologist(1, "test", 1, new Field());
 		Game Game = new Game();
 		if (Virologist.collectedAllGenetics() == true) {
 			Game.End();
