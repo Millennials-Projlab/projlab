@@ -6,7 +6,7 @@ public class Skeleton {
 	//usecase-ek menu kiirasa, mindig ha egy ujat csinalsz akk add hozza itt is a kiirashoz
 	public static void printusecase() {
         System.out.println("[1] "+"Map creates Fields");
-        System.out.println("[2] "+"Usecase neve");
+        System.out.println("[2] "+"Virologist moves to a Field");
         System.out.println("[3] "+"Usecase neve");
         System.out.println("[4] "+"Usecase neve");
         System.out.println("[5] "+"Usecase neve");
@@ -78,15 +78,25 @@ public class Skeleton {
 	public static void virologist_moves_to_a_field(){
 
 		Scanner scanner=new Scanner(System.in);
-		
+		String name="";
+		int maxEquipments=0;
+		int maxAmino=0;
+		int maxNukleotid=0;
+		boolean areNeighbours=true;
+
 		System.out.print("Maximum Equipment: ");
-
+		maxEquipments=scanner.nextInt();
 		System.out.print("Name: ");
-
+		name=scanner.next();
 		System.out.print("Maximum Amino: ");
-
+		maxAmino=scanner.nextInt();
 		System.out.print("Maximum Nukleotid: ");
-
+		maxNukleotid=scanner.nextInt();
+		System.out.print("Are Field and NextField neighbours? y/n: ");
+		if(scanner.next().charAt(0)=='y')
+			areNeighbours=true;
+		else
+			areNeighbours=false;
 		System.out.println();
 
 		Game Game = new Game();
@@ -94,6 +104,18 @@ public class Skeleton {
 		Map.CreateMap(0, 0, 0, 0);
 		Field Field = new Field();
 		Field NextField = new Field();
+		if(areNeighbours){
+			Field.SetNeighbour(NextField);
+			NextField.SetNeighbour(Field);
+		}
+		Virologist virologist=new Virologist(maxEquipments,name,maxAmino,maxNukleotid);
+		virologist.move(NextField);
+		ArrayList<Field> FieldNeighbours=Field.getNeighbours();
+		if(FieldNeighbours.contains(NextField)){
+			Field.Leave(virologist);
+			NextField.Enter(virologist);
+		}
+
 	}
 	
 	
@@ -150,7 +172,7 @@ public class Skeleton {
 				break;
 			case 2:
 				System.out.println("Virologist moves to a Field: \n");
-				//fuggveny
+				virologist_moves_to_a_field();
 				break;
 			case 3:
 				System.out.println("usecase neve3");

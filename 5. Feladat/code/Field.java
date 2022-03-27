@@ -10,11 +10,11 @@ public class Field {
 	}
 	
 	public void Enter(Virologist Virologist) {
-		System.out.println("Virologist has entered");
+		System.out.println("\t"+Virologist.getName()+" has entered");
 	}
 	
 	public void Leave(Virologist Virologist) {
-		System.out.println("Virologist has left");
+		System.out.println("\t"+Virologist.getName()+" has left");
 	}
 
 	public ArrayList<Virologist> getVirologists() {
@@ -34,6 +34,7 @@ public class Field {
 	}
 	
 	public void SetNeighbour(Field field) {
+		Neighbours.add(field);
 		System.out.println("\t"+"Neighbour has been set");
 	}
 	

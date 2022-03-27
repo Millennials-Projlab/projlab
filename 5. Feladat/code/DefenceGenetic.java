@@ -4,6 +4,6 @@ public class DefenceGenetic extends Genetics{
 	}
 	
 	public void Effect(Virologist virologist) {
-		System.out.println("Defence has its effect on Virologist.");
+		System.out.println("Defence has its effect on  "+virologist.getName()+".");
 	}
 }

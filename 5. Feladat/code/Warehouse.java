@@ -14,7 +14,7 @@ public class Warehouse extends Field{
 	}
 	
 	public void Enter(Virologist Virologist) {
-		System.out.println("Virologist has entered");
+		System.out.println(Virologist.getName()+" has entered");
 	}
 
 	public ArrayList<Substances> getSubstances() {

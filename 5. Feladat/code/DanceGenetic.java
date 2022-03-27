@@ -4,6 +4,6 @@ public class DanceGenetic extends Genetics{
 	}
 	
 	public void Effect(Virologist virologist) {
-		System.out.println("Dance has its effect on Virologist.");
+		System.out.println("Dance has its effect on  "+virologist.getName()+".");
 	}
 }
