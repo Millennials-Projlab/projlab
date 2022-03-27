@@ -13,9 +13,9 @@ public class Skeleton {
         System.out.println("[2] "+"Virologist moves to a Field");
         System.out.println("[3] "+"Usecase neve");
         System.out.println("[4] "+"Usecase neve");
-        System.out.println("[5] "+"Usecase neve");
-        System.out.println("[6] "+"Usecase neve");
-        System.out.println("[7] "+"Usecase neve");
+        System.out.println("[5] "+"Virologist wins");
+        System.out.println("[6] "+"Timer is ticking");
+        System.out.println("[7] "+"Game Starts");
         //Igy tovabb usecase szama+neve
 	}
 	
@@ -144,6 +144,46 @@ public class Skeleton {
 
 	}
 	
+	/**
+	 * jatek elindul
+	 */
+	public static void game_starts() {
+		Game Game = new Game();
+		Map Map = new Map();
+		int fn = 0;
+		int h = 0;
+		int s = 0;
+		int l = 0;
+		Game.Start();
+		Map.CreateMap(fn, s, h, l);
+	}
+	
+	/**
+	 * telik az ido
+	 */
+	public static void timer() {
+		Game Game = new Game();
+		Timer Timer = new Timer();
+		Game.Start();
+		Timer.Start();
+		while (Timer.isTimer()) {
+			Timer.Tick();
+			Timer.setTimer(false);
+		}
+		Timer.Stop();
+	}
+	
+	/**
+	 * virologus nyer
+	 */
+	public static void virologist_wins() {
+		Virologist Virologist = new Virologist(1, "test", 1, 1);
+		Game Game = new Game();
+		if (Virologist.collectedAllGenetics() == true) {
+			Game.End();
+		}
+	}
+	
 	
 	
 	
@@ -223,16 +263,16 @@ public class Skeleton {
 				//fuggveny
 				break;
 			case 5:
-				System.out.println("usecase neve5");
-				//fuggveny
+				System.out.println("Virologist wins");
+				virologist_wins();
 				break;
 			case 6:
-				System.out.println("usecase neve6");
-				//fuggveny;
+				System.out.println("Timer is ticking");
+				timer();
 				break;
 			case 7:
-				System.out.println("use-case neve7");
-				//fuggveny
+				System.out.println("Game Starts");
+				game_starts();
 				break;
 		    
 				//igy tovabb minden egyes use-case-nek

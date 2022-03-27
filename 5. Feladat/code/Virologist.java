@@ -79,7 +79,7 @@ public class Virologist {
     }
     public boolean collectedAllGenetics(){
         //TODO
-        return false;
+        return true;
     }
     public boolean checkGenetics(Genetics genetics){
         //TODO
