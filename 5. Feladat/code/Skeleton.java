@@ -12,7 +12,7 @@ public class Skeleton {
         System.out.println("[1] "+"Map creates Fields");
         System.out.println("[2] "+"Virologist moves to a Field");
         System.out.println("[3] "+"Virologist produces Agent");
-        System.out.println("[4] "+"Usecase neve");
+        System.out.println("[4] "+"Virologist picks up equipment");
         System.out.println("[5] "+"Virologist wins");
         System.out.println("[6] "+"Timer is ticking");
         System.out.println("[7] "+"Game Starts");
@@ -222,7 +222,41 @@ public class Skeleton {
 		}
 	}
 	
-	
+	public static void virologist_picks_up_package() {
+		Shelter shelter = new Shelter();
+		Package p = new Package();
+		shelter.Place(p);
+		Virologist v = new Virologist(3, "Virologist1", 10, 10);
+		v.loot(shelter);
+		Equipment eq = shelter.getEquipment();
+		eq.PickUp();
+		v.addEquipment(eq);
+		shelter.Clear();
+	}
+
+	public static void virologist_picks_up_gloves() {
+		Shelter shelter = new Shelter();
+		Gloves g = new Gloves();
+		shelter.Place(g);
+		Virologist v = new Virologist(3, "Virologist1", 10, 10);
+		v.loot(shelter);
+		Equipment eq = shelter.getEquipment();
+		eq.PickUp();
+		v.addEquipment(eq);
+		shelter.Clear();
+	}
+
+	public static void virologist_picks_up_cape() {
+		Shelter shelter = new Shelter();
+		Cape cape = new Cape();
+		shelter.Place(cape);
+		Virologist v = new Virologist(3, "Virologist1", 10, 10);
+		v.loot(shelter);
+		Equipment eq = shelter.getEquipment();
+		eq.PickUp();
+		v.addEquipment(eq);
+		shelter.Clear();
+	}
 	
 	
 	/**
@@ -294,8 +328,26 @@ public class Skeleton {
 				virologist_produce_agent();
 				break;
 			case 4:
-				System.out.println("usecase neve4");
-				//fuggveny
+				System.out.println("\nSelect Item type: \n");
+				System.out.println("[1] "+"Virologist picks up package");
+      			System.out.println("[2] "+"Virologist picks up gloves");
+        		System.out.println("[3] "+"Virologist picks up cape");
+				usecase = console.nextInt();
+				switch(usecase){
+					case 1: 
+						virologist_picks_up_package();
+						break;
+					case 2:
+						virologist_picks_up_gloves();
+						break;
+					case 3:
+						virologist_picks_up_cape();
+						break;
+					case 0:
+						System.exit(0);
+					default: 
+						System.out.println("Invalid input.");	
+				}
 				break;
 			case 5:
 				System.out.println("Virologist wins");

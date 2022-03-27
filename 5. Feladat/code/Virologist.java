@@ -44,28 +44,36 @@ public class Virologist {
         //TODO
     }
     public void addAgent(Agent agent){
-        //TODO
+        Agents.add(agent);
+        System.out.println("Agent has been added.");
     }
     public void addEquipment(Equipment equipment){
-        //TODO
+        Equipments.add(equipment);
+        System.out.println("Equipment has been added.");
     }
     public void addSubstance(Substances substance){
-        //TODO
+        Substances.add(substance);
+        System.out.println("Substance has been added.");
     }
     public void removeAgent(Agent agent){
-        //TODO
+        Agents.remove(agent);
+        System.out.println("Agent has been removed.");
     }
     public void removeEquipment(Equipment equipment){
-        //TODO
+        Equipments.remove(equipment);
+        System.out.println("Equipment has been removed.");
     }
     public void removeSubstance(Substances substance){
-        //TODO
+        Substances.remove(substance);
+        System.out.println("Substance has been removed.");
     }
     public void addGenetics(Genetics genetics){
-        //TODO
+        Genetics.add(genetics);
+        System.out.println("Genetics has been adeed");
     }
     public void removeAllGenetics(){
-        //TODO
+        Genetics.clear();
+        System.out.println("All genetics removed");
     }
     public void generateAgent(Agent agent){
         //TODO

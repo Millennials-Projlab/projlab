@@ -2,7 +2,7 @@
 /**
 * gloves osztaly
 */
-public class Gloves {
+public class Gloves extends Equipment{
 	public void PickUp() {
 		System.out.println("Gloves has been picked up.");
 	}
