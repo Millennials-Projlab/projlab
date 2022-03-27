@@ -3,7 +3,7 @@ public class Shelter extends Field {
 	private Equipment Equipment;
 	
 	public void Place(Equipment Equipment) {
-		System.out.println(Equipment.toString()+" "+"has been placed");
+		System.out.println("\t"+Equipment.toString()+" "+"has been placed");
 	}
 	
 	public void Clear() {

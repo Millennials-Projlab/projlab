@@ -34,7 +34,7 @@ public class Field {
 	}
 	
 	public void SetNeighbour(Field field) {
-		System.out.println("Neighbour has been set");
+		System.out.println("\t"+"Neighbour has been set");
 	}
 	
 	
