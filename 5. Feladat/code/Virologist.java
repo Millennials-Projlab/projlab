@@ -47,7 +47,7 @@ public class Virologist {
     }
     public void addAgent(Agent agent){
         Agents.add(agent);
-        System.out.println("Agent has been added.");
+        System.out.println(agent.toString()+ " Agent has been added.");
     }
     public void addEquipment(Equipment equipment){
         Equipments.add(equipment);
@@ -96,9 +96,11 @@ public class Virologist {
     }
     public void setNukleotid(Agent agent){
         //TODO
+    	System.out.println("Number of Nukleotid has been changed.");
     }
     public void setAmino(Agent agent){
         //TODO
+    	System.out.println("Number of Amino has been changed.");
     }
 	public ArrayList<Substances> getSubstances() {
 		return Substances;

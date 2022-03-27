@@ -187,12 +187,11 @@ public class Skeleton {
 	
 
 	public static void virologist_produce_agent() {
-		System.out.println("Produce Agent");
+		//System.out.println("\nSelect Agent: \n");
 		Scanner console = new Scanner(System.in);
 		int a = 0;
 
-		Game game = new Game();
-		game.getPlayers();
+		Virologist v = new Virologist(3, "Virologist", 10, 10);
 		System.out.println("[1] Produce Dance Agent");
 		System.out.println("[2] Produce Defence Agent");
 		System.out.println("[3] Produce Poison Agent");
@@ -202,18 +201,30 @@ public class Skeleton {
 			case 1:
 				DanceAgent danceAgent = new DanceAgent();
 				danceAgent.Generate();
+				v.addAgent(danceAgent);
+				v.setAmino(danceAgent);
+				v.setNukleotid(danceAgent);
 				break;
 			case 2:
 				DefenceAgent defenceAgent = new DefenceAgent();
 				defenceAgent.Generate();
+				v.addAgent(defenceAgent);
+				v.setAmino(defenceAgent);
+				v.setNukleotid(defenceAgent);
 				break;
 			case 3:
 				PoisonAgent poisonAgent = new PoisonAgent();
 				poisonAgent.Generate();
+				v.addAgent(poisonAgent);
+				v.setAmino(poisonAgent);
+				v.setNukleotid(poisonAgent);
 				break;
 			case 4:
 				AmnesiaAgent amnesiaAgent = new AmnesiaAgent();
 				amnesiaAgent.Generate();
+				v.addAgent(amnesiaAgent);
+				v.setAmino(amnesiaAgent);
+				v.setNukleotid(amnesiaAgent);
 				break;
 			case 1000:
 				System.exit(0);
@@ -381,7 +392,8 @@ public class Skeleton {
 				virologist_moves_to_a_field();
 				break;
 			case 3:
-				System.out.println("Virologist produces Agent: ");
+				//System.out.println("Virologist produces Agent: ");
+				System.out.println("\nSelect Agent: \n");
 				virologist_produce_agent();
 				break;
 			case 4:
