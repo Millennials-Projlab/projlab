@@ -1,6 +1,8 @@
 import java.util.ArrayList;
-import java.util.jar.Attributes.Name;
 
+/**
+* virologus osztaly
+*/
 public class Virologist {
     private ArrayList<Substances> Substances;
     private ArrayList<Agent> Agents;
@@ -12,16 +14,19 @@ public class Virologist {
     private int maxAmino;
     private int maxNukleotid;
 
-    
-    public Virologist(int mE,String n, int mA,int mN){         //mE:maxEquipments      n:name      mA:maxAmino     mN:maxNukleotid
-        Substances=new ArrayList<Substances>();
-        Agents=new ArrayList<Agent>();
-        Equipments=new ArrayList<Equipment>();
-        Genetics=new ArrayList<Genetics>();
-        maxEquipments=mE;
+	/**
+	 * virologus konstruktor
+	 * mE:maxEquipments      n:name      mA:maxAmino     mN:maxNukleotid
+	 */
+    public Virologist(int mE,String n, int mA,int mN){
+        setSubstances(new ArrayList<Substances>());
+        setAgents(new ArrayList<Agent>());
+        Equipments = new ArrayList<Equipment>();
+        setGenetics(new ArrayList<Genetics>());
+        setMaxEquipments(mE);
         name=n;
-        maxAmino=mA;
-        maxNukleotid=mN;
+        setMaxAmino(mA);
+        setMaxNukleotid(mN);
     }
     public String getName(){
         return name;
@@ -86,5 +91,41 @@ public class Virologist {
     public void setAmino(Agent agent){
         //TODO
     }
+	public ArrayList<Substances> getSubstances() {
+		return Substances;
+	}
+	public void setSubstances(ArrayList<Substances> substances) {
+		Substances = substances;
+	}
+	public ArrayList<Agent> getAgents() {
+		return Agents;
+	}
+	public void setAgents(ArrayList<Agent> agents) {
+		Agents = agents;
+	}
+	public ArrayList<Genetics> getGenetics() {
+		return Genetics;
+	}
+	public void setGenetics(ArrayList<Genetics> genetics) {
+		Genetics = genetics;
+	}
+	public int getMaxEquipments() {
+		return maxEquipments;
+	}
+	public void setMaxEquipments(int maxEquipments) {
+		this.maxEquipments = maxEquipments;
+	}
+	public int getMaxAmino() {
+		return maxAmino;
+	}
+	public void setMaxAmino(int maxAmino) {
+		this.maxAmino = maxAmino;
+	}
+	public int getMaxNukleotid() {
+		return maxNukleotid;
+	}
+	public void setMaxNukleotid(int maxNukleotid) {
+		this.maxNukleotid = maxNukleotid;
+	}
 
 }

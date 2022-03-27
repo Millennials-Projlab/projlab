@@ -1,3 +1,7 @@
+
+/**
+* amnesia osztaly
+*/
 public class AmnesiaGenetic extends Genetics {
     public void PickUp() {
 		System.out.println("Amnesia has been learned.");

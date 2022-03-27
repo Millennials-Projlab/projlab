@@ -1,3 +1,7 @@
+
+/**
+* dance osztaly
+*/
 public class DanceGenetic extends Genetics{
     public void PickUp() {
 		System.out.println("Dance has been learned.");

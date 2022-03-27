@@ -1,4 +1,7 @@
 
+/**
+* gloves osztaly
+*/
 public class Gloves {
 	public void PickUp() {
 		System.out.println("Gloves has been picked up.");

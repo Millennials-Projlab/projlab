@@ -1,3 +1,6 @@
+/**
+* poison osztaly
+*/
 public class PoisonGenetic extends Genetics {
     public void PickUp() {
 		System.out.println("Poison has been learned.");

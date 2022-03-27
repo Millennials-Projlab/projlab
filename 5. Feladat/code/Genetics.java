@@ -1,3 +1,7 @@
+
+/**
+* genetics osztaly
+*/
 public abstract class Genetics {
     public void PickUp() {	
 	}

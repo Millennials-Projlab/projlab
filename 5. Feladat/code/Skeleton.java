@@ -1,9 +1,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//Skeleton osztaly
-public class Skeleton {	
-	//usecase-ek menu kiirasa, mindig ha egy ujat csinalsz akk add hozza itt is a kiirashoz
+/**
+ * Skeleton osztaly
+ */
+public class Skeleton {
+	/**
+	 * usecase-ek menu kiirasa, mindig ha egy ujat csinalsz akk add hozza itt is a kiirashoz
+	 */
 	public static void printusecase() {
         System.out.println("[1] "+"Map creates Fields");
         System.out.println("[2] "+"Virologist moves to a Field");
@@ -15,7 +19,13 @@ public class Skeleton {
         //Igy tovabb usecase szama+neve
 	}
 	
-	//usecase fuggvenyek ide
+	/**
+	 * usecase fuggvenyek ide
+	 */
+	
+	/**
+	 * shelter letrehozasa
+	 */
 	public static void map_creates_shelter() {
 		Game Game = new Game();
 		Map Map = new Map();
@@ -28,6 +38,9 @@ public class Skeleton {
 		Shelter.Place(Package);
 	}
 	
+	/**
+	 * laboratory letrehozasa
+	 */
 	public static void map_creates_laboratory() {
 		Game Game = new Game();
 		Map Map = new Map();
@@ -40,32 +53,44 @@ public class Skeleton {
 		Laboratory.Place(danceGenetic);
 	}
 	
+	/**
+	 * warehouse letrehozasa
+	 */
 	public static void map_creates_warehouse() {
 		Scanner scanner=new Scanner(System.in);
 		int nukleotid=0;
 		int amino=0;
+		
 		System.out.print("How many Nukleotid? ");
 		nukleotid=scanner.nextInt();
 		System.out.print("How many Amino? ");
 		amino=scanner.nextInt();
 		System.out.println();
+		
 		Game Game = new Game();
 		Map Map = new Map();
 		Map.CreateMap(0, 0, 0, 0);
 		Warehouse warehouse=new Warehouse();
 		Field NextField = new Field();
 		ArrayList<Substances> substances=new ArrayList<>();
+		
 		for(int i=0;i<nukleotid;i++){
 			substances.add(new Nukleotid());
+			System.out.println("Add nukleotid");
 		}
 		for(int i=0;i<amino;i++){
 			substances.add(new Amino());
+			System.out.println("Add amino");
 		}
+		
 		warehouse.SetNeighbour(NextField);
 		NextField.SetNeighbour(warehouse);
 		warehouse.Place(substances);
 	}
 
+	/**
+	 * field letrehozasa
+	 */
 	public static void map_creates_field() {
 		Game Game = new Game();
 		Map Map = new Map();
@@ -75,8 +100,11 @@ public class Skeleton {
 		Field.SetNeighbour(NextField);
 		NextField.SetNeighbour(Field);
 	}
+	
+	/**
+	 * virologus mozgasa
+	 */
 	public static void virologist_moves_to_a_field(){
-
 		Scanner scanner=new Scanner(System.in);
 		String name="";
 		int maxEquipments=0;
@@ -97,8 +125,6 @@ public class Skeleton {
 			areNeighbours=true;
 		else
 			areNeighbours=false;
-		System.out.println();
-
 		Game Game = new Game();
 		Map Map = new Map();
 		Map.CreateMap(0, 0, 0, 0);
@@ -122,22 +148,33 @@ public class Skeleton {
 	
 	
 	
-	//main fuggveny
+	
+	/**
+	 * main fuggveny
+	 */
 	public static void main(String[] args) {
-		//usecase switch
-		//menupontok
+		/**
+		 * usecase switch
+		 * menupontok
+		 */
 		int usecase = 0;
 
-	    //scan-eleshez
+		/**
+		 * beolvasas
+		 */
 	    Scanner console = new Scanner(System.in);
 
 	    while(usecase != 1000) {
-	    //melyik usecase
+	    /**
+	     * melyik usecase
+	     */
 	    System.out.print("\nSelect usecase by entering its code: \n");
 	    printusecase();
 	    usecase = console.nextInt();
 		
-			//fomenu
+		/**
+		 * fomenu
+		 */
 			switch (usecase) {
 			case 1:
 				System.out.println("\nSelect Field type by entering its code: \n");
@@ -146,6 +183,9 @@ public class Skeleton {
         		System.out.println("[3] "+"Map creates Warehouse");
 				System.out.println("[4] "+"Map creates Field");
 				usecase=console.nextInt();
+				/**
+				 * mezo tipusa
+				 */
 				switch(usecase){
 					case 1:
 						System.out.println("Map creates Shelter: \n");
@@ -197,11 +237,15 @@ public class Skeleton {
 		    
 				//igy tovabb minden egyes use-case-nek
 				
-			//kilepes
+			/**
+			* kilepes
+			*/
 			case 1000:
 				System.exit(0);
 				break;
-			//default
+			/**
+			* default ertek
+			*/
 			default:
 				System.out.println("Invalid input");
 			}

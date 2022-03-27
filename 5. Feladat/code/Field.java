@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/**
+* field osztaly
+*/
 public class Field {
 	private ArrayList<Virologist> Virologists;
 	private ArrayList<Field> Neighbours;
@@ -23,6 +26,7 @@ public class Field {
 
 	public void setVirologists(ArrayList<Virologist> virologists) {
 		Virologists = virologists;
+		System.out.println("Virologists have been set");
 	}
 
 	public ArrayList<Field> getNeighbours() {

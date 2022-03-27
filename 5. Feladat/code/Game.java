@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+* game osztaly
+*/
 public class Game {
 	private Map Map;
 	private ArrayList<Virologist> Players;

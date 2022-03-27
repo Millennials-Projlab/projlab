@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-
+/**
+* warehouse osztaly
+*/
 public class Warehouse extends Field{
 	private ArrayList<Substances> Substances;
 	

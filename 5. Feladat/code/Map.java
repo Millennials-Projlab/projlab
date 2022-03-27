@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+/**
+* map osztaly
+*/
 public class Map {
 	private ArrayList<Field> Fields;
 	

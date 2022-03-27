@@ -1,4 +1,7 @@
 
+/**
+* packages osztaly
+*/
 public class Package extends Equipment {
 	public void PickUp() {
 		System.out.println("Package has been picked up.");

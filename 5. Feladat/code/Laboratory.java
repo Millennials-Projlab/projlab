@@ -1,3 +1,7 @@
+
+/**
+* laboratory osztaly
+*/
 public class Laboratory extends Field{
 	private Genetics Genetic;
 	

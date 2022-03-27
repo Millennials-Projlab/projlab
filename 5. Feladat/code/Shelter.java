@@ -1,4 +1,7 @@
 
+/**
+* shelter osztaly
+*/
 public class Shelter extends Field {
 	private Equipment Equipment;
 	
