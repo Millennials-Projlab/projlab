@@ -11,7 +11,7 @@ public class Skeleton {
 	public static void printusecase() {
         System.out.println("[1] "+"Map creates Fields");
         System.out.println("[2] "+"Virologist moves to a Field");
-        System.out.println("[3] "+"Usecase neve");
+        System.out.println("[3] "+"Virologist produces Agent");
         System.out.println("[4] "+"Usecase neve");
         System.out.println("[5] "+"Virologist wins");
         System.out.println("[6] "+"Timer is ticking");
@@ -184,7 +184,43 @@ public class Skeleton {
 		}
 	}
 	
-	
+
+	public static void virologist_produce_agent() {
+		System.out.println("Produce Agent");
+		Scanner console = new Scanner(System.in);
+		int a = 0;
+
+		Game game = new Game();
+		game.getPlayers();
+		System.out.println("[1] Produce Dance Agent");
+		System.out.println("[2] Produce Defence Agent");
+		System.out.println("[3] Produce Poison Agent");
+		System.out.println("[4] Produce Amnesia Agent");
+		a = console.nextInt();
+		switch(a) {
+			case 1:
+				DanceAgent danceAgent = new DanceAgent();
+				danceAgent.Generate();
+				break;
+			case 2:
+				DefenceAgent defenceAgent = new DefenceAgent();
+				defenceAgent.Generate();
+				break;
+			case 3:
+				PoisonAgent poisonAgent = new PoisonAgent();
+				poisonAgent.Generate();
+				break;
+			case 4:
+				AmnesiaAgent amnesiaAgent = new AmnesiaAgent();
+				amnesiaAgent.Generate();
+				break;
+			case 1000:
+				System.exit(0);
+				break;
+			default:
+				System.out.println("Invalid input");
+		}
+	}
 	
 	
 	
@@ -198,7 +234,6 @@ public class Skeleton {
 		 * menupontok
 		 */
 		int usecase = 0;
-
 		/**
 		 * beolvasas
 		 */
@@ -255,8 +290,8 @@ public class Skeleton {
 				virologist_moves_to_a_field();
 				break;
 			case 3:
-				System.out.println("usecase neve3");
-				//fuggveny
+				System.out.println("Virologist produces Agent: ");
+				virologist_produce_agent();
 				break;
 			case 4:
 				System.out.println("usecase neve4");
