@@ -5,6 +5,7 @@ import java.util.Scanner;
  * Skeleton osztaly
  */
 public class Skeleton {
+	public static Logger logger;
 	/**
 	 * usecase-ek menu kiirasa, mindig ha egy ujat csinalsz akk add hozza itt is a kiirashoz
 	 */
@@ -24,81 +25,11 @@ public class Skeleton {
 	 */
 	
 	/**
-	 * shelter letrehozasa
+	 * Mezők létrehozása
 	 */
-	public static void map_creates_shelter() {
+	public static void map_creates_fields() {
 		Game Game = new Game();
-		Map Map = new Map();
-		Map.CreateMap(0, 0, 0, 0);
-		Shelter Shelter = new Shelter();
-		Field NextField = new Field();
-		Package Package = new Package();
-		Shelter.SetNeighbour(NextField);
-		NextField.SetNeighbour(Shelter);
-		Shelter.Place(Package);
-	}
-	
-	/**
-	 * laboratory letrehozasa
-	 */
-	public static void map_creates_laboratory() {
-		Game Game = new Game();
-		Map Map = new Map();
-		Map.CreateMap(0, 0, 0, 0);
-		Laboratory Laboratory =new Laboratory();
-		Field NextField = new Field();
-		DanceGenetic danceGenetic=new DanceGenetic();
-		Laboratory.SetNeighbour(NextField);
-		NextField.SetNeighbour(Laboratory);
-		Laboratory.Place(danceGenetic);
-	}
-	
-	/**
-	 * warehouse letrehozasa
-	 */
-	public static void map_creates_warehouse() {
-		Scanner scanner=new Scanner(System.in);
-		int nukleotid=0;
-		int amino=0;
-		
-		System.out.print("How many Nukleotid? ");
-		nukleotid=scanner.nextInt();
-		System.out.print("How many Amino? ");
-		amino=scanner.nextInt();
-		System.out.println();
-		
-		Game Game = new Game();
-		Map Map = new Map();
-		Map.CreateMap(0, 0, 0, 0);
-		Warehouse warehouse=new Warehouse();
-		Field NextField = new Field();
-		ArrayList<Substances> substances=new ArrayList<>();
-		
-		for(int i=0;i<nukleotid;i++){
-			substances.add(new Nukleotid());
-			System.out.println("Add nukleotid");
-		}
-		for(int i=0;i<amino;i++){
-			substances.add(new Amino());
-			System.out.println("Add amino");
-		}
-		
-		warehouse.SetNeighbour(NextField);
-		NextField.SetNeighbour(warehouse);
-		warehouse.Place(substances);
-	}
-
-	/**
-	 * field letrehozasa
-	 */
-	public static void map_creates_field() {
-		Game Game = new Game();
-		Map Map = new Map();
-		Map.CreateMap(0, 0, 0, 0);
-		Field Field = new Field();
-		Field NextField = new Field();
-		Field.SetNeighbour(NextField);
-		NextField.SetNeighbour(Field);
+		Game.Start();
 	}
 	
 	/**
@@ -131,8 +62,8 @@ public class Skeleton {
 		Field Field = new Field();
 		Field NextField = new Field();
 		if(areNeighbours){
-			Field.SetNeighbour(NextField);
-			NextField.SetNeighbour(Field);
+			Field.setNeighbour(NextField);
+			NextField.setNeighbour(Field);
 		}
 		Virologist virologist=new Virologist(maxEquipments,name,maxAmino,maxNukleotid);
 		virologist.move(NextField);
@@ -229,6 +160,7 @@ public class Skeleton {
 	 * main fuggveny
 	 */
 	public static void main(String[] args) {
+		logger = new Logger();
 		/**
 		 * usecase switch
 		 * menupontok
@@ -264,19 +196,7 @@ public class Skeleton {
 				switch(usecase){
 					case 1:
 						System.out.println("Map creates Shelter: \n");
-						map_creates_shelter();
-						break;
-					case 2:
-						System.out.println("Map creates Laboratory: \n");
-						map_creates_laboratory();
-						break;
-					case 3:
-						System.out.println("Map creates Warehouse: \n");
-						map_creates_warehouse();
-						break;
-					case 4:
-						System.out.println("Map creates Field: \n");
-						map_creates_field();
+						map_creates_fields();
 						break;
 					case 1000:
 						System.exit(0);

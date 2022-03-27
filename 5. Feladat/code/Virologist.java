@@ -4,7 +4,7 @@ import java.util.ArrayList;
 * virologus osztaly
 */
 public class Virologist {
-    private ArrayList<Substances> Substances;
+    private ArrayList<Substance> Substances;
     private ArrayList<Agent> Agents;
     private ArrayList<Equipment> Equipments;
     private ArrayList<Genetics> Genetics;
@@ -19,7 +19,7 @@ public class Virologist {
 	 * mE:maxEquipments      n:name      mA:maxAmino     mN:maxNukleotid
 	 */
     public Virologist(int mE,String n, int mA,int mN){
-        setSubstances(new ArrayList<Substances>());
+        setSubstances(new ArrayList<Substance>());
         setAgents(new ArrayList<Agent>());
         Equipments = new ArrayList<Equipment>();
         setGenetics(new ArrayList<Genetics>());
@@ -49,7 +49,7 @@ public class Virologist {
     public void addEquipment(Equipment equipment){
         //TODO
     }
-    public void addSubstance(Substances substance){
+    public void addSubstance(Substance substance){
         //TODO
     }
     public void removeAgent(Agent agent){
@@ -58,7 +58,7 @@ public class Virologist {
     public void removeEquipment(Equipment equipment){
         //TODO
     }
-    public void removeSubstance(Substances substance){
+    public void removeSubstance(Substance substance){
         //TODO
     }
     public void addGenetics(Genetics genetics){
@@ -91,10 +91,10 @@ public class Virologist {
     public void setAmino(Agent agent){
         //TODO
     }
-	public ArrayList<Substances> getSubstances() {
+	public ArrayList<Substance> getSubstances() {
 		return Substances;
 	}
-	public void setSubstances(ArrayList<Substances> substances) {
+	public void setSubstances(ArrayList<Substance> substances) {
 		Substances = substances;
 	}
 	public ArrayList<Agent> getAgents() {

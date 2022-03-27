@@ -5,8 +5,7 @@
 public class Laboratory extends Field{
 	private Genetics Genetic;
 	
-	public void Place(Genetics Genetic) {
-		System.out.println("\t"+Genetic.toString()+" "+"has been placed");
+	public void place(Genetics Genetic) {
 	}
 	
 	public void Enter(Virologist Virologist) {

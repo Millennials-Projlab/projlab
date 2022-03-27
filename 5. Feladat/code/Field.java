@@ -8,8 +8,9 @@ public class Field {
 	private ArrayList<Field> Neighbours;
 	
 	public Field() {
-		setVirologists(new ArrayList<Virologist>());
-		setNeighbours(new ArrayList<Field>());
+		//setVirologists(new ArrayList<Virologist>());
+		Neighbours = new ArrayList<Field>();
+		//setNeighbours(new ArrayList<Field>());
 	}
 	
 	public void Enter(Virologist Virologist) {
@@ -37,9 +38,8 @@ public class Field {
 		Neighbours = neighbours;
 	}
 	
-	public void SetNeighbour(Field field) {
+	public void setNeighbour(Field field) {
 		Neighbours.add(field);
-		System.out.println("\t"+"Neighbour has been set");
 	}
 	
 	

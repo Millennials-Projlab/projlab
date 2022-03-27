@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 /**
 * game osztaly
 */
@@ -7,12 +9,27 @@ public class Game {
 	private ArrayList<Virologist> Players;
 	
 	public Game() {
-		setMap(new Map());
+		//setMap(new Map());
 		setPlayers(new ArrayList<Virologist>());
 	}
 	
 	public void Start() {
-		System.out.println("Map has been set up.");
+		Map map = new Map();
+		List<Object> parameters = new ArrayList<Object>();
+
+		System.out.println("Choose number of Fields");
+		
+		Scanner console = new Scanner(System.in);
+		int fieldNumber = console.nextInt();
+		parameters.add(fieldNumber);
+		parameters.add(0);
+		parameters.add(0);
+		parameters.add(0);
+
+		Logger.addTab();
+		Logger.log(map, "CreateMap", parameters);
+		map.CreateMap(fieldNumber, 0, 0, 0);
+		Logger.removeTab();
 	}
 	
 	public void End() {

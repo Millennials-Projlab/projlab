@@ -3,10 +3,10 @@ import java.util.ArrayList;
 * warehouse osztaly
 */
 public class Warehouse extends Field{
-	private ArrayList<Substances> Substances;
+	private ArrayList<Substance> Substances;
 	
-	public void Place(ArrayList<Substances> Substances) {
-        for(Substances i: Substances){
+	public void place(ArrayList<Substance> Substances) {
+        for(Substance i: Substances){
             System.out.println("\t"+i.toString()+" "+"has been placed");
         }
 	}
@@ -19,11 +19,11 @@ public class Warehouse extends Field{
 		System.out.println(Virologist.getName()+" has entered");
 	}
 
-	public ArrayList<Substances> getSubstances() {
+	public ArrayList<Substance> getSubstances() {
 		return Substances;
 	}
 
-	public void setSubstances(ArrayList<Substances> substances) {
+	public void setSubstances(ArrayList<Substance> substances) {
 		Substances = substances;
 	}
     

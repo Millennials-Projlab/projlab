@@ -4,7 +4,7 @@
 */
 public abstract class Agent {
 	private Genetics Genetic;
-	private Substances Substance;
+	private Substance Substance;
 	private int livetime;
 	
 	public void Generate() {
@@ -27,10 +27,10 @@ public abstract class Agent {
 	public void setGenetic(Genetics genetic) {
 		Genetic = genetic;
 	}
-	public Substances getSubstance() {
+	public Substance getSubstance() {
 		return Substance;
 	}
-	public void setSubstance(Substances substance) {
+	public void setSubstance(Substance substance) {
 		Substance = substance;
 	}
 	public int getLivetime() {
