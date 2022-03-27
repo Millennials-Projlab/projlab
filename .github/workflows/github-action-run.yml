@@ -1,0 +1,11 @@
+name: Run and Compile on Windows
+on: [push]
+jobs:
+  Run-Code:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Compile and Run
+        shell: cmd
+        run: .\5. Feladat\code\run.bat
