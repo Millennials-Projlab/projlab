@@ -13,6 +13,7 @@ public class Virologist {
     private String name;
     private int maxAmino;
     private int maxNukleotid;
+    private boolean paralyzed = false;
 
 	/**
 	 * virologus konstruktor
@@ -32,9 +33,10 @@ public class Virologist {
         return name;
     }
     public void move(Field nf){
-        //TODO
+        System.out.println("Virologist has moved");
     }
     public void loot(Field field){
+        System.out.println("Virologist has looted");
         //TODO
     }
     public void stealEquipment(Virologist enemy){
@@ -68,8 +70,7 @@ public class Virologist {
         System.out.println("Substance has been removed.");
     }
     public void addGenetics(Genetics genetics){
-        Genetics.add(genetics);
-        System.out.println("Genetics has been adeed");
+        System.out.println(genetics.toString()+" "+"has been learnt");
     }
     public void removeAllGenetics(){
         Genetics.clear();
@@ -86,11 +87,11 @@ public class Virologist {
         //TODO
     }
     public boolean collectedAllGenetics(){
-        //TODO
+        System.out.println("All genetics has been collected.");
         return true;
     }
     public boolean checkGenetics(Genetics genetics){
-        //TODO
+        System.out.println("Checked");
         return false;
     }
     public void setNukleotid(Agent agent){
@@ -134,6 +135,12 @@ public class Virologist {
 	}
 	public void setMaxNukleotid(int maxNukleotid) {
 		this.maxNukleotid = maxNukleotid;
+	}
+	public boolean isParalyzed() {
+		return paralyzed;
+	}
+	public void setParalyzed(boolean paralyzed) {
+		this.paralyzed = paralyzed;
 	}
 
 }

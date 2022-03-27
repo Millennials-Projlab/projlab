@@ -16,6 +16,7 @@ public class Skeleton {
         System.out.println("[5] "+"Virologist wins");
         System.out.println("[6] "+"Timer is ticking");
         System.out.println("[7] "+"Game Starts");
+        System.out.println("[8] "+"Learn Genetics");
         //Igy tovabb usecase szama+neve
 	}
 	
@@ -258,6 +259,62 @@ public class Skeleton {
 		shelter.Clear();
 	}
 	
+	/**
+	* genetikai kod megtanulasa
+	*/
+	public static void learn_genetics() {
+		Virologist Virologist = new Virologist(1, "test", 1, 1);
+		Laboratory Laboratory = new Laboratory();
+		DanceGenetic DanceGenetic = new DanceGenetic();
+		PoisonGenetic PoisonGenetic = new PoisonGenetic();
+		DefenceGenetic DefenceGenetic = new DefenceGenetic();
+		AmnesiaGenetic AmnesiaGenetic = new AmnesiaGenetic();
+		
+		System.out.println("Learn Genetic");
+		Scanner console = new Scanner(System.in);
+		int a = 0;
+
+		Game game = new Game();
+		game.getPlayers();
+		
+		Virologist.loot(Laboratory);
+		Laboratory.getGenetic();
+		System.out.println("[1] Learn DanceGenetic");
+		System.out.println("[2] Learn PoisonGenetic");
+		System.out.println("[3] Learn DefenceGenetic");
+		System.out.println("[4] Learn AmnesiaGenetic");
+		a = console.nextInt();
+		switch(a) {
+			case 1:
+				if (Virologist.checkGenetics(DanceGenetic)==false && Virologist.isParalyzed() == false) {
+					Virologist.addGenetics(DanceGenetic);
+				}
+				break;
+			case 2:
+				if (Virologist.checkGenetics(PoisonGenetic)==false && Virologist.isParalyzed() == false) {
+					Virologist.addGenetics(PoisonGenetic);
+				};
+				break;
+			case 3:
+				if (Virologist.checkGenetics(DefenceGenetic)==false && Virologist.isParalyzed() == false) {
+					Virologist.addGenetics(DefenceGenetic);
+				}
+				break;
+			case 4:
+				if (Virologist.checkGenetics(AmnesiaGenetic)==false && Virologist.isParalyzed() == false) {
+					Virologist.addGenetics(AmnesiaGenetic);
+				}
+				break;
+			case 1000:
+				System.exit(0);
+				break;
+			default:
+				System.out.println("Invalid input");
+		}
+		
+		
+	}
+	
 	
 	/**
 	 * main fuggveny
@@ -360,6 +417,10 @@ public class Skeleton {
 			case 7:
 				System.out.println("Game Starts");
 				game_starts();
+				break;
+			case 8:
+				System.out.println("Learn Genetics");
+				learn_genetics();
 				break;
 		    
 				//igy tovabb minden egyes use-case-nek
