@@ -95,7 +95,6 @@ public class Virologist {
      */
     public void addEquipment(Equipment equipment){
         Equipments.add(equipment);
-
         Logger.addTab();
         Logger.log(equipment, "Effect", "this");
         equipment.Effect(this);
@@ -106,8 +105,9 @@ public class Virologist {
     /** 
      * @param substance
      */
-    public void addSubstance(Substance substance){
+    public void addSubstance(Substances substance){
         Substances.add(substance);
+        System.out.println("Substance has been added.");
     }
 
     
@@ -115,7 +115,8 @@ public class Virologist {
      * @param agent
      */
     public void removeAgent(Agent agent){
-        //TODO
+        Agents.remove(agent);
+        System.out.println("Agent has been removed.");
     }
 
     
@@ -123,15 +124,15 @@ public class Virologist {
      * @param equipment
      */
     public void removeEquipment(Equipment equipment){
-        //TODO
+        Equipments.remove(equipment);
+        System.out.println("Equipment has been removed.");
     }
-
-    
     /** 
      * @param substance
      */
-    public void removeSubstance(Substance substance){
-        //TODO
+    public void removeSubstance(Substances substance){
+        Substances.remove(substance);
+        System.out.println("Substance has been removed.");
     }
 
     
@@ -140,6 +141,11 @@ public class Virologist {
      */
     public void addGenetics(Genetics genetics){
         Genetics.add(genetics);
+    }
+  
+    public void removeAllGenetics(){
+        Genetics.clear();
+        System.out.println("All genetics removed");
     }
     
     /** 
@@ -193,7 +199,7 @@ public class Virologist {
      * @return boolean igaz, ha a virológus megtanulta az összes genetikai kódot
      */
     public boolean collectedAllGenetics(){
-        //TODO
+        System.out.println("All genetics has been collected.");
         return true;
     }
 
@@ -203,7 +209,7 @@ public class Virologist {
      * @return boolean
      */
     public boolean checkGenetics(Genetics genetics){
-        //TODO
+        System.out.println("Checked");
         return false;
     }
 
@@ -213,6 +219,7 @@ public class Virologist {
      */
     public void setNukleotid(Agent agent){
         //TODO
+    	System.out.println("Number of Nukleotid has been changed.");
     }
 
     
@@ -221,6 +228,7 @@ public class Virologist {
      */
     public void setAmino(Agent agent){
         //TODO
+    	System.out.println("Number of Amino has been changed.");
     }
 
 	
@@ -285,7 +293,6 @@ public class Virologist {
      */
     public void setMaxEquipments(int maxEquipments) {
 		this.maxEquipments = maxEquipments;
-	}
 
 	
     /** 

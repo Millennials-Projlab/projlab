@@ -3,8 +3,7 @@
 */
 public class Shelter extends Field {
 	private Equipment Equipment;
-	
-	
+  
 	/** 
 	 * Elhelyezi a tárgyat a mezőn
 	 * @param equipment

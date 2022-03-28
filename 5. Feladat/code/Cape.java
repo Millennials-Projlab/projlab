@@ -1,5 +1,5 @@
 /**
-* cCape osztály
+* Cape osztály
 */
 public class Cape extends Equipment {
 	public void PickUp() {

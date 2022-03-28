@@ -18,7 +18,7 @@ public class Skeleton {
         System.out.println("[5] "+"Virologist wins");
         System.out.println("[6] "+"Timer is ticking");
         System.out.println("[7] "+"Virologist learns Genetic");
-		System.out.println("[8] "+"Virologist infects another Virologist");
+		    System.out.println("[8] "+"Virologist infects another Virologist");
 	}
 	
 	/**
@@ -84,6 +84,7 @@ public class Skeleton {
 		Logger.removeTab();
 	}
 	
+
 	/**
 	 * Virológus létrehoz egy ágenst
 	 */
@@ -209,7 +210,7 @@ public class Skeleton {
 
 		System.out.println("Virologist learns Genetic");
 		Scanner console = new Scanner(System.in);
-		
+	
 		System.out.println("[1] Learn DanceGenetic");
 		System.out.println("[2] Learn PoisonGenetic");
 		System.out.println("[3] Learn DefenceGenetic");
@@ -378,6 +379,10 @@ public class Skeleton {
 			case 8:
 				System.out.println("Virologist infects another Virologist");
 				infect_virologist();
+				break;
+			case 8:
+				System.out.println("Learn Genetics");
+				learn_genetics();
 				break;
 		    
 				
