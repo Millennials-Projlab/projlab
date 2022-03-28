@@ -1,10 +1,14 @@
-
 /**
-* shelter osztaly
+* Shelter osztály
 */
 public class Shelter extends Field {
 	private Equipment Equipment;
 	
+	
+	/** 
+	 * Elhelyezi a tárgyat a mezőn
+	 * @param equipment
+	 */
 	public void place(Equipment equipment) {
 		Equipment = equipment;
 	}
@@ -12,19 +16,28 @@ public class Shelter extends Field {
 	public void Clear() {
 		System.out.println("Cleared");
 	}
-	
-	public void Enter(Virologist Virologist) {
-		System.out.println(Virologist.getName()+" has entered");
-	}
 
+	
+	/** 
+	 * @return Equipment
+	 */
 	public Equipment getEquipment() {
 		return Equipment;
 	}
 
+	
+	/** 
+	 * @param equipment
+	 */
 	public void setEquipment(Equipment equipment) {
 		Equipment = equipment;
 	}
 	
+	
+	/** 
+	 * A virológus felveszi a mezőn lévő tárgyat
+	 * @param virologist
+	 */
 	public void lootItem(Virologist virologist) {
 		Logger.addTab();
 		Logger.log(virologist, "getMaxEquipments", "");

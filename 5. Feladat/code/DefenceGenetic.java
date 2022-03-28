@@ -1,6 +1,5 @@
-
 /**
-* defence osztaly
+* Defence osztály
 */
 public class DefenceGenetic extends Genetics{
     public DefenceGenetic(int aminoCount, int nukleoCount) {
@@ -11,10 +10,10 @@ public class DefenceGenetic extends Genetics{
 		System.out.println("Defence has been learned.");
 	}
 	
-	public void Effect(Virologist virologist) {
-		System.out.println("Defence has its effect on  "+virologist.getName()+".");
-	}
-
+	/** 
+	 * Elkészíti az ágenst
+	 * @return DefenceAgent
+	 */
 	public DefenceAgent generate() {
 		return new DefenceAgent();
 	}

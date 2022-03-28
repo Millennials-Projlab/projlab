@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
-* virologus osztaly
+* Virológus osztály
 */
 public class Virologist {
     private ArrayList<Substance> Substances;
@@ -33,10 +33,19 @@ public class Virologist {
         currentField = cF;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName(){
         return name;
     }
 
+    
+    /** 
+     * A virológus a paraméterként megadott mezőre lép
+     * @param nf új mező
+     */
     public void move(Field nf){
         ArrayList<Field> FieldNeighbours = currentField.getNeighbours();
 		if(FieldNeighbours.contains(nf)) {
@@ -52,6 +61,11 @@ public class Virologist {
 		}
     }
 
+    
+    /** 
+     * A virológus kilootolja a paraméterként megadott mezőt
+     * @param field lootolni kívánt mező
+     */
     public void loot(Field field){
         Logger.addTab();
         Logger.log(field, "lootItem", "this");
@@ -59,18 +73,26 @@ public class Virologist {
         Logger.removeTab();
     }
 
+    
+    /** 
+     * @param enemy
+     */
     public void stealEquipment(Virologist enemy){
         //TODO
     }
 
-    public void use(Agent agent, Virologist enemy){
-        //TODO
-    }
-
+    
+    /** 
+     * @param agent
+     */
     public void addAgent(Agent agent){
         Agents.add(agent);
     }
 
+    
+    /** 
+     * @param equipment
+     */
     public void addEquipment(Equipment equipment){
         Equipments.add(equipment);
 
@@ -80,30 +102,49 @@ public class Virologist {
         Logger.removeTab();
     }
 
+    
+    /** 
+     * @param substance
+     */
     public void addSubstance(Substance substance){
         Substances.add(substance);
     }
 
+    
+    /** 
+     * @param agent
+     */
     public void removeAgent(Agent agent){
         //TODO
     }
 
+    
+    /** 
+     * @param equipment
+     */
     public void removeEquipment(Equipment equipment){
         //TODO
     }
 
+    
+    /** 
+     * @param substance
+     */
     public void removeSubstance(Substance substance){
         //TODO
     }
 
+    
+    /** 
+     * @param genetics
+     */
     public void addGenetics(Genetics genetics){
         Genetics.add(genetics);
     }
-
-    public void removeAllGenetics(){
-        //TODO
-    }
-
+    
+    /** 
+     * @param genetic
+     */
     public void generateAgent(Genetics genetic){
         for(Genetics g : Genetics) {
             Logger.addTab();
@@ -138,69 +179,128 @@ public class Virologist {
         }
     }
 
+    
+    /** 
+     * @return ArrayList<Equipment>
+     */
     public ArrayList<Equipment> getEquipments(){
         //TODO
         return Equipments;
-    }
-
-    public void applyGenetic(Genetics genetic){
-        //TODO
-    }
-
+    }    
+    
+    /** 
+     * Ellenőrzi, hogy a virológus megtanulta-e az összes genetikai kódot
+     * @return boolean igaz, ha a virológus megtanulta az összes genetikai kódot
+     */
     public boolean collectedAllGenetics(){
         //TODO
         return true;
     }
 
+    
+    /** 
+     * @param genetics
+     * @return boolean
+     */
     public boolean checkGenetics(Genetics genetics){
         //TODO
         return false;
     }
 
+    
+    /** 
+     * @param agent
+     */
     public void setNukleotid(Agent agent){
         //TODO
     }
 
+    
+    /** 
+     * @param agent
+     */
     public void setAmino(Agent agent){
         //TODO
     }
 
-	public ArrayList<Substance> getSubstances() {
+	
+    /** 
+     * @return ArrayList<Substance>
+     */
+    public ArrayList<Substance> getSubstances() {
 		return Substances;
 	}
 
-	public void setSubstances(ArrayList<Substance> substances) {
+	
+    /** 
+     * @param substances
+     */
+    public void setSubstances(ArrayList<Substance> substances) {
 		Substances = substances;
 	}
 
-	public ArrayList<Agent> getAgents() {
+	
+    /** 
+     * @return ArrayList<Agent>
+     */
+    public ArrayList<Agent> getAgents() {
 		return Agents;
 	}
 
-	public void setAgents(ArrayList<Agent> agents) {
+	
+    /** 
+     * @param agents
+     */
+    public void setAgents(ArrayList<Agent> agents) {
 		Agents = agents;
 	}
 
-	public ArrayList<Genetics> getGenetics() {
+	
+    /** 
+     * @return ArrayList<Genetics>
+     */
+    public ArrayList<Genetics> getGenetics() {
 		return Genetics;
 	}
 
-	public void setGenetics(ArrayList<Genetics> genetics) {
+	
+    /** 
+     * @param genetics
+     */
+    public void setGenetics(ArrayList<Genetics> genetics) {
 		Genetics = genetics;
 	}
 
-	public int getMaxEquipments() {
+	
+    /** 
+     * @return int
+     */
+    public int getMaxEquipments() {
 		return maxEquipments;
 	}
 
-	public void setMaxEquipments(int maxEquipments) {
+	
+    /** 
+     * @param maxEquipments
+     */
+    public void setMaxEquipments(int maxEquipments) {
 		this.maxEquipments = maxEquipments;
 	}
 
-	public int getMaxSubstance() {
+	
+    /** 
+     * @return int
+     */
+    public int getMaxSubstance() {
 		return maxSubstance;
     }
 
+    
+    /** 
+     * Megszámolja, hogy mennyi van a paraméterként megadott anyagból
+     * @param target
+     * @return int
+     */
     public int countSubstance(Substance target) {
         int substanceCount = 0;
         for(Substance substance : Substances) {
@@ -215,14 +315,28 @@ public class Virologist {
 
     public void setEquipmentflag(int flag) {}
 
+    
+    /** 
+     * @return int
+     */
     public int getDefenseRating() {
         return defenseRating;
     }
 
+    
+    /** 
+     * @param dr
+     */
     public void setDefenseRating(int dr) {
         defenseRating = dr;
     }
 
+    
+    /** 
+     * A virolügus megtámadja a paraméterként megadott virológust a paraméterként megadott tipusú ágenssel
+     * @param target
+     * @param agent
+     */
     public void attack(Virologist target, Agent agent) {
         for(Agent a : Agents) {
             Logger.addTab();
@@ -247,6 +361,10 @@ public class Virologist {
         // TODO
     }
 
+    
+    /** 
+     * @param flag
+     */
     public void setEffectFlag(int flag) {
         effectFlag = flag;
     }

@@ -1,6 +1,5 @@
-
 /**
-* equipment osztaly
+* Equipment osztály
 */
 public abstract class Equipment {
 	public void PickUp() {	

@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 /**
-* genetics osztaly
+* Genetics osztály
 */
 public abstract class Genetics {
 	HashMap<Substance, Integer> recipe;
@@ -14,19 +14,26 @@ public abstract class Genetics {
 
 	public abstract Agent generate();
 
+	
+	/** 
+	 * Összehasonlítja a paraméterként megadott genetikai kódot a jelenlegi objektummal
+	 * @param g
+	 * @return boolean igaz, ha a két genetikai kód tipusa megegyezik
+	 */
 	public boolean isSame(Genetics g) {
 		if(this.getClass() == g.getClass())
 			return true;
 		return false;
 	}
 
+	
+	/** 
+	 * @return HashMap<Substance, Integer>
+	 */
 	public HashMap<Substance, Integer> getRecipe() {
 		return recipe;
 	}
 
     public void PickUp() {	
-	}
-	
-	public void Effect(Virologist virologist) {	
 	}
 }

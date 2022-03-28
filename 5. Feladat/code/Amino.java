@@ -1,6 +1,6 @@
 
 /**
-* amino osztaly
+* Amino osztály
 */
 public class Amino extends Substance{
     public void PickUp() {

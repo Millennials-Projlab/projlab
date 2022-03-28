@@ -1,6 +1,5 @@
-
 /**
-* dance osztaly
+* Dance osztály
 */
 public class DanceGenetic extends Genetics{
     public DanceGenetic(int aminoCount, int nukleoCount) {
@@ -11,10 +10,10 @@ public class DanceGenetic extends Genetics{
 		System.out.println("Dance has been learned.");
 	}
 	
-	public void Effect(Virologist virologist) {
-		System.out.println("Dance has its effect on  "+virologist.getName()+".");
-	}
-
+	/** 
+	 * Elkészíti az ágenst
+	 * @return DanceAgent
+	 */
 	public DanceAgent generate() {
 		return new DanceAgent();
 	}

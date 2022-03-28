@@ -3,12 +3,12 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Skeleton osztaly
+ * Skeleton osztály
  */
 public class Skeleton {
 	public static Logger logger;
 	/**
-	 * usecase-ek menu kiirasa, mindig ha egy ujat csinalsz akk add hozza itt is a kiirashoz
+	 * Use-case menük kiírása
 	 */
 	public static void printusecase() {
         System.out.println("[1] "+"Map creates Fields");
@@ -22,10 +22,6 @@ public class Skeleton {
 	}
 	
 	/**
-	 * usecase fuggvenyek ide
-	 */
-	
-	/**
 	 * Mezők létrehozása
 	 */
 	public static void map_creates_fields() {
@@ -34,13 +30,13 @@ public class Skeleton {
 	}
 	
 	/**
-	 * virologus mozgasa
+	 * Virológus mozgása
 	 */
 	public static void virologist_moves_to_a_field(){
 		Scanner scanner = new Scanner(System.in);
 
 		boolean areNeighbours = false;
-		System.out.print("Are Field and NextField neighbours? y/n: ");
+		System.out.print("Are Field and NextField neighbours? y/n: \n");
 		if(scanner.next().charAt(0) == 'y')
 			areNeighbours = true;
 
@@ -61,7 +57,7 @@ public class Skeleton {
 	
 	
 	/**
-	 * telik az ido
+	 * Telik az idő
 	 */
 	public static void timer() {
 		Timer Timer = new Timer();
@@ -75,7 +71,7 @@ public class Skeleton {
 	}
 	
 	/**
-	 * virologus nyer
+	 * Virológus nyer
 	 */
 	public static void virologist_wins() {
 		Game Game = new Game();
@@ -88,7 +84,9 @@ public class Skeleton {
 		Logger.removeTab();
 	}
 	
-
+	/**
+	 * Virológus létrehoz egy ágenst
+	 */
 	public static void virologist_produces_agent() {
 		Scanner console = new Scanner(System.in);
 
@@ -96,7 +94,7 @@ public class Skeleton {
 		Virologist virologist = new Virologist(1, "", 0, field);
 
 
-		System.out.println("Does the virologist have enough substances? y/n");
+		System.out.println("Does the virologist have enough substances? y/n \n");
 		if(console.next().charAt(0) == 'y') {
 			Nukleotid n = new Nukleotid();
 			Amino a = new Amino();
@@ -147,13 +145,16 @@ public class Skeleton {
 		}
 	}
 
+	/**
+	 * Virológus felvesz egy felszerelést
+	 */
 	public static void virologist_picks_up_equipment() {
 		Scanner console = new Scanner(System.in);
 
 		Shelter shelter = new Shelter();
 		Virologist virologist = new Virologist(0, "Virologist1", 10, shelter);
 
-		System.out.println("Does the virologist have enough space? y/n");
+		System.out.println("Does the virologist have enough space? y/n \n");
 		if(console.next().charAt(0) == 'y') {
 			virologist.setMaxEquipments(1);
 		}
@@ -199,7 +200,7 @@ public class Skeleton {
 	}
 	
 	/**
-	* genetikai kod megtanulasa
+	* Genetikai kód megtanulása
 	*/
 	public static void learn_genetics() {
 		Laboratory Laboratory = new Laboratory();
@@ -252,6 +253,9 @@ public class Skeleton {
 		}
 	}
 
+	/**
+	 * Virológus megfertőz egy másik virológust
+	 */
 	public static void infect_virologist() {
 		Field f = new Field();
 		Virologist v1 = new Virologist(1, "", 1, f);
@@ -310,31 +314,21 @@ public class Skeleton {
 	
 	
 	/**
-	 * main fuggveny
+	 * main függvény
 	 */
 	public static void main(String[] args) {
 		logger = new Logger();
-		/**
-		 * usecase switch
-		 * menupontok
-		 */
+
 		int usecase = 0;
-		/**
-		 * beolvasas
-		 */
 	    Scanner console = new Scanner(System.in);
 
 	    while(usecase != 1000) {
-	    /**
-	     * melyik usecase
-	     */
 	    System.out.print("\nSelect usecase by entering its code: \n");
 	    printusecase();
 	    usecase = console.nextInt();
 		
-		/**
-		 * fomenu
-		 */
+		// Főmenü
+		 
 			switch (usecase) {
 			case 1:
 				System.out.println("\nSelect Field type by entering its code: \n");
@@ -343,9 +337,8 @@ public class Skeleton {
         		System.out.println("[3] "+"Map creates Warehouse");
 				System.out.println("[4] "+"Map creates Field");
 				usecase=console.nextInt();
-				/**
-				 * mezo tipusa
-				 */
+
+				// mezo tipusa
 				switch(usecase){
 					case 1:
 						System.out.println("Map creates Shelter: ");
@@ -388,16 +381,10 @@ public class Skeleton {
 				break;
 		    
 				
-				
-			/**
-			* kilepes
-			*/
+			// Kilépés
 			case 1000:
 				System.exit(0);
 				break;
-			/**
-			* default ertek
-			*/
 			default:
 				System.out.println("Invalid input");
 			}

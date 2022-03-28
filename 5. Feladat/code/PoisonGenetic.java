@@ -10,10 +10,10 @@ public class PoisonGenetic extends Genetics {
 		System.out.println("Poison has been learned.");
 	}
 	
-	public void Effect(Virologist virologist) {
-		System.out.println("Poison has its effect on "+virologist.getName()+".");
-	}
-
+	/** 
+	 * Elkészíti az ágenst
+	 * @return PoisonAgent
+	 */
 	public PoisonAgent generate() {
 		return new PoisonAgent();
 	}

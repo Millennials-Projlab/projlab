@@ -1,6 +1,5 @@
-
 /**
-* nukleotid osztaly
+* Nukleotid osztály
 */
 public class Nukleotid extends Substance{
     public void PickUp() {

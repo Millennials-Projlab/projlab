@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 /**
-* game osztaly
+* Game osztály
 */
 public class Game {
 	private Map Map;
@@ -35,22 +35,42 @@ public class Game {
 		System.out.println("Game has ended.");
 	}
 
+	
+	/** 
+	 * @return Map
+	 */
 	public Map getMap() {
 		return Map;
 	}
 
+	
+	/** 
+	 * @param map
+	 */
 	public void setMap(Map map) {
 		Map = map;
 	}
 
+	
+	/** 
+	 * @return ArrayList<Virologist>
+	 */
 	public ArrayList<Virologist> getPlayers() {
 		return Players;
 	}
 
+	
+	/** 
+	 * @param players
+	 */
 	public void setPlayers(ArrayList<Virologist> players) {
 		Players = players;
 	}
 
+	
+	/** 
+	 * @param v
+	 */
 	public void addPlayer(Virologist v) {
 		Players.add(v);
 	}

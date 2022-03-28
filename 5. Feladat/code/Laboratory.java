@@ -1,26 +1,41 @@
 import java.util.ArrayList;
 
 /**
-* laboratory osztaly
+* Laboratory osztály
 */
-public class Laboratory extends Field{
+public class Laboratory extends Field {
 	private Genetics Genetic;
 	
-	public void place(Genetics Genetic) {
-	}
 	
-	public void Enter(Virologist Virologist) {
-		System.out.println(Virologist.getName()+" has entered");
+	/** 
+	 * Elhelyezi a genetikai kódot a mezőn
+	 * @param Genetic
+	 */
+	public void place(Genetics Genetic) {
+		this.Genetic = Genetic;
 	}
 
+	
+	/** 
+	 * @return Genetics
+	 */
 	public Genetics getGenetic() {
 		return Genetic;
 	}
 
+	
+	/** 
+	 * @param Genetic2
+	 */
 	public void setGenetic(Genetics Genetic2) {
 		Genetic = Genetic2;
 	}
     
+	
+	/** 
+	 * A virológus felveszi a mezőn lévő genetikai kódot
+	 * @param virologist
+	 */
 	public void lootItem(Virologist virologist) {
 		Logger.addTab();
 		Logger.log(virologist, "getGenetics", "");

@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
-* map osztaly
+* Map osztály
 */
 public class Map {
 	private ArrayList<Field> Fields;
@@ -12,6 +12,14 @@ public class Map {
 		setFields(new ArrayList<Field>());
 	}
 	
+	
+	/** 
+	 * Létrehozza a játékteret a megadott paraméterek alapján
+	 * @param fn mezők száma
+	 * @param s méret
+	 * @param h magasság
+	 * @param l széleség
+	 */
 	public void CreateMap(int fn, int s, int h, int l) {
 		Fields = new ArrayList<Field>();
 
@@ -123,10 +131,18 @@ public class Map {
 		}
 	}
 
+	
+	/** 
+	 * @return ArrayList<Field>
+	 */
 	public ArrayList<Field> getFields() {
 		return Fields;
 	}
 
+	
+	/** 
+	 * @param fields
+	 */
 	public void setFields(ArrayList<Field> fields) {
 		Fields = fields;
 	}

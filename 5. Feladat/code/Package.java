@@ -1,6 +1,5 @@
-
 /**
-* package osztaly
+* Package osztály
 */
 public class Package extends Equipment {
 	public Package() {
@@ -10,6 +9,11 @@ public class Package extends Equipment {
 		System.out.println("Package has been picked up.");
 	}
 	
+	
+	/** 
+	 * Elvégzi a felszerelés hatását
+	 * @param v
+	 */
 	public void Effect(Virologist v) {
 		Logger.addTab();
 		Logger.log(v, "getMaxEquipments", "");

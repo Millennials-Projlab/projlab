@@ -15,6 +15,13 @@ public class Logger {
         tabs--;
     }
 
+    
+    /** 
+     * Kiírja a végrehajtott függvényt paraméterekkel együtt
+     * @param o
+     * @param functionName
+     * @param parameters
+     */
     public static void log(Object o, String functionName, List<Object> parameters) {
         for(int i = 0; i < tabs; i++) {
             System.out.print('\t');
@@ -28,6 +35,13 @@ public class Logger {
         System.out.println(parameters.get(i) + ")");
     }
 
+    
+    /** 
+     * Kiírja a végrehajtott függvényt paraméterekkel együtt
+     * @param o
+     * @param functionName
+     * @param parameter
+     */
     public static void log(Object o, String functionName, String parameter) {
         for(int i = 0; i < tabs; i++) {
             System.out.print('\t');
