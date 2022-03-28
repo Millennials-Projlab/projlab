@@ -56,7 +56,7 @@ public class Map {
 						Logger.log(Fields.get(Fields.size()-2), "setNeighbour", Arrays.asList("f"));
 						Logger.removeTab();
 
-						DanceGenetic danceGenetic = new DanceGenetic();
+						DanceGenetic danceGenetic = new DanceGenetic(1, 1);
 
 						Logger.addTab();
 						f.place(danceGenetic);

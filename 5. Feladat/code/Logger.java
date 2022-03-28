@@ -27,4 +27,14 @@ public class Logger {
         }
         System.out.println(parameters.get(i) + ")");
     }
+
+    public static void log(Object o, String functionName, String parameter) {
+        for(int i = 0; i < tabs; i++) {
+            System.out.print('\t');
+        }
+        System.out.print(o.getClass() + "." + functionName);
+        System.out.print("(");
+
+        System.out.println(parameter + ")");
+    }
 }

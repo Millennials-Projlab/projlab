@@ -100,34 +100,56 @@ public class Skeleton {
 	}
 	
 
-	public static void virologist_produce_agent() {
-		System.out.println("Produce Agent");
+	public static void virologist_produces_agent() {
+		//System.out.println("Produce Agent");
 		Scanner console = new Scanner(System.in);
-		int a = 0;
 
-		Game game = new Game();
-		game.getPlayers();
+		Field field = new Field();
+		Virologist virologist = new Virologist(1, "", 0, field);
+
+
+		System.out.println("Does the virologist have enough substances? y/n");
+		if(console.next().charAt(0) == 'y') {
+			Nukleotid n = new Nukleotid();
+			Amino a = new Amino();
+			virologist.addSubstance(n);
+			virologist.addSubstance(a);
+		}
+
 		System.out.println("[1] Produce Dance Agent");
 		System.out.println("[2] Produce Defence Agent");
 		System.out.println("[3] Produce Poison Agent");
 		System.out.println("[4] Produce Amnesia Agent");
-		a = console.nextInt();
-		switch(a) {
+
+		switch(console.nextInt()) {
 			case 1:
-				DanceAgent danceAgent = new DanceAgent();
-				danceAgent.Generate();
+				DanceGenetic danceGenetic = new DanceGenetic(1, 1);
+				virologist.addGenetics(danceGenetic);
+				Logger.addTab();
+				Logger.log(virologist, "generateAgent", "danceGenetic");
+				virologist.generateAgent(danceGenetic);
+				Logger.removeTab();
 				break;
 			case 2:
-				DefenceAgent defenceAgent = new DefenceAgent();
-				defenceAgent.Generate();
+				DefenceGenetic defenceGenetic = new DefenceGenetic(1, 1);
+				virologist.addGenetics(defenceGenetic);
+				Logger.log(virologist, "generateAgent", "defenceGenetic");
+				virologist.generateAgent(defenceGenetic);
+				Logger.removeTab();
 				break;
 			case 3:
-				PoisonAgent poisonAgent = new PoisonAgent();
-				poisonAgent.Generate();
+				PoisonGenetic poisonGenetic = new PoisonGenetic(1, 1);
+				virologist.addGenetics(poisonGenetic);
+				Logger.log(virologist, "generateAgent", "poisonGenetic");
+				virologist.generateAgent(poisonGenetic);
+				Logger.removeTab();
 				break;
 			case 4:
-				AmnesiaAgent amnesiaAgent = new AmnesiaAgent();
-				amnesiaAgent.Generate();
+				AmnesiaGenetic amnesiaGenetic = new AmnesiaGenetic(1, 1);
+				virologist.addGenetics(amnesiaGenetic);
+				Logger.log(virologist, "generateAgent", "amnesiaGenetic");
+				virologist.generateAgent(amnesiaGenetic);
+				Logger.removeTab();
 				break;
 			case 1000:
 				System.exit(0);
@@ -195,7 +217,7 @@ public class Skeleton {
 				break;
 			case 3:
 				System.out.println("Virologist produces Agent: ");
-				virologist_produce_agent();
+				virologist_produces_agent();
 				break;
 			case 4:
 				System.out.println("usecase neve4");
