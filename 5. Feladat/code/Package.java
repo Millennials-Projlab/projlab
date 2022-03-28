@@ -10,7 +10,11 @@ public class Package extends Equipment {
 		System.out.println("Package has been picked up.");
 	}
 	
-	public void Effect() {
-		System.out.println("Package has its effect.");
+	public void Effect(Virologist v) {
+		Logger.addTab();
+		Logger.log(v, "getMaxEquipments", "");
+		Logger.log(v, "setMaxEquipments", "v.getMaxEquipments() + 1");
+		v.setMaxEquipments(v.getMaxEquipments() + 1);
+		Logger.removeTab();
 	}
 }

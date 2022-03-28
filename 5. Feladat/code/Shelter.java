@@ -5,7 +5,8 @@
 public class Shelter extends Field {
 	private Equipment Equipment;
 	
-	public void place(Equipment Equipment) {
+	public void place(Equipment equipment) {
+		Equipment = equipment;
 	}
 	
 	public void Clear() {
@@ -24,4 +25,22 @@ public class Shelter extends Field {
 		Equipment = equipment;
 	}
 	
+	public void lootItem(Virologist virologist) {
+		Logger.addTab();
+		Logger.log(virologist, "getMaxEquipments", "");
+		Logger.log(virologist, "getEquipments", "");
+		Logger.removeTab();
+		if(virologist.getMaxEquipments() > virologist.getEquipments().size()) {
+			Logger.addTab();
+			Logger.log(virologist, "addEquipment", "Equipment");
+			virologist.addEquipment(Equipment);
+			Logger.removeTab();
+	
+			Logger.addTab();
+			Logger.log(this, "setEquipment", "null");
+			setEquipment(null);
+			Logger.removeTab();
+		}
+	}
+
 }

@@ -15,6 +15,7 @@ public class Virologist {
     private String name;
     private int maxSubstance;
     private Field currentField;
+    private int defenseRating;
 
 	/**
 	 * virologus konstruktor
@@ -51,7 +52,10 @@ public class Virologist {
     }
 
     public void loot(Field field){
-        //TODO
+        Logger.addTab();
+        Logger.log(field, "lootItem", "this");
+        field.lootItem(this);
+        Logger.removeTab();
     }
 
     public void stealEquipment(Virologist enemy){
@@ -67,7 +71,12 @@ public class Virologist {
     }
 
     public void addEquipment(Equipment equipment){
-        //TODO
+        Equipments.add(equipment);
+
+        Logger.addTab();
+        Logger.log(equipment, "Effect", "this");
+        equipment.Effect(this);
+        Logger.removeTab();
     }
 
     public void addSubstance(Substance substance){
@@ -201,5 +210,15 @@ public class Virologist {
             Logger.removeTab();
         }
         return substanceCount;
+    }
+
+    public void setEquipmentflag(int flag) {}
+
+    public int getDefenseRating() {
+        return defenseRating;
+    }
+
+    public void setDefenseRating(int dr) {
+        defenseRating = dr;
     }
 }

@@ -41,6 +41,6 @@ public class Field {
 		Neighbours.add(field);
 	}
 	
-	
+	public void lootItem(Virologist virologist) {}
 	
 }
