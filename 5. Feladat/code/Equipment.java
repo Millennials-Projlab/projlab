@@ -1,11 +1,9 @@
-
 /**
-* equipment osztaly
+* Equipment osztály
 */
 public abstract class Equipment {
 	public void PickUp() {	
 	}
 	
-	public void Effect() {	
-	}
+	public abstract void Effect(Virologist v);
 }

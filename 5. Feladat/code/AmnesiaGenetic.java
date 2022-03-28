@@ -1,13 +1,20 @@
-
 /**
-* amnesia osztaly
+* Amnesia osztály
 */
 public class AmnesiaGenetic extends Genetics {
-    public void PickUp() {
+    public AmnesiaGenetic(int aminoCount, int nukleoCount) {
+		super(aminoCount, nukleoCount);
+	}
+
+	public void PickUp() {
 		System.out.println("Amnesia has been learned.");
 	}
-	
-	public void Effect(Virologist virologist) {
-		System.out.println("Amnesia has its effect on  "+virologist.getName()+".");
+		
+	/** 
+	 * Elkészíti az ágenst
+	 * @return AmnesiaAgent
+	 */
+	public AmnesiaAgent generate() {
+		return new AmnesiaAgent();
 	}
 }

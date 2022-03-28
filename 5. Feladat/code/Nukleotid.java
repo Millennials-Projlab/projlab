@@ -1,8 +1,7 @@
-
 /**
-* nukleotid osztaly
+* Nukleotid osztály
 */
-public class Nukleotid extends Substances{
+public class Nukleotid extends Substance{
     public void PickUp() {
 		System.out.println("Nukleotid has been picked up.");
 	}

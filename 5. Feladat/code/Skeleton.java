@@ -1,12 +1,14 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Skeleton osztaly
+ * Skeleton osztály
  */
 public class Skeleton {
+	public static Logger logger;
 	/**
-	 * usecase-ek menu kiirasa, mindig ha egy ujat csinalsz akk add hozza itt is a kiirashoz
+	 * Use-case menük kiírása
 	 */
 	public static void printusecase() {
         System.out.println("[1] "+"Map creates Fields");
@@ -15,157 +17,51 @@ public class Skeleton {
         System.out.println("[4] "+"Virologist picks up equipment");
         System.out.println("[5] "+"Virologist wins");
         System.out.println("[6] "+"Timer is ticking");
-        System.out.println("[7] "+"Game Starts");
-        System.out.println("[8] "+"Learn Genetics");
-        //Igy tovabb usecase szama+neve
+        System.out.println("[7] "+"Virologist learns Genetic");
+		    System.out.println("[8] "+"Virologist infects another Virologist");
 	}
 	
 	/**
-	 * usecase fuggvenyek ide
+	 * Mezők létrehozása
 	 */
-	
-	/**
-	 * shelter letrehozasa
-	 */
-	public static void map_creates_shelter() {
+	public static void map_creates_fields() {
 		Game Game = new Game();
-		Map Map = new Map();
-		Map.CreateMap(0, 0, 0, 0);
-		Shelter Shelter = new Shelter();
-		Field NextField = new Field();
-		Package Package = new Package();
-		Shelter.SetNeighbour(NextField);
-		NextField.SetNeighbour(Shelter);
-		Shelter.Place(Package);
+		Game.Start();
 	}
 	
 	/**
-	 * laboratory letrehozasa
-	 */
-	public static void map_creates_laboratory() {
-		Game Game = new Game();
-		Map Map = new Map();
-		Map.CreateMap(0, 0, 0, 0);
-		Laboratory Laboratory =new Laboratory();
-		Field NextField = new Field();
-		DanceGenetic danceGenetic=new DanceGenetic();
-		Laboratory.SetNeighbour(NextField);
-		NextField.SetNeighbour(Laboratory);
-		Laboratory.Place(danceGenetic);
-	}
-	
-	/**
-	 * warehouse letrehozasa
-	 */
-	public static void map_creates_warehouse() {
-		Scanner scanner=new Scanner(System.in);
-		int nukleotid=0;
-		int amino=0;
-		
-		System.out.print("How many Nukleotid? ");
-		nukleotid=scanner.nextInt();
-		System.out.print("How many Amino? ");
-		amino=scanner.nextInt();
-		System.out.println();
-		
-		Game Game = new Game();
-		Map Map = new Map();
-		Map.CreateMap(0, 0, 0, 0);
-		Warehouse warehouse=new Warehouse();
-		Field NextField = new Field();
-		ArrayList<Substances> substances=new ArrayList<>();
-		
-		for(int i=0;i<nukleotid;i++){
-			substances.add(new Nukleotid());
-			System.out.println("Add nukleotid");
-		}
-		for(int i=0;i<amino;i++){
-			substances.add(new Amino());
-			System.out.println("Add amino");
-		}
-		
-		warehouse.SetNeighbour(NextField);
-		NextField.SetNeighbour(warehouse);
-		warehouse.Place(substances);
-	}
-
-	/**
-	 * field letrehozasa
-	 */
-	public static void map_creates_field() {
-		Game Game = new Game();
-		Map Map = new Map();
-		Map.CreateMap(0, 0, 0, 0);
-		Field Field = new Field();
-		Field NextField = new Field();
-		Field.SetNeighbour(NextField);
-		NextField.SetNeighbour(Field);
-	}
-	
-	/**
-	 * virologus mozgasa
+	 * Virológus mozgása
 	 */
 	public static void virologist_moves_to_a_field(){
-		Scanner scanner=new Scanner(System.in);
-		String name="";
-		int maxEquipments=0;
-		int maxAmino=0;
-		int maxNukleotid=0;
-		boolean areNeighbours=true;
+		Scanner scanner = new Scanner(System.in);
 
-		System.out.print("Maximum Equipment: ");
-		maxEquipments=scanner.nextInt();
-		System.out.print("Name: ");
-		name=scanner.next();
-		System.out.print("Maximum Amino: ");
-		maxAmino=scanner.nextInt();
-		System.out.print("Maximum Nukleotid: ");
-		maxNukleotid=scanner.nextInt();
-		System.out.print("Are Field and NextField neighbours? y/n: ");
-		if(scanner.next().charAt(0)=='y')
-			areNeighbours=true;
-		else
-			areNeighbours=false;
-		Game Game = new Game();
-		Map Map = new Map();
-		Map.CreateMap(0, 0, 0, 0);
+		boolean areNeighbours = false;
+		System.out.print("Are Field and NextField neighbours? y/n: \n");
+		if(scanner.next().charAt(0) == 'y')
+			areNeighbours = true;
+
 		Field Field = new Field();
 		Field NextField = new Field();
-		if(areNeighbours){
-			Field.SetNeighbour(NextField);
-			NextField.SetNeighbour(Field);
-		}
-		Virologist virologist=new Virologist(maxEquipments,name,maxAmino,maxNukleotid);
-		virologist.move(NextField);
-		ArrayList<Field> FieldNeighbours=Field.getNeighbours();
-		if(FieldNeighbours.contains(NextField)){
-			Field.Leave(virologist);
-			NextField.Enter(virologist);
+		if(areNeighbours) {
+			Field.setNeighbour(NextField);
+			NextField.setNeighbour(Field);
 		}
 
+		Virologist virologist = new Virologist(0, "", 0, Field);
+
+		Logger.addTab();
+		Logger.log(virologist, "move", Arrays.asList("NextField"));
+		virologist.move(NextField);
+		Logger.removeTab();
 	}
 	
-	/**
-	 * jatek elindul
-	 */
-	public static void game_starts() {
-		Game Game = new Game();
-		Map Map = new Map();
-		int fn = 0;
-		int h = 0;
-		int s = 0;
-		int l = 0;
-		Game.Start();
-		Map.CreateMap(fn, s, h, l);
-	}
 	
 	/**
-	 * telik az ido
+	 * Telik az idő
 	 */
 	public static void timer() {
-		Game Game = new Game();
 		Timer Timer = new Timer();
-		Game.Start();
+		
 		Timer.Start();
 		while (Timer.isTimer()) {
 			Timer.Tick();
@@ -175,56 +71,72 @@ public class Skeleton {
 	}
 	
 	/**
-	 * virologus nyer
+	 * Virológus nyer
 	 */
 	public static void virologist_wins() {
-		Virologist Virologist = new Virologist(1, "test", 1, 1);
 		Game Game = new Game();
-		if (Virologist.collectedAllGenetics() == true) {
-			Game.End();
-		}
+		Virologist virologist = new Virologist(1, "test", 1, new Field());
+		Game.addPlayer(virologist);
+
+		Logger.addTab();
+		Logger.log(Game, "Tick", "");
+		Game.Tick();
+		Logger.removeTab();
 	}
 	
 
-	public static void virologist_produce_agent() {
-		//System.out.println("\nSelect Agent: \n");
+	/**
+	 * Virológus létrehoz egy ágenst
+	 */
+	public static void virologist_produces_agent() {
 		Scanner console = new Scanner(System.in);
-		int a = 0;
 
-		Virologist v = new Virologist(3, "Virologist", 10, 10);
+		Field field = new Field();
+		Virologist virologist = new Virologist(1, "", 0, field);
+
+
+		System.out.println("Does the virologist have enough substances? y/n \n");
+		if(console.next().charAt(0) == 'y') {
+			Nukleotid n = new Nukleotid();
+			Amino a = new Amino();
+			virologist.addSubstance(n);
+			virologist.addSubstance(a);
+		}
+
 		System.out.println("[1] Produce Dance Agent");
 		System.out.println("[2] Produce Defence Agent");
 		System.out.println("[3] Produce Poison Agent");
 		System.out.println("[4] Produce Amnesia Agent");
-		a = console.nextInt();
-		switch(a) {
+
+		switch(console.nextInt()) {
 			case 1:
-				DanceAgent danceAgent = new DanceAgent();
-				danceAgent.Generate();
-				v.addAgent(danceAgent);
-				v.setAmino(danceAgent);
-				v.setNukleotid(danceAgent);
+				DanceGenetic danceGenetic = new DanceGenetic(1, 1);
+				virologist.addGenetics(danceGenetic);
+				Logger.addTab();
+				Logger.log(virologist, "generateAgent", "danceGenetic");
+				virologist.generateAgent(danceGenetic);
+				Logger.removeTab();
 				break;
 			case 2:
-				DefenceAgent defenceAgent = new DefenceAgent();
-				defenceAgent.Generate();
-				v.addAgent(defenceAgent);
-				v.setAmino(defenceAgent);
-				v.setNukleotid(defenceAgent);
+				DefenceGenetic defenceGenetic = new DefenceGenetic(1, 1);
+				virologist.addGenetics(defenceGenetic);
+				Logger.log(virologist, "generateAgent", "defenceGenetic");
+				virologist.generateAgent(defenceGenetic);
+				Logger.removeTab();
 				break;
 			case 3:
-				PoisonAgent poisonAgent = new PoisonAgent();
-				poisonAgent.Generate();
-				v.addAgent(poisonAgent);
-				v.setAmino(poisonAgent);
-				v.setNukleotid(poisonAgent);
+				PoisonGenetic poisonGenetic = new PoisonGenetic(1, 1);
+				virologist.addGenetics(poisonGenetic);
+				Logger.log(virologist, "generateAgent", "poisonGenetic");
+				virologist.generateAgent(poisonGenetic);
+				Logger.removeTab();
 				break;
 			case 4:
-				AmnesiaAgent amnesiaAgent = new AmnesiaAgent();
-				amnesiaAgent.Generate();
-				v.addAgent(amnesiaAgent);
-				v.setAmino(amnesiaAgent);
-				v.setNukleotid(amnesiaAgent);
+				AmnesiaGenetic amnesiaGenetic = new AmnesiaGenetic(1, 1);
+				virologist.addGenetics(amnesiaGenetic);
+				Logger.log(virologist, "generateAgent", "amnesiaGenetic");
+				virologist.generateAgent(amnesiaGenetic);
+				Logger.removeTab();
 				break;
 			case 1000:
 				System.exit(0);
@@ -233,88 +145,106 @@ public class Skeleton {
 				System.out.println("Invalid input");
 		}
 	}
-	
-	public static void virologist_picks_up_package() {
-		Shelter shelter = new Shelter();
-		Package p = new Package();
-		shelter.Place(p);
-		Virologist v = new Virologist(3, "Virologist1", 10, 10);
-		v.loot(shelter);
-		Equipment eq = shelter.getEquipment();
-		eq.PickUp();
-		v.addEquipment(eq);
-		shelter.Clear();
-	}
 
-	public static void virologist_picks_up_gloves() {
-		Shelter shelter = new Shelter();
-		Gloves g = new Gloves();
-		shelter.Place(g);
-		Virologist v = new Virologist(3, "Virologist1", 10, 10);
-		v.loot(shelter);
-		Equipment eq = shelter.getEquipment();
-		eq.PickUp();
-		v.addEquipment(eq);
-		shelter.Clear();
-	}
+	/**
+	 * Virológus felvesz egy felszerelést
+	 */
+	public static void virologist_picks_up_equipment() {
+		Scanner console = new Scanner(System.in);
 
-	public static void virologist_picks_up_cape() {
 		Shelter shelter = new Shelter();
-		Cape cape = new Cape();
-		shelter.Place(cape);
-		Virologist v = new Virologist(3, "Virologist1", 10, 10);
-		v.loot(shelter);
-		Equipment eq = shelter.getEquipment();
-		eq.PickUp();
-		v.addEquipment(eq);
-		shelter.Clear();
+		Virologist virologist = new Virologist(0, "Virologist1", 10, shelter);
+
+		System.out.println("Does the virologist have enough space? y/n \n");
+		if(console.next().charAt(0) == 'y') {
+			virologist.setMaxEquipments(1);
+		}
+
+
+		System.out.println("\nSelect Item type: \n");
+		System.out.println("[1] "+"Virologist picks up package");
+		System.out.println("[2] "+"Virologist picks up gloves");
+		System.out.println("[3] "+"Virologist picks up cape");
+
+
+		switch(console.nextInt()) {
+			case 1:
+				Package p = new Package();
+				shelter.place(p);
+
+				Logger.addTab();
+				Logger.log(virologist, "loot", "shelter");
+				virologist.loot(shelter);
+				Logger.removeTab();
+				break;
+			case 2:
+				Gloves g = new Gloves();
+				shelter.place(g);
+
+				Logger.addTab();
+				Logger.log(virologist, "loot", "shelter");
+				virologist.loot(shelter);
+				Logger.removeTab();
+				break;
+
+			case 3:
+				Cape cape = new Cape();
+				shelter.place(cape);
+
+				Logger.addTab();
+				Logger.log(virologist, "loot", "shelter");
+				virologist.loot(shelter);
+				break;
+			default:
+				System.out.println("Invalid input");
+		}
 	}
 	
 	/**
-	* genetikai kod megtanulasa
+	* Genetikai kód megtanulása
 	*/
 	public static void learn_genetics() {
-		Virologist Virologist = new Virologist(1, "test", 1, 1);
 		Laboratory Laboratory = new Laboratory();
-		DanceGenetic DanceGenetic = new DanceGenetic();
-		PoisonGenetic PoisonGenetic = new PoisonGenetic();
-		DefenceGenetic DefenceGenetic = new DefenceGenetic();
-		AmnesiaGenetic AmnesiaGenetic = new AmnesiaGenetic();
 		
-		System.out.println("Learn Genetic");
-		Scanner console = new Scanner(System.in);
-		int a = 0;
+		Virologist Virologist = new Virologist(1, "test", 1, Laboratory);
 
-		Game game = new Game();
-		game.getPlayers();
-		
-		Virologist.loot(Laboratory);
-		Laboratory.getGenetic();
+		System.out.println("Virologist learns Genetic");
+		Scanner console = new Scanner(System.in);
+	
 		System.out.println("[1] Learn DanceGenetic");
 		System.out.println("[2] Learn PoisonGenetic");
 		System.out.println("[3] Learn DefenceGenetic");
 		System.out.println("[4] Learn AmnesiaGenetic");
-		a = console.nextInt();
-		switch(a) {
+
+		switch(console.nextInt()) {
 			case 1:
-				if (Virologist.checkGenetics(DanceGenetic)==false && Virologist.isParalyzed() == false) {
-					Virologist.addGenetics(DanceGenetic);
-				}
+				DanceGenetic DanceGenetic = new DanceGenetic(1, 1);
+				Laboratory.place(DanceGenetic);
+				Logger.addTab();
+				Logger.log(Virologist, "loot", "Laboratory");
+				Virologist.loot(Laboratory);
+				Logger.removeTab();
 				break;
 			case 2:
-				if (Virologist.checkGenetics(PoisonGenetic)==false && Virologist.isParalyzed() == false) {
-					Virologist.addGenetics(PoisonGenetic);
-				};
+				PoisonGenetic PoisonGenetic = new PoisonGenetic(1, 1);
+				Laboratory.place(PoisonGenetic);
+				Logger.log(Virologist, "loot", "Laboratory");
+				Virologist.loot(Laboratory);
+				Logger.removeTab();
 				break;
 			case 3:
-				if (Virologist.checkGenetics(DefenceGenetic)==false && Virologist.isParalyzed() == false) {
-					Virologist.addGenetics(DefenceGenetic);
-				}
+				DefenceGenetic DefenceGenetic = new DefenceGenetic(1, 1);	
+				Laboratory.place(DefenceGenetic);
+				Logger.log(Virologist, "loot", "Laboratory");
+				Virologist.loot(Laboratory);
+				Logger.removeTab();
 				break;
 			case 4:
-				if (Virologist.checkGenetics(AmnesiaGenetic)==false && Virologist.isParalyzed() == false) {
-					Virologist.addGenetics(AmnesiaGenetic);
-				}
+				AmnesiaGenetic AmnesiaGenetic = new AmnesiaGenetic(1, 1);
+				Laboratory.place(AmnesiaGenetic);
+				Logger.log(Virologist, "loot", "Laboratory");
+				Virologist.loot(Laboratory);
+				Logger.removeTab();
 				break;
 			case 1000:
 				System.exit(0);
@@ -322,36 +252,84 @@ public class Skeleton {
 			default:
 				System.out.println("Invalid input");
 		}
+	}
+
+	/**
+	 * Virológus megfertőz egy másik virológust
+	 */
+	public static void infect_virologist() {
+		Field f = new Field();
+		Virologist v1 = new Virologist(1, "", 1, f);
+		Virologist v2 = new Virologist(1, "", 1, f);
+		f.enter(v1);
+		f.enter(v2);
+
+		Scanner console = new Scanner(System.in);
 		
-		
+		System.out.println("[1] Use DanceAgent");
+		System.out.println("[2] Use PoisonAgent");
+		System.out.println("[3] Use DefenceAgent");
+		System.out.println("[4] Use AmnesiaAgent");
+
+		switch(console.nextInt()) {
+			case 1:
+				DanceAgent da = new DanceAgent();
+				v1.addAgent(da);
+
+				Logger.addTab();
+				Logger.log(v1, "attack", "v2, new DanceAgent()");
+				v1.attack(v2, new DanceAgent());
+				Logger.removeTab();
+				break;
+			case 2:
+				PoisonAgent pa = new PoisonAgent();
+				v1.addAgent(pa);
+
+				Logger.addTab();
+				Logger.log(v1, "attack", "v2, new PoisonAgent()");
+				v1.attack(v2, new PoisonAgent());
+				Logger.removeTab();
+				break;
+			case 3:
+				DefenceAgent dfa = new DefenceAgent();
+				v1.addAgent(dfa);
+
+				Logger.addTab();
+				Logger.log(v1, "attack", "v2, new DefenceAgent()");
+				v1.attack(v2, new DefenceAgent());
+				Logger.removeTab();
+				break;
+			case 4:
+				AmnesiaAgent aa = new AmnesiaAgent();
+				v1.addAgent(aa);
+
+				Logger.addTab();
+				Logger.log(v1, "attack", "v2, new AmnesiaAgent()");
+				v1.attack(v2, new AmnesiaAgent());
+				Logger.removeTab();
+				break;
+			default:
+				System.out.println("Invalid input");
+		}
 	}
 	
 	
 	/**
-	 * main fuggveny
+	 * main függvény
 	 */
 	public static void main(String[] args) {
-		/**
-		 * usecase switch
-		 * menupontok
-		 */
+		logger = new Logger();
+
 		int usecase = 0;
-		/**
-		 * beolvasas
-		 */
 	    Scanner console = new Scanner(System.in);
 
 	    while(usecase != 1000) {
-	    /**
-	     * melyik usecase
-	     */
 	    System.out.print("\nSelect usecase by entering its code: \n");
 	    printusecase();
 	    usecase = console.nextInt();
 		
-		/**
-		 * fomenu
-		 */
+		// Főmenü
+		 
 			switch (usecase) {
 			case 1:
 				System.out.println("\nSelect Field type by entering its code: \n");
@@ -360,25 +338,12 @@ public class Skeleton {
         		System.out.println("[3] "+"Map creates Warehouse");
 				System.out.println("[4] "+"Map creates Field");
 				usecase=console.nextInt();
-				/**
-				 * mezo tipusa
-				 */
+
+				// mezo tipusa
 				switch(usecase){
 					case 1:
-						System.out.println("Map creates Shelter: \n");
-						map_creates_shelter();
-						break;
-					case 2:
-						System.out.println("Map creates Laboratory: \n");
-						map_creates_laboratory();
-						break;
-					case 3:
-						System.out.println("Map creates Warehouse: \n");
-						map_creates_warehouse();
-						break;
-					case 4:
-						System.out.println("Map creates Field: \n");
-						map_creates_field();
+						System.out.println("Map creates Shelter: ");
+						map_creates_fields();
 						break;
 					case 1000:
 						System.exit(0);
@@ -388,35 +353,16 @@ public class Skeleton {
 				}
 				break;
 			case 2:
-				System.out.println("Virologist moves to a Field: \n");
+				System.out.println("Virologist moves to a Field: ");
 				virologist_moves_to_a_field();
 				break;
 			case 3:
-				//System.out.println("Virologist produces Agent: ");
-				System.out.println("\nSelect Agent: \n");
-				virologist_produce_agent();
+				System.out.println("Virologist produces Agent: ");
+				virologist_produces_agent();
 				break;
 			case 4:
-				System.out.println("\nSelect Item type: \n");
-				System.out.println("[1] "+"Virologist picks up package");
-      			System.out.println("[2] "+"Virologist picks up gloves");
-        		System.out.println("[3] "+"Virologist picks up cape");
-				usecase = console.nextInt();
-				switch(usecase){
-					case 1: 
-						virologist_picks_up_package();
-						break;
-					case 2:
-						virologist_picks_up_gloves();
-						break;
-					case 3:
-						virologist_picks_up_cape();
-						break;
-					case 0:
-						System.exit(0);
-					default: 
-						System.out.println("Invalid input.");	
-				}
+				System.out.println("Virologist picks up Equipment: ");
+				virologist_picks_up_equipment();
 				break;
 			case 5:
 				System.out.println("Virologist wins");
@@ -427,25 +373,23 @@ public class Skeleton {
 				timer();
 				break;
 			case 7:
-				System.out.println("Game Starts");
-				game_starts();
+				System.out.println("Virologist learns genetics");
+				learn_genetics();
+				break;
+			case 8:
+				System.out.println("Virologist infects another Virologist");
+				infect_virologist();
 				break;
 			case 8:
 				System.out.println("Learn Genetics");
 				learn_genetics();
 				break;
 		    
-				//igy tovabb minden egyes use-case-nek
 				
-			/**
-			* kilepes
-			*/
+			// Kilépés
 			case 1000:
 				System.exit(0);
 				break;
-			/**
-			* default ertek
-			*/
 			default:
 				System.out.println("Invalid input");
 			}
