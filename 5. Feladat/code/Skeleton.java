@@ -17,7 +17,7 @@ public class Skeleton {
         System.out.println("[4] "+"Virologist picks up equipment");
         System.out.println("[5] "+"Virologist wins");
         System.out.println("[6] "+"Timer is ticking");
-        System.out.println("[7] "+"Game Starts");
+        System.out.println("[7] "+"Learn Genetics");
         //Igy tovabb usecase szama+neve
 	}
 	
@@ -59,27 +59,13 @@ public class Skeleton {
 		Logger.removeTab();
 	}
 	
-	/**
-	 * jatek elindul
-	 */
-	public static void game_starts() {
-		Game Game = new Game();
-		Map Map = new Map();
-		int fn = 0;
-		int h = 0;
-		int s = 0;
-		int l = 0;
-		Game.Start();
-		Map.CreateMap(fn, s, h, l);
-	}
 	
 	/**
 	 * telik az ido
 	 */
 	public static void timer() {
-		Game Game = new Game();
 		Timer Timer = new Timer();
-		Game.Start();
+		
 		Timer.Start();
 		while (Timer.isTimer()) {
 			Timer.Tick();
@@ -212,7 +198,59 @@ public class Skeleton {
 		}
 	}
 	
-	
+	/**
+	* genetikai kod megtanulasa
+	*/
+	public static void learn_genetics() {
+		Laboratory Laboratory = new Laboratory();
+		
+		Virologist Virologist = new Virologist(1, "test", 1, Laboratory);
+
+		System.out.println("Virologist learns Genetic");
+		Scanner console = new Scanner(System.in);
+		
+		System.out.println("[1] Learn DanceGenetic");
+		System.out.println("[2] Learn PoisonGenetic");
+		System.out.println("[3] Learn DefenceGenetic");
+		System.out.println("[4] Learn AmnesiaGenetic");
+
+		switch(console.nextInt()) {
+			case 1:
+				DanceGenetic DanceGenetic = new DanceGenetic(1, 1);
+				Laboratory.place(DanceGenetic);
+				Logger.addTab();
+				Logger.log(Virologist, "loot", "Laboratory");
+				Virologist.loot(Laboratory);
+				Logger.removeTab();
+				break;
+			case 2:
+				PoisonGenetic PoisonGenetic = new PoisonGenetic(1, 1);
+				Laboratory.place(PoisonGenetic);
+				Logger.log(Virologist, "loot", "Laboratory");
+				Virologist.loot(Laboratory);
+				Logger.removeTab();
+				break;
+			case 3:
+				DefenceGenetic DefenceGenetic = new DefenceGenetic(1, 1);	
+				Laboratory.place(DefenceGenetic);
+				Logger.log(Virologist, "loot", "Laboratory");
+				Virologist.loot(Laboratory);
+				Logger.removeTab();
+				break;
+			case 4:
+				AmnesiaGenetic AmnesiaGenetic = new AmnesiaGenetic(1, 1);
+				Laboratory.place(AmnesiaGenetic);
+				Logger.log(Virologist, "loot", "Laboratory");
+				Virologist.loot(Laboratory);
+				Logger.removeTab();
+				break;
+			case 1000:
+				System.exit(0);
+				break;
+			default:
+				System.out.println("Invalid input");
+		}
+	}
 	
 	
 	/**
@@ -285,8 +323,8 @@ public class Skeleton {
 				timer();
 				break;
 			case 7:
-				System.out.println("Game Starts");
-				game_starts();
+				System.out.println("Virologist learns genetics");
+				learn_genetics();
 				break;
 		    
 				//igy tovabb minden egyes use-case-nek
