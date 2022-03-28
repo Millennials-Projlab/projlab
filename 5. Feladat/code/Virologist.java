@@ -105,7 +105,7 @@ public class Virologist {
     /** 
      * @param substance
      */
-    public void addSubstance(Substances substance){
+    public void addSubstance(Substance substance){
         Substances.add(substance);
         System.out.println("Substance has been added.");
     }
@@ -130,7 +130,7 @@ public class Virologist {
     /** 
      * @param substance
      */
-    public void removeSubstance(Substances substance){
+    public void removeSubstance(Substance substance){
         Substances.remove(substance);
         System.out.println("Substance has been removed.");
     }
@@ -293,7 +293,7 @@ public class Virologist {
      */
     public void setMaxEquipments(int maxEquipments) {
 		this.maxEquipments = maxEquipments;
-
+    }
 	
     /** 
      * @return int

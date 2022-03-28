@@ -18,7 +18,7 @@ public class Skeleton {
         System.out.println("[5] "+"Virologist wins");
         System.out.println("[6] "+"Timer is ticking");
         System.out.println("[7] "+"Virologist learns Genetic");
-		    System.out.println("[8] "+"Virologist infects another Virologist");
+		System.out.println("[8] "+"Virologist infects another Virologist");
 	}
 	
 	/**
@@ -332,17 +332,9 @@ public class Skeleton {
 		 
 			switch (usecase) {
 			case 1:
-				System.out.println("\nSelect Field type by entering its code: \n");
-				System.out.println("[1] "+"Map creates Shelter");
-      			System.out.println("[2] "+"Map creates Laboratory");
-        		System.out.println("[3] "+"Map creates Warehouse");
-				System.out.println("[4] "+"Map creates Field");
-				usecase=console.nextInt();
-
 				// mezo tipusa
 				switch(usecase){
 					case 1:
-						System.out.println("Map creates Shelter: ");
 						map_creates_fields();
 						break;
 					case 1000:
@@ -379,10 +371,6 @@ public class Skeleton {
 			case 8:
 				System.out.println("Virologist infects another Virologist");
 				infect_virologist();
-				break;
-			case 8:
-				System.out.println("Learn Genetics");
-				learn_genetics();
 				break;
 		    
 				

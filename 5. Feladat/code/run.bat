@@ -1,4 +1,4 @@
 @echo off
-javac Sekelton.java
+javac Skeleton.java
 java Skeleton
 pause
