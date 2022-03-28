@@ -16,6 +16,7 @@ public class Virologist {
     private int maxSubstance;
     private Field currentField;
     private int defenseRating;
+    private int effectFlag;
 
 	/**
 	 * virologus konstruktor
@@ -220,5 +221,33 @@ public class Virologist {
 
     public void setDefenseRating(int dr) {
         defenseRating = dr;
+    }
+
+    public void attack(Virologist target, Agent agent) {
+        for(Agent a : Agents) {
+            Logger.addTab();
+            Logger.log(a, "isSame", "agent");
+            if(a.isSame(agent)) {
+                Logger.addTab();
+                Logger.log(a, "infect", "target");
+                a.infect(target);
+                Logger.removeTab();
+                Logger.removeTab();
+                return;
+            }
+        }
+        Logger.removeTab();
+    }
+
+    public void clearCollectedGenetics() {
+        Genetics.clear();
+    }
+
+    public void dance() {
+        // TODO
+    }
+
+    public void setEffectFlag(int flag) {
+        effectFlag = flag;
     }
 }

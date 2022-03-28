@@ -17,8 +17,8 @@ public class Skeleton {
         System.out.println("[4] "+"Virologist picks up equipment");
         System.out.println("[5] "+"Virologist wins");
         System.out.println("[6] "+"Timer is ticking");
-        System.out.println("[7] "+"Learn Genetics");
-        //Igy tovabb usecase szama+neve
+        System.out.println("[7] "+"Virologist learns Genetic");
+		System.out.println("[8] "+"Virologist infects another Virologist");
 	}
 	
 	/**
@@ -251,6 +251,62 @@ public class Skeleton {
 				System.out.println("Invalid input");
 		}
 	}
+
+	public static void infect_virologist() {
+		Field f = new Field();
+		Virologist v1 = new Virologist(1, "", 1, f);
+		Virologist v2 = new Virologist(1, "", 1, f);
+		f.enter(v1);
+		f.enter(v2);
+
+		Scanner console = new Scanner(System.in);
+		
+		System.out.println("[1] Use DanceAgent");
+		System.out.println("[2] Use PoisonAgent");
+		System.out.println("[3] Use DefenceAgent");
+		System.out.println("[4] Use AmnesiaAgent");
+
+		switch(console.nextInt()) {
+			case 1:
+				DanceAgent da = new DanceAgent();
+				v1.addAgent(da);
+
+				Logger.addTab();
+				Logger.log(v1, "attack", "v2, new DanceAgent()");
+				v1.attack(v2, new DanceAgent());
+				Logger.removeTab();
+				break;
+			case 2:
+				PoisonAgent pa = new PoisonAgent();
+				v1.addAgent(pa);
+
+				Logger.addTab();
+				Logger.log(v1, "attack", "v2, new PoisonAgent()");
+				v1.attack(v2, new PoisonAgent());
+				Logger.removeTab();
+				break;
+			case 3:
+				DefenceAgent dfa = new DefenceAgent();
+				v1.addAgent(dfa);
+
+				Logger.addTab();
+				Logger.log(v1, "attack", "v2, new DefenceAgent()");
+				v1.attack(v2, new DefenceAgent());
+				Logger.removeTab();
+				break;
+			case 4:
+				AmnesiaAgent aa = new AmnesiaAgent();
+				v1.addAgent(aa);
+
+				Logger.addTab();
+				Logger.log(v1, "attack", "v2, new AmnesiaAgent()");
+				v1.attack(v2, new AmnesiaAgent());
+				Logger.removeTab();
+				break;
+			default:
+				System.out.println("Invalid input");
+		}
+	}
 	
 	
 	/**
@@ -326,8 +382,12 @@ public class Skeleton {
 				System.out.println("Virologist learns genetics");
 				learn_genetics();
 				break;
+			case 8:
+				System.out.println("Virologist infects another Virologist");
+				infect_virologist();
+				break;
 		    
-				//igy tovabb minden egyes use-case-nek
+				
 				
 			/**
 			* kilepes

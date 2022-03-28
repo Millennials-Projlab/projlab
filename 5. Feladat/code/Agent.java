@@ -40,5 +40,11 @@ public abstract class Agent {
 		this.livetime = livetime;
 	}
 	
-	
+	public boolean isSame(Agent a) {
+		if(this.getClass() == a.getClass())
+			return true;
+		return false;
+	}
+
+	public abstract void infect(Virologist target);
 }
