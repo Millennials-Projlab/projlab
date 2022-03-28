@@ -9,8 +9,7 @@ public class Game {
 	private ArrayList<Virologist> Players;
 	
 	public Game() {
-		//setMap(new Map());
-		setPlayers(new ArrayList<Virologist>());
+		Players = new ArrayList<Virologist>();
 	}
 	
 	public void Start() {
@@ -51,5 +50,25 @@ public class Game {
 	public void setPlayers(ArrayList<Virologist> players) {
 		Players = players;
 	}
+
+	public void addPlayer(Virologist v) {
+		Players.add(v);
+	}
 	
+	public void Tick() {
+		Logger.addTab();
+		for(Virologist virologist : Players) {
+			Logger.log(virologist, "collectedAllGenetics", "");
+			if (virologist.collectedAllGenetics() == true) {
+				Logger.addTab();
+				Logger.log(this, "End", "");
+				End();
+				Logger.removeTab();
+				
+				Logger.removeTab();
+				return;
+			}
+		}
+		Logger.removeTab();
+	}
 }

@@ -92,16 +92,18 @@ public class Skeleton {
 	 * virologus nyer
 	 */
 	public static void virologist_wins() {
-		Virologist Virologist = new Virologist(1, "test", 1, new Field());
 		Game Game = new Game();
-		if (Virologist.collectedAllGenetics() == true) {
-			Game.End();
-		}
+		Virologist virologist = new Virologist(1, "test", 1, new Field());
+		Game.addPlayer(virologist);
+
+		Logger.addTab();
+		Logger.log(Game, "Tick", "");
+		Game.Tick();
+		Logger.removeTab();
 	}
 	
 
 	public static void virologist_produces_agent() {
-		//System.out.println("Produce Agent");
 		Scanner console = new Scanner(System.in);
 
 		Field field = new Field();
@@ -252,7 +254,7 @@ public class Skeleton {
 				 */
 				switch(usecase){
 					case 1:
-						System.out.println("Map creates Shelter: \n");
+						System.out.println("Map creates Shelter: ");
 						map_creates_fields();
 						break;
 					case 1000:
@@ -263,7 +265,7 @@ public class Skeleton {
 				}
 				break;
 			case 2:
-				System.out.println("Virologist moves to a Field: \n");
+				System.out.println("Virologist moves to a Field: ");
 				virologist_moves_to_a_field();
 				break;
 			case 3:
@@ -271,7 +273,7 @@ public class Skeleton {
 				virologist_produces_agent();
 				break;
 			case 4:
-				System.out.println("usecase neve4");
+				System.out.println("Virologist picks up Equipment: ");
 				virologist_picks_up_equipment();
 				break;
 			case 5:
