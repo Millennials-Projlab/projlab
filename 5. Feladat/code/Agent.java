@@ -1,6 +1,6 @@
 
 /**
-* Ágens osztály
+* Agens osztály
 */
 public abstract class Agent {
 	private Genetics Genetic;
