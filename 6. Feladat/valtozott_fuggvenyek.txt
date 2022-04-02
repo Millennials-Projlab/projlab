@@ -44,6 +44,7 @@ Virologist
 effectFlag: Integer
 defenseRating: Integer
 maxSubstance: Integer
+    useEquipment(Equipment: Equipment): void
 
 PoisonAgent
 Effect(Virologist: Virologist): void
@@ -64,6 +65,7 @@ infect(Virologist: Virologist): void
 --SPEC. VÁLTOZTATÁS UTÁN--
 Gloves
 uses: Integer
+    addUses(): void
 
 Axe
 PickUp(): void
