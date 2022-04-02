@@ -1,4 +1,4 @@
-name: Run and Compile on Windows
+name: Run Skeleton
 on: [push]
 jobs:
   Run-Code:
