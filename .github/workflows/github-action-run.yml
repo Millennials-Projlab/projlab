@@ -1,5 +1,5 @@
-name: Run and Compile on Windows
-on: [push]
+name: Run Skeleton
+on: [workflow_dispatch]
 jobs:
   Run-Code:
     runs-on: windows-latest

@@ -1,5 +1,5 @@
 /**
-* Dance Ágens osztály
+* Dance Agens osztály
 */
 public class DanceAgent extends Agent{
 	

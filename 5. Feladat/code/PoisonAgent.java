@@ -1,5 +1,5 @@
 /**
-* Poison Ágens osztály
+* Poison Agens osztály
 */
 public class PoisonAgent extends Agent{
 	

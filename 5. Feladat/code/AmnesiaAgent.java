@@ -1,5 +1,5 @@
 /**
-* Amnesia Ágens osztály
+* Amnesia Agens osztály
 */
 public class AmnesiaAgent extends Agent{
 	

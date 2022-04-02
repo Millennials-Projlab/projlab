@@ -1,5 +1,5 @@
 /**
-* Defence Ágens osztály
+* Defence Agens osztály
 */
 public class DefenceAgent extends Agent{
 	
