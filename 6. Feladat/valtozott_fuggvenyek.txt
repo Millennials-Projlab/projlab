@@ -75,4 +75,7 @@ BearAgent
 Effect(Virologist: Virologist): void
 infect(Virologist: Virologist): void
 
+Virologist
+die(): void
+
 
