@@ -37,4 +37,5 @@ virologistCastsPosionAgent noname\n
 virologistCastsAmnesiaAgent noname\n
 virologistCastsBearAgent noname\n
 virologistMoves noname noname\n
+bearDetroyesSubstance noname
 
