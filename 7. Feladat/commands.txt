@@ -31,5 +31,10 @@ virologistproducesAmnesiaAgent true false noname\n
 virologistproducesAmnesiaAgent false true noname\n
 virologistproducesBearAgent true false noname\n
 virologistproducesBearAgent false true noname\n
+virologistCastsDanceAgent noname\n
+virologistCastsDefenceAgent noname\n
+virologistCastsPosionAgent noname\n
+virologistCastsAmnesiaAgent noname\n
+virologistCastsBearAgent noname\n
 virologistMoves noname noname\n
 
