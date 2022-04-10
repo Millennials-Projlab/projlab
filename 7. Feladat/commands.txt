@@ -44,4 +44,8 @@ virologistStealsEquipment Gloves noname
 virologistStealsEquipment Cape noname
 virologistKillsVirologist noname 
 virologistWon noname
+virologistKillsVirologist true noname
+virologistKillsVirologist false noname
+virologistUsesGloves noname
+
 
