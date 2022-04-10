@@ -1,0 +1,35 @@
+randomized test yes\n
+randomized test no\n
+abort\n
+createLaboratory noname DanceGenetic\n
+createLaboratory noname DefenceGenetic\n
+createLaboratory nonname PoisonGenetic\n
+createLaboratory noname AmnesiaGenetic\n
+createWareHouse noname 2 6\n 
+createShelter noname Package\n
+createShelter noname Axe\n
+createShelter noname Gloves\n
+createShelter noname Cape\n
+createField nonname Field1\n
+startGame noname 2\n
+setupMap noname 5 3 2 6\n
+learnDanceGenetic noname\n 
+learnDefenceGenetic noname\n 
+learnPoisonGenetic noname\n 
+learnAmnesia noname\n 
+pickupEquipment Package noname noname\n
+pickupEquipment Axe noname noname\n
+pickupEquipment Gloves noname noname\n
+pickupEquipment Cape noname noname\n
+virologistproducesDanceAgent true false noname\n
+virologistproducesDanceAgent false true noname\n
+virologistproducesDefenceAgent true false noname\n
+virologistproducesDefenceAgent false true noname\n
+virologistproducesPoisonAgent true false noname\n
+virologistproducesPosionAgent false true noname\n
+virologistproducesAmnesiaAgent true false noname\n
+virologistproducesAmnesiaAgent false true noname\n
+virologistproducesBearAgent true false noname\n
+virologistproducesBearAgent false true noname\n
+virologistMoves noname noname\n
+
