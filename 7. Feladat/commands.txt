@@ -38,4 +38,10 @@ virologistCastsAmnesiaAgent noname\n
 virologistCastsBearAgent noname\n
 virologistMoves noname noname\n
 bearDetroyesSubstance noname
+virologistStealsEquipment Package noname
+virologistStealsEquipment Axe noname
+virologistStealsEquipment Gloves noname
+virologistStealsEquipment Cape noname
+virologistKillsVirologist noname 
+virologistWon noname
 
