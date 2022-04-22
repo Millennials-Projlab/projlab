@@ -11,6 +11,7 @@ public class Commandparser {
         commands.put("createField", Game.getMap()::createField);
         commands.put("createLaboratory", Game.getMap()::createLaboratory);
         commands.put("createWarehouse", Game.getMap()::createWarehouse);
+        commands.put("createShelter", Game.getMap()::createShelter);
     }
 
     public void parse(String command) {

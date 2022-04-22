@@ -46,8 +46,7 @@ public class Map {
 					genetic = new AmnesiaGenetic(1, 1);
 					break;
 				default:
-					genetic = null;
-					break;
+					throw new IncorrectParameterException("Invalid genetic name");
 			}	
 		}
 		else {
@@ -98,6 +97,57 @@ public class Map {
 			warehouse.place(substances);
 			Fields.add(warehouse);
 		}
+	}
+
+	public void createShelter(String[] args) throws IncorrectParameterException  {
+		checkFieldExistence(args[0]);
+
+		Shelter shelter = new Shelter(args[0]);
+		Equipment equipment;
+
+		if(!Game.random) {
+			switch(args[1]) {
+				case "Package":
+					equipment = new Package();
+					break;
+				case "Axe":
+					equipment = new Axe();
+					break;
+				case "Gloves":
+					equipment = new Gloves();
+					break;
+				case "Cape":
+					equipment = new Cape();
+					break;
+				default:
+					throw new IncorrectParameterException("Invalid equipment name");
+			}
+		}
+		else {
+			Random rand = new Random();
+			int equipmentNum = rand.nextInt(3);
+
+			switch(equipmentNum) {
+				case 0:
+					equipment = new Package();
+					break;
+				case 1:
+					equipment = new Axe();
+					break;
+				case 2:
+					equipment = new Gloves();
+					break;
+				case 3:
+					equipment = new Cape();
+					break;
+				default:
+					equipment = null;
+					break;
+			}
+		}
+
+		shelter.place(equipment);
+		Fields.add(shelter);
 	}
 
 	private void checkFieldExistence(String name) throws IncorrectParameterException {
