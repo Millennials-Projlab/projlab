@@ -4,15 +4,19 @@ import java.util.ArrayList;
 * Laboratory osztály
 */
 public class Laboratory extends Field {
-	private Genetics Genetic;
+	private String name;
+	private Genetics genetic;
 	
-	
+	public Laboratory(String name) {
+		super(name);
+	}
+
 	/** 
 	 * Elhelyezi a genetikai kódot a mezőn
 	 * @param Genetic
 	 */
 	public void place(Genetics Genetic) {
-		this.Genetic = Genetic;
+		this.genetic = Genetic;
 	}
 
 	
@@ -20,7 +24,7 @@ public class Laboratory extends Field {
 	 * @return Genetics
 	 */
 	public Genetics getGenetic() {
-		return Genetic;
+		return genetic;
 	}
 
 	
@@ -28,7 +32,7 @@ public class Laboratory extends Field {
 	 * @param Genetic2
 	 */
 	public void setGenetic(Genetics Genetic2) {
-		Genetic = Genetic2;
+		genetic = Genetic2;
 	}
     
 	
@@ -41,6 +45,6 @@ public class Laboratory extends Field {
 
 		// TODO check if genetics is learned
 
-		virologist.addGenetics(Genetic);
+		virologist.addGenetics(genetic);
 	}
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 * Game osztály
 */
 public final class Game {
-	private static boolean random = false;
+	public static boolean random = false;
 	private static Map Map = new Map();
 	private static ArrayList<Virologist> Players;
 

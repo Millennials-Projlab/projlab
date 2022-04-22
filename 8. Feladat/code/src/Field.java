@@ -5,18 +5,18 @@ import java.util.ArrayList;
 */
 public class Field {
     private String name;
-	private ArrayList<Virologist> Virologists;
-	private ArrayList<Field> Neighbours;
+	private ArrayList<Virologist> virologists;
+	private ArrayList<Field> neighbours;
 	
 	public Field() {
-		Virologists = new ArrayList<Virologist>();
-		Neighbours = new ArrayList<Field>();
+		virologists = new ArrayList<Virologist>();
+		neighbours = new ArrayList<Field>();
 	}
 
     public Field(String name) {
         this.name = name;
-        Virologists = new ArrayList<Virologist>();
-		Neighbours = new ArrayList<Field>();
+        virologists = new ArrayList<Virologist>();
+		neighbours = new ArrayList<Field>();
     }
 	
     public String getName() {
@@ -28,7 +28,7 @@ public class Field {
 	 * @param virologist
 	 */
 	public void enter(Virologist virologist) {
-		Virologists.add(virologist);
+		virologists.add(virologist);
 	}
 	
 	
@@ -37,7 +37,7 @@ public class Field {
 	 * @param virologist
 	 */
 	public void leave(Virologist virologist) {
-		Virologists.remove(virologist);
+		virologists.remove(virologist);
 	}
 
 	
@@ -45,7 +45,7 @@ public class Field {
 	 * @return ArrayList<Virologist>
 	 */
 	public ArrayList<Virologist> getVirologists() {
-		return Virologists;
+		return virologists;
 	}
 
 	
@@ -53,7 +53,7 @@ public class Field {
 	 * @param virologists
 	 */
 	public void setVirologists(ArrayList<Virologist> virologists) {
-		Virologists = virologists;
+		virologists = virologists;
 		System.out.println("Virologists have been set");
 	}
 
@@ -62,7 +62,7 @@ public class Field {
 	 * @return ArrayList<Field>
 	 */
 	public ArrayList<Field> getNeighbours() {
-		return Neighbours;
+		return neighbours;
 	}
 
 	
@@ -70,7 +70,7 @@ public class Field {
 	 * @param neighbours
 	 */
 	public void setNeighbours(ArrayList<Field> neighbours) {
-		Neighbours = neighbours;
+		this.neighbours = neighbours;
 	}
 	
 	
@@ -78,7 +78,7 @@ public class Field {
 	 * @param field
 	 */
 	public void setNeighbour(Field field) {
-		Neighbours.add(field);
+		neighbours.add(field);
 	}
 	
 	public void lootItem(Virologist virologist) {}
