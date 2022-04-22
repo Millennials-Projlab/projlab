@@ -158,6 +158,21 @@ public class Map {
 		Fields.add(shelter);
 	}
 
+	public void setNeighbor(String[] args) throws IncorrectParameterException  {
+		Field field1 = getField(args[0]);
+		Field field2 = getField(args[1]);
+
+		if(field1 == null) {
+			throw new IncorrectParameterException("field with name " + "\""+ args[0] +"\" does not exist");
+		}
+		if(field2 == null) {
+			throw new IncorrectParameterException("field with name " + "\""+ args[1] +"\" does not exist");
+		}
+
+		field1.setNeighbour(field2);
+		field2.setNeighbour(field1);
+	}
+
 	private void checkFieldExistence(String name) throws IncorrectParameterException {
 		if(Game.getMap().getField(name) != null) {
 			throw new IncorrectParameterException("field with name " + "\""+ name +"\" already exists");
