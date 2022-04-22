@@ -6,6 +6,9 @@ public class Commandparser {
 
     public Commandparser() {
         commands.put("exit", (args) -> System.exit(0));
+        commands.put("toggleRandom", (args) -> Game.toggleRandom());
+        commands.put("startGame", (args) -> Game.Start());
+        commands.put("createField", Game.getMap()::createField);
     }
 
     public void parse(String command) {
@@ -15,14 +18,20 @@ public class Commandparser {
         String[] parameters = Arrays.copyOfRange(splitted, 1, splitted.length);
     
         execute(commandName, parameters);
-
     }
 
     private void execute(String commandName, String[] parameters) {
         try {
             commands.get(commandName).execute(parameters);
-        } catch(NullPointerException ex) {
+        } 
+        catch(NullPointerException e) {
             System.out.println("RUNTIME ERROR: command does not exist");
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println("SYNTAX ERROR: not enough parameters");
+        } 
+        catch (IncorrectParameterException e) {
+            System.out.println("ERROR: " + e.getMessage());
         }
     }
 }
