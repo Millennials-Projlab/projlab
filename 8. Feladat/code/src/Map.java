@@ -80,23 +80,31 @@ public class Map {
 		checkFieldExistence(args[0]);
 
 		Warehouse warehouse = new Warehouse(args[0]);
+		ArrayList<Substance> substances = new ArrayList<Substance>();
+
+		int aminoNum, nukleoNum;
 
 		if(!Game.random) {
-			ArrayList<Substance> substances = new ArrayList<Substance>();
-
-			for(int i = 0; i < Integer.parseInt(args[1]); i++) {
-				Amino a = new Amino();
-				substances.add(a);
-			}
-
-			for(int i = 0; i < Integer.parseInt(args[2]); i++) {
-				Nukleotid n = new Nukleotid();
-				substances.add(n);
-			}
-
-			warehouse.place(substances);
-			Fields.add(warehouse);
+			aminoNum = Integer.parseInt(args[1]);
+			nukleoNum = Integer.parseInt(args[2]);
 		}
+		else {
+			Random rand = new Random();
+			aminoNum = rand.nextInt(5);
+			nukleoNum = rand.nextInt(5);
+		}
+
+		for(int i = 0; i < aminoNum; i++) {
+			Amino a = new Amino();
+			substances.add(a);
+		}
+		for(int i = 0; i < nukleoNum; i++) {
+			Nukleotid n = new Nukleotid();
+			substances.add(n);
+		}
+
+		warehouse.place(substances);
+		Fields.add(warehouse);
 	}
 
 	public void createShelter(String[] args) throws IncorrectParameterException  {
