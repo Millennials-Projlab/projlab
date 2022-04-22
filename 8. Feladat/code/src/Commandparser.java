@@ -10,6 +10,7 @@ public class Commandparser {
         commands.put("startGame", (args) -> Game.Start());
         commands.put("createField", Game.getMap()::createField);
         commands.put("createLaboratory", Game.getMap()::createLaboratory);
+        commands.put("createWarehouse", Game.getMap()::createWarehouse);
     }
 
     public void parse(String command) {

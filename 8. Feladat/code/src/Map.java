@@ -77,6 +77,29 @@ public class Map {
 		Fields.add(laboratory);
 	}
 
+	public void createWarehouse(String[] args) throws IncorrectParameterException  {
+		checkFieldExistence(args[0]);
+
+		Warehouse warehouse = new Warehouse(args[0]);
+
+		if(!Game.random) {
+			ArrayList<Substance> substances = new ArrayList<Substance>();
+
+			for(int i = 0; i < Integer.parseInt(args[1]); i++) {
+				Amino a = new Amino();
+				substances.add(a);
+			}
+
+			for(int i = 0; i < Integer.parseInt(args[2]); i++) {
+				Nukleotid n = new Nukleotid();
+				substances.add(n);
+			}
+
+			warehouse.place(substances);
+			Fields.add(warehouse);
+		}
+	}
+
 	private void checkFieldExistence(String name) throws IncorrectParameterException {
 		if(Game.getMap().getField(name) != null) {
 			throw new IncorrectParameterException("field with name " + "\""+ name +"\" already exists");

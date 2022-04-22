@@ -3,9 +3,13 @@ import java.util.ArrayList;
 * Warehouse osztály
 */
 public class Warehouse extends Field{
-	private ArrayList<Substance> Substances;
+	private ArrayList<Substance> substances;
 	
-	
+	public Warehouse(String name) {
+		super(name);
+		substances = new ArrayList<Substance>();
+	}
+
 	/** 
 	 * Elhelyezi a genetikai kódot a mezőn
 	 * @param Substances
@@ -13,6 +17,7 @@ public class Warehouse extends Field{
 	public void place(ArrayList<Substance> Substances) {
         for(Substance i: Substances){
             System.out.println("\t"+i.toString()+" "+"has been placed");
+			substances.add(i);
         }
 	}
 	
@@ -24,7 +29,7 @@ public class Warehouse extends Field{
 	 * @return ArrayList<Substance>
 	 */
 	public ArrayList<Substance> getSubstances() {
-		return Substances;
+		return substances;
 	}
 
 	
@@ -32,6 +37,6 @@ public class Warehouse extends Field{
 	 * @param substances
 	 */
 	public void setSubstances(ArrayList<Substance> substances) {
-		Substances = substances;
+		substances = substances;
 	}   
 }
