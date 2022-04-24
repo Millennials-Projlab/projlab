@@ -13,6 +13,8 @@ public class Commandparser {
         commands.put("createWarehouse", Game.getMap()::createWarehouse);
         commands.put("createShelter", Game.getMap()::createShelter);
         commands.put("setNeighbor", Game.getMap()::setNeighbor);
+        commands.put("pickupEquipment", (args) -> Game.getVirologist(args[0]).loot(Game.getVirologist(args[0]).getcurrentfield()));
+        commands.put("learnGenetic", (args) -> Game.getVirologist(args[0]).loot(Game.getVirologist(args[0]).getcurrentfield()));     
     }
 
     public void parse(String command) {

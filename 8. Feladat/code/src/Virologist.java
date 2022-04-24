@@ -17,6 +17,7 @@ public class Virologist {
     private Field currentField;
     private int defenseRating;
     private int effectFlag;
+    private boolean poisoned;
 
 	/**
 	 * virologus konstruktor
@@ -31,6 +32,7 @@ public class Virologist {
         name = n;
         maxSubstance = mS;
         currentField = cF;
+        setPoisoned(false);
     }
 
     
@@ -39,6 +41,14 @@ public class Virologist {
      */
     public String getName(){
         return name;
+    }
+    
+    public Field getcurrentfield() {
+    	return currentField;
+    }
+    
+    public void setcurrentfield(Field f) {
+    	currentField = f;
     }
 
     
@@ -69,7 +79,8 @@ public class Virologist {
      * @param enemy
      */
     public void stealEquipment(Virologist enemy){
-        //TODO
+    	this.addEquipment(enemy.getEquipments().get(0));
+    	enemy.getEquipments().remove(0);
     }
 
     
@@ -96,7 +107,6 @@ public class Virologist {
      */
     public void addSubstance(Substance substance){
         Substances.add(substance);
-        System.out.println("Substance has been added.");
     }
 
     
@@ -105,7 +115,6 @@ public class Virologist {
      */
     public void removeAgent(Agent agent){
         Agents.remove(agent);
-        System.out.println("Agent has been removed.");
     }
 
     
@@ -114,17 +123,14 @@ public class Virologist {
      */
     public void removeEquipment(Equipment equipment){
         Equipments.remove(equipment);
-        System.out.println("Equipment has been removed.");
     }
     /** 
      * @param substance
      */
     public void removeSubstance(Substance substance){
         Substances.remove(substance);
-        System.out.println("Substance has been removed.");
     }
 
-    
     /** 
      * @param genetics
      */
@@ -134,7 +140,6 @@ public class Virologist {
   
     public void removeAllGenetics(){
         Genetics.clear();
-        System.out.println("All genetics removed");
     }
     
     /** 
@@ -164,7 +169,6 @@ public class Virologist {
      * @return ArrayList<Equipment>
      */
     public ArrayList<Equipment> getEquipments(){
-        //TODO
         return Equipments;
     }    
     
@@ -179,12 +183,16 @@ public class Virologist {
 
     
     /** 
-     * @param genetics
+     * @param genetic
      * @return boolean
      */
-    public boolean checkGenetics(Genetics genetics){
-        System.out.println("Checked");
-        return false;
+    public boolean checkGenetics(Genetics genetic) {
+    	for(Genetics g : Genetics) {
+            if(g.isSame(genetic)) {
+            	return false;
+            }
+    	}
+         return true;
     }
 
     
@@ -339,4 +347,14 @@ public class Virologist {
     public void setEffectFlag(int flag) {
         effectFlag = flag;
     }
+
+
+	public boolean isPoisoned() {
+		return poisoned;
+	}
+
+
+	public void setPoisoned(boolean poisoned) {
+		this.poisoned = poisoned;
+	}
 }

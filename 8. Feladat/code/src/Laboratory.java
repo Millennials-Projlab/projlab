@@ -43,8 +43,9 @@ public class Laboratory extends Field {
 	public void lootItem(Virologist virologist) {
 		ArrayList<Genetics> learnedGenetics = virologist.getGenetics();
 
-		// TODO check if genetics is learned
-
-		virologist.addGenetics(genetic);
+		//if genetic has been learned
+		if(virologist.checkGenetics(genetic) == false) {
+			virologist.addGenetics(genetic);	
+		}
 	}
 }

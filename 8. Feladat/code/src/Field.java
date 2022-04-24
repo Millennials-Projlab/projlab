@@ -47,6 +47,18 @@ public class Field {
 	public ArrayList<Virologist> getVirologists() {
 		return virologists;
 	}
+	
+	/** 
+	 * @return Virologist
+	 */
+	public Virologist getVirologistbyname(String name) {
+		for (Virologist v : virologists) {
+			if(v.getName().equals(name)) {
+				return v;
+			}
+		}
+		return null;
+	}
 
 	
 	/** 

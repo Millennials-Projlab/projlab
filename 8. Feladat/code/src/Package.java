@@ -2,13 +2,22 @@
 * Package osztály
 */
 public class Package extends Equipment {
+	/** 
+	 * Konstruktor
+	 */
 	public Package() {
 	}
 	
-	public void PickUp() {
-		System.out.println("Package has been picked up.");
+	/** 
+	 * A virologus felveszi a felszerelest a mezorol
+	 * @param s
+	 * @param v
+	 */
+	public void PickUp(Shelter s, Virologist v) {
+		s.lootItem(v);
+		s.Clear();
+		System.out.print("Package has been picked up");
 	}
-	
 	
 	/** 
 	 * Elvégzi a felszerelés hatását

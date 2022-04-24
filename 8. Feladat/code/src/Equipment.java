@@ -2,7 +2,8 @@
 * Equipment osztály
 */
 public abstract class Equipment {
-	public void PickUp() {	
+	public void PickUp(Shelter s, Virologist v){	
+		
 	}
 	
 	public abstract void Effect(Virologist v);

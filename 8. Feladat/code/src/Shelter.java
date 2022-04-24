@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
 * Shelter osztály
 */
@@ -16,12 +18,14 @@ public class Shelter extends Field {
 		this.equipment = equipment;
 	}
 	
+	/** 
+	 * Kiuriti a mezot
+	 */
 	public void Clear() {
 		equipment = null;
 		System.out.println("Cleared");
 	}
 
-	
 	/** 
 	 * @return Equipment
 	 */
@@ -40,5 +44,8 @@ public class Shelter extends Field {
 			equipment = null;
 		}
 	}
+	
+	
+	
 
 }

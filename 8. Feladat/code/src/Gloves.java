@@ -2,10 +2,22 @@
 * Gloves osztály
 */
 public class Gloves extends Equipment {
-	public void PickUp() {
-		System.out.println("Gloves has been picked up.");
+	/** 
+	 * Konstruktor
+	 */
+	public Gloves() {
 	}
 	
+	/** 
+	 * A virologus felveszi a felszerelest a mezorol
+	 * @param s
+	 * @param v
+	 */
+	public void PickUp(Shelter s, Virologist v) {
+		s.lootItem(v);
+		s.Clear();
+		System.out.print("Gloves has been picked up");
+	}
 	
 	/** 
 	 * Elvégzi a felszerelés hatását

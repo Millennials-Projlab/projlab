@@ -2,15 +2,23 @@
 * Cape osztály
 */
 public class Cape extends Equipment {
-	public void PickUp() {
-		System.out.println("Cape has been picked up.");
+	/** 
+	 * Konstruktor
+	 */
+	public Cape() {
 	}
 	
-	public void Effect() {
-		System.out.println("Cape has its effect.");
+	/** 
+	 * A virologus felveszi a felszerelest a mezorol
+	 * @param s
+	 * @param v
+	 */
+	public void PickUp(Shelter s, Virologist v) {
+		s.lootItem(v);
+		s.Clear();
+		System.out.print("Cape has been picked up");
 	}
 
-	
 	/** 
 	 * Elvégzi a felszerelés hatását
 	 * @param v
