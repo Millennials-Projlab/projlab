@@ -60,12 +60,30 @@ public class Virologist {
     	
     	switch(args[0]) {
     		case "Amnesia":
-    				agent = new AmnesiaAgent(agent.getGenetic(), liveTime);
-    				//hozzaadni a virologushoz
+    			agent = new AmnesiaAgent(agent.getGenetic(), liveTime);
+    			this.addAgent(agent);
     			break;
+    			
+    		case "DanceAgent":
+    			agent = new DanceAgent(agent.getGenetic(), liveTime);
+    			this.addAgent(agent);
+    			break;
+    			
+    		case "DefenceAgent":
+    			agent = new DefenceAgent(agent.getGenetic(), liveTime);
+    			this.addAgent(agent);
+    			break;
+    			
+    		case "PoisonAgent":
+    			agent = new PoisonAgent(agent.getGenetic(), liveTime);
+    			this.addAgent(agent);
+    			break;
+    			
+    		default:
+    			break;
+    	}
     }
-    	
-    }
+    
     
     public boolean checkIfEnoughGenetics(Agent agent) {
     	Genetics requiredGenetic = agent.getGenetic();
