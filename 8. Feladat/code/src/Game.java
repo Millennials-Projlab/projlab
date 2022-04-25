@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
 * Game osztály
@@ -6,7 +7,7 @@ import java.util.ArrayList;
 public final class Game {
 	public static boolean random = false;
 	private static Map Map = new Map();
-	private static ArrayList<Virologist> Players;
+	private static ArrayList<Virologist> players = new ArrayList<Virologist>();
 
 	public static void toggleRandom() {
 		if(random) {
@@ -24,7 +25,7 @@ public final class Game {
 	 */
 	public static void Start() {
 		Map = new Map();
-		Players = new ArrayList<Virologist>();
+		players = new ArrayList<Virologist>();
 	}
 	
 	public static void End() {
@@ -39,7 +40,7 @@ public final class Game {
 	}
 	
 	public static Virologist getVirologist(String name) throws IncorrectParameterException {
-		for(Virologist virologist : Players) {
+		for(Virologist virologist : players) {
 			if (virologist.getName().equals(name)) {
 				return virologist;
 			}
@@ -52,7 +53,7 @@ public final class Game {
 	 * @return ArrayList<Virologist>
 	 */
 	public static ArrayList<Virologist> getPlayers() {
-		return Players;
+		return players;
 	}
 
 	/** 
@@ -60,7 +61,7 @@ public final class Game {
 	 * @param v
 	 */
 	public static void addPlayer(Virologist v) {
-		Players.add(v);
+		players.add(v);
 	}
 	
 	/** 
@@ -68,11 +69,38 @@ public final class Game {
 	 * @param v
 	 */
 	public void Tick() {
-		for(Virologist virologist : Players) {
+		for(Virologist virologist : players) {
 			if (virologist.collectedAllGenetics() == true) {
 				End();
 				return;
 			}
 		}
+	}
+
+	private static void checkVirologistExistence(String name) {
+		try {
+			Game.getVirologist(name);
+			throw new IncorrectParameterException("Virologist with name " + "\""+ name +"\" already exists");
+		} catch(IncorrectParameterException e) {}
+	}
+
+	public static void createVirologist(String[] args) {
+		Virologist virologist;
+		if(!random) {
+			checkVirologistExistence(args[0]);
+			virologist = new Virologist(args[0], Integer.parseInt(args[1]), Integer.parseInt(args[2]), getMap().getField(args[3]));
+		}
+		else {
+			Random rand = new Random();
+			Field field;
+			try {
+				field = getMap().getFields().get(rand.nextInt(getMap().getFields().size()-1));
+			} catch(IllegalArgumentException e) { // csak egy field van
+				field = getMap().getFields().get(0);
+			}
+			
+			virologist = new Virologist(args[0], rand.nextInt(1,5), rand.nextInt(5,10), field);
+		}
+		players.add(virologist);
 	}
 }

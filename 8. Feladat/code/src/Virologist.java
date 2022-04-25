@@ -21,17 +21,20 @@ public class Virologist {
 
 	/**
 	 * virologus konstruktor
-	 * mE:maxEquipments      n:name      mA:maxAmino     mN:maxNukleotid
+     * @param name virológus neve
+     * @param maxEquipments egyszerre birtokolható felszerelések száma
+     * @param maxSubstance maximális anyagok száma
+     * @param currentField a mező, amelyre a virológus létrehozás után kerül
 	 */
-    public Virologist(int mE, String n, int mS, Field cF){
+    public Virologist(String name, int maxEquipments, int maxSubstance, Field currentField){
         Substances = new ArrayList<Substance>();
         Agents = new ArrayList<Agent>();
         Equipments = new ArrayList<Equipment>();
         Genetics = new ArrayList<Genetics>();
-        maxEquipments = mE;
-        name = n;
-        maxSubstance = mS;
-        currentField = cF;
+        this.name = name;
+        this.maxEquipments = maxEquipments;
+        this.maxSubstance = maxSubstance;
+        this.currentField = currentField;
         setPoisoned(false);
     }
 
