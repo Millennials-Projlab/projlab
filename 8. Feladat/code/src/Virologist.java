@@ -59,13 +59,24 @@ public class Virologist {
      * A virológus a paraméterként megadott mezőre lép
      * @param nf új mező
      */
-    public void move(Field nf){
+    public void move(Field nextField) throws IncorrectParameterException {
+        if(nextField == null) {
+            throw new IncorrectParameterException("Field does not exist.");
+        }
+        
+        if(nextField.equals(currentField)) {
+            System.out.println("Virologist is already on that field.");
+            return;
+        }
+        
         ArrayList<Field> FieldNeighbours = currentField.getNeighbours();
-		if(FieldNeighbours.contains(nf)) {
+		if(FieldNeighbours.contains(nextField)) {
             currentField.leave(this);
-
-            nf.enter(this);
+            nextField.enter(this);
+            currentField = nextField;
+            return;
 		}
+        System.out.println(nextField.getName() + " is not a neighbor of " + currentField.getName());
     }
 
     
