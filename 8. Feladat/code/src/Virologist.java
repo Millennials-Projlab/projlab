@@ -54,8 +54,6 @@ public class Virologist {
 
     
     public void produceAgent(String[] args) throws IncorrectParameterException{
-    	
-    	
     	Agent agent;
     	Random rand = new Random();
 		int liveTime = rand.nextInt(100);

@@ -3,6 +3,12 @@
 */
 public class DanceAgent extends Agent{
 	
+	public DanceAgent(Genetics g, int l) {
+		super(g, l);
+		// TODO Auto-generated constructor stub
+	}
+
+
 	/** 
 	 * Elindítja az ágens effektjét a paraméterként megadott virológuson
 	 * @param virologist

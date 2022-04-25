@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
 * Dance osztály
 */
@@ -12,9 +14,18 @@ public class DanceGenetic extends Genetics{
 	
 	/** 
 	 * Elkészíti az ágenst
-	 * @return DanceAgent
+	 * @return AmnesiaAgent
 	 */
-	public DanceAgent generate() {
-		return new DanceAgent();
+	public Agent generate(Virologist v) {
+		Random rand = new Random();
+		int amino = recipe.get(new Amino());
+		int nukleotid = recipe.get(new Nukleotid());
+		int danceaagent = rand.nextInt(100);
+		if ((v.countSubstance(new Amino()) >= amino) && (v.countSubstance(new Nukleotid()) >= nukleotid)) {
+			v.setAmino(new DanceAgent(this, danceaagent));
+			v.setNukleotid(new DanceAgent(this, danceaagent));
+			return new DanceAgent(this, danceaagent);
+		}
+		return null;
 	}
 }

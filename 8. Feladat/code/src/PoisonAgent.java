@@ -2,6 +2,12 @@
 * Poison Agens osztály
 */
 public class PoisonAgent extends Agent{
+	public PoisonAgent(Genetics g, int l) {
+		super(g, l);
+		// TODO Auto-generated constructor stub
+	}
+
+
 	/** 
 	 * Elindítja az ágens effektjét a paraméterként megadott virológuson
 	 * @param virologist

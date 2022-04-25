@@ -46,20 +46,6 @@ public abstract class Agent {
 	}
 	
 	/** 
-	 * @return Substance
-	 */
-	public Substance getSubstance() {
-		return Substance;
-	}
-	
-	/** 
-	 * @param substance
-	 */
-	public void setSubstance(Substance substance) {
-		Substance = substance;
-	}
-	
-	/** 
 	 * @return int
 	 */
 	public int getLivetime() {
