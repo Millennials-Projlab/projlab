@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Random;
 
 /**
 * Virológus osztály
@@ -51,6 +52,29 @@ public class Virologist {
     	currentField = f;
     }
 
+    
+    public void produceAgent(String[] args) throws IncorrectParameterException{
+    	
+    	
+    	Agent agent;
+    	Random rand = new Random();
+		int liveTime = rand.nextInt(100);
+    	
+    	switch(args[0]) {
+    		case "Amnesia":
+    				agent = new AmnesiaAgent(agent.getGenetic(), liveTime);
+    				//hozzaadni a virologushoz
+    			break;
+    }
+    	
+    }
+    
+    public boolean checkIfEnoughGenetics(Agent agent) {
+    	Genetics requiredGenetic = agent.getGenetic();
+    	//???v�gigmegy a genetik�kon �s ha isSame, akkor return false?
+    	return checkGenetics(requiredGenetic);
+    	
+    }
     
     /** 
      * A virológus a paraméterként megadott mezőre lép
@@ -155,7 +179,7 @@ public class Virologist {
                     } 
                 }
 
-                Agent agent = g.generate();
+                Agent agent = g.generate(this);
 
                 addAgent(agent);
 
@@ -201,15 +225,20 @@ public class Virologist {
      */
     public void setNukleotid(Agent agent){
         //TODO
+    	for (int i = 0; i < agent.getGenetic().recipe.get(new Nukleotid()); i++) {
+    		this.Substances.remove(new Nukleotid());
+    	}
     	System.out.println("Number of Nukleotid has been changed.");
     }
 
-    
     /** 
      * @param agent
      */
     public void setAmino(Agent agent){
         //TODO
+    	for (int i = 0; i < agent.getGenetic().recipe.get(new Amino()); i++) {
+    		this.Substances.remove(new Amino());
+    	}
     	System.out.println("Number of Amino has been changed.");
     }
 

@@ -12,7 +12,7 @@ public abstract class Genetics {
 		recipe.put(new Nukleotid(), nukleoCount);
 	}
 
-	public abstract Agent generate();
+	public abstract Agent generate(Virologist v);
 
 	
 	/** 

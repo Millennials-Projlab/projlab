@@ -15,6 +15,7 @@ public class Commandparser {
         commands.put("setNeighbor", Game.getMap()::setNeighbor);
         commands.put("pickupEquipment", (args) -> Game.getVirologist(args[0]).loot(Game.getVirologist(args[0]).getcurrentfield()));
         commands.put("learnGenetic", (args) -> Game.getVirologist(args[0]).loot(Game.getVirologist(args[0]).getcurrentfield()));     
+        commands.put("produceAgent", (args) -> Game.getVirologist(args[0]).produceAgent(args));
     }
 
     public void parse(String command) {

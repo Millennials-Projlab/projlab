@@ -4,8 +4,13 @@
 */
 public abstract class Agent {
 	private Genetics Genetic;
-	private Substance Substance;
 	private int livetime;
+	
+	public Agent(Genetics g, int l) {
+		Genetic = g;
+		livetime = l;
+		
+	}
 	
 	public void Generate() {
 		if (check()) {
