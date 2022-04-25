@@ -48,4 +48,11 @@ public class Laboratory extends Field {
 
 		System.out.println("The virologist has already learned that genetic.");
 	}
+
+	public String toString() {
+		String returnString = super.toString();
+		returnString += "\nGenetic: " + genetic.toString();
+
+		return returnString;
+	}
 }

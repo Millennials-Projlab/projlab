@@ -17,4 +17,8 @@ public class DefenceGenetic extends Genetics{
 	public DefenceAgent generate() {
 		return new DefenceAgent();
 	}
+
+	public String toString() {
+		return "DefenceGenetic";
+	}
 }

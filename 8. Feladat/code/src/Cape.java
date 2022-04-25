@@ -26,4 +26,8 @@ public class Cape extends Equipment {
 	public void Effect(Virologist v) {
 		v.setDefenseRating(v.getDefenseRating() + 1);
 	}
+
+	public String toString() {
+		return "Cape";
+	}
 }

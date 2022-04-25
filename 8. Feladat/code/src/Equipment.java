@@ -7,4 +7,6 @@ public abstract class Equipment {
 	}
 	
 	public abstract void Effect(Virologist v);
+
+	public abstract String toString();
 }

@@ -26,4 +26,8 @@ public class Package extends Equipment {
 	public void Effect(Virologist v) {
 		v.setMaxEquipments(v.getMaxEquipments() + 1);
 	}
+
+	public String toString() {
+		return "Package";		
+	}
 }

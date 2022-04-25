@@ -17,4 +17,8 @@ public class PoisonGenetic extends Genetics {
 	public PoisonAgent generate() {
 		return new PoisonAgent();
 	}
+
+	public String toString() {
+		return "PoisonGenetic";
+	}
 }

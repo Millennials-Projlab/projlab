@@ -52,4 +52,12 @@ public class Shelter extends Field {
 
 		System.out.println("Virologist does not have enough space.");
 	}
+
+	public String toString() {
+		String returnString = super.toString();
+		returnString += "\nEquipment: ";
+		returnString += equipment != null ?	equipment.toString() : "no equipment";
+
+		return returnString;
+	}
 }

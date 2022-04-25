@@ -36,4 +36,6 @@ public abstract class Genetics {
 
     public void PickUp() {	
 	}
+
+	public abstract String toString();
 }
