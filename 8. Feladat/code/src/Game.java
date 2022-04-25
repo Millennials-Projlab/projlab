@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
 * Game osztály
@@ -39,13 +38,14 @@ public final class Game {
 		return Map;
 	}
 	
-	public static Virologist getVirologist(String name) {
+	public static Virologist getVirologist(String name) throws IncorrectParameterException {
 		for(Virologist virologist : Players) {
 			if (virologist.getName().equals(name)) {
 				return virologist;
 			}
 		}
-		return null;
+
+		throw new IncorrectParameterException("Virologist with name " + name + " does not exist.");
 	}
 
 	/** 
@@ -75,6 +75,4 @@ public final class Game {
 			}
 		}
 	}
-	
-	
 }

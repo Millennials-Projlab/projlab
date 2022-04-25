@@ -38,14 +38,18 @@ public class Shelter extends Field {
 	 * @param virologist
 	 */
 	public void lootItem(Virologist virologist) {
+		if(equipment == null) {
+			System.out.println("Shelter does not have an equipment in it.");
+			return;
+		}
+
 		if(virologist.getMaxEquipments() > virologist.getEquipments().size()) {
 			virologist.addEquipment(equipment);
 
 			equipment = null;
+			return;
 		}
-	}
-	
-	
-	
 
+		System.out.println("Virologist does not have enough space.");
+	}
 }

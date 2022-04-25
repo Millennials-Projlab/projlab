@@ -67,14 +67,13 @@ public class Virologist {
 
     
     /** 
-     * A virológus kilootolja a paraméterként megadott mezőt
-     * @param field lootolni kívánt mező
+     * A virológus kilootolja a mezőt, amin áll
      */
-    public void loot(Field field){
-        field.lootItem(this);
+    public void loot(){
+        currentField.lootItem(this);
     }
 
-    
+
     /** 
      * @param enemy
      */
