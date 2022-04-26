@@ -24,4 +24,8 @@ public class AmnesiaAgent extends Agent {
 	public void infect(Virologist target) {
 		target.clearCollectedGenetics();
 	}
+
+	public boolean isSame(String agentName) {
+		return agentName.equals("AmnesiaAgent") ? true : false;
+	}
 }

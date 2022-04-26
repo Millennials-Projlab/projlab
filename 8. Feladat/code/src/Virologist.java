@@ -37,7 +37,6 @@ public class Virologist {
         this.currentField = currentField;
         setPoisoned(false);
     }
-
     
     /** 
      * @return String
@@ -107,6 +106,36 @@ public class Virologist {
             }
     	}
         throw new IncorrectParameterException("Virologist does not have that genetic learned.");
+    }
+
+    /** 
+     * A virológus megtámadja a paraméterként megadott virológust a paraméterként megadott tipusú ágenssel
+     * @param target
+     * @param agentName
+     */
+    public void infect(Virologist target, String agentName) {
+        if(!isTargetTouchable(target)) {
+            return;
+        }
+
+        for(Agent agent : agents) {
+            if(agent.isSame(agentName)) {
+                agents.remove(agent);
+                agent.infect(target);
+                return;
+            }
+        }
+        System.out.println("Virologist does not have that Agent.");
+    }
+
+    private boolean isTargetTouchable(Virologist target) {
+        if(target.getcurrentfield() != currentField) {
+            System.out.println("Target virologist is not on the same field.");
+            return false;
+        }
+        
+        // TODO: egyeb effektek
+        return true;
     }
     
     public void removeMaterials(Genetics genetic) {
@@ -217,11 +246,6 @@ public class Virologist {
         this.genetics.add(genetics);
     }
   
-    public void removeAllGenetics(){
-        genetics.clear();
-    }
-    
-
     public boolean checkSubstanceRequirements(Genetics genetic) {
         HashMap<Substance, Integer> recipe = genetic.getRecipe();
 
@@ -365,21 +389,6 @@ public class Virologist {
      */
     public void setDefenseRating(int dr) {
         defenseRating = dr;
-    }
-
-    
-    /** 
-     * A virológus megtámadja a paraméterként megadott virológust a paraméterként megadott tipusú ágenssel
-     * @param target
-     * @param agent
-     */
-    public void attack(Virologist target, Agent agent) {
-        for(Agent a : agents) {
-            if(a.isSame(agent)) {
-                a.infect(target);
-                return;
-            }
-        }
     }
 
     public void clearCollectedGenetics() {

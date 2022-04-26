@@ -22,6 +22,7 @@ public class Commandparser {
         commands.put("produceAgent", (args) -> Game.getVirologist(args[0]).produceAgent(args));
         commands.put("startTimer", Game::startTimer);
         commands.put("stopTimer", Game::stopTimer);
+        commands.put("infect", (args) -> Game.getVirologist(args[0]).infect(Game.getVirologist(args[1]), args[2]));
     }
 
     public void parse(String command) {

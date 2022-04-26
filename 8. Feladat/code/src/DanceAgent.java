@@ -25,4 +25,8 @@ public class DanceAgent extends Agent{
 	public void infect(Virologist target) {
 		target.dance();
 	}
+
+	public boolean isSame(String agentName) {
+		return agentName.equals("DanceAgent") ? true : false;
+	}
 }

@@ -25,4 +25,8 @@ public class PoisonAgent extends Agent{
 	public void infect(Virologist target) {
 		target.setEffectFlag(5);
 	}
+
+	public boolean isSame(String agentName) {
+		return agentName.equals("PoisonAgent") ? true : false;
+	}
 }
