@@ -144,6 +144,11 @@ public class Virologist {
                 return;
             }
         }
+
+        if(agentName.equals("BearAgent") && effectFlag == 2) {
+            new BearAgent().infect(target);
+        }
+
         System.out.println("Virologist does not have that Agent.");
     }
 
@@ -163,6 +168,15 @@ public class Virologist {
         
         // TODO: egyeb effektek
         return true;
+    }
+
+    public void axeHit() {
+        for(Agent agent : agents) {
+            if(agent.isSame("BearAgent")) { 
+                agent.endEffect(this);
+                return;
+            }
+        }
     }
     
     public void removeMaterials(Genetics genetic) {

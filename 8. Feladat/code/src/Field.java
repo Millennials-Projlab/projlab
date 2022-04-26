@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import javax.security.auth.x500.X500Principal;
+
 /**
 * Field osztály
 */
@@ -113,4 +115,10 @@ public class Field {
 		return returnString;
 	}
 	
+	public boolean isSame(Field field) {
+		if(this.getClass() == field.getClass()) {
+			return true;
+		}
+		return false;
+	}
 }

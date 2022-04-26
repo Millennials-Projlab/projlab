@@ -89,6 +89,10 @@ public final class Game {
 	public static void addPlayer(Virologist v) {
 		players.add(v);
 	}
+
+	public static void removePlayer(Virologist v) {
+		players.remove(v);
+	}
 	
 	/** 
 	 * Tick-el a jatek, ha valamelyik virologus megtanulta az osszes genetikai kodot

@@ -75,4 +75,8 @@ public class Warehouse extends Field{
 			}
 		}
 	}
+
+	public void clear() {
+		substances.clear();
+	}
 }
