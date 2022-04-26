@@ -18,6 +18,13 @@ public abstract class Agent {
 			
 		}
 	}
+
+	public void tick(Virologist virologist) {
+		livetime -= 1;
+		if(livetime == 0) {
+			virologist.removeAgent(this);
+		}
+	}
 	
 	public abstract void Effect(Virologist virologist);
 	

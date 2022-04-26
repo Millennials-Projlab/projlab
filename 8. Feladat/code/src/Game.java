@@ -8,6 +8,7 @@ public final class Game {
 	public static boolean random = false;
 	private static Map Map = new Map();
 	private static ArrayList<Virologist> players = new ArrayList<Virologist>();
+	private static Timer timer = new Timer();
 
 	public static void toggleRandom() {
 		if(random) {
@@ -26,10 +27,35 @@ public final class Game {
 	public static void Start() {
 		Map = new Map();
 		players = new ArrayList<Virologist>();
+		timer = new Timer();
+		timer.start();
 	}
 	
 	public static void End() {
 		System.out.println("Game has ended.");
+	}
+
+	public static void startTimer(String[] args) {
+		if(timer.isRunning()) {
+			System.out.println("Timer is already running.");
+			return;
+		}
+		timer = new Timer();
+		timer.start();
+	}
+
+	public static void stopTimer(String[] args) {
+		if(!timer.isRunning()) {
+			System.out.println("Timer is already stopped.");
+			return;
+		}
+		timer.interrupt();
+	}
+
+	public static void tick() {
+		for(Virologist virologist : players) {
+			virologist.tick();
+		}
 	}
 
 	/** 

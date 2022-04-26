@@ -1,28 +1,23 @@
-
-public class Timer {
-	private boolean timer = true;
-	private Timer timert = new Timer();
+public class Timer extends Thread {
+	private boolean running = false;
 	
-	public void Tick() {
-		timert.Tick();
-		System.out.println("Time is ticking.");
-	}
-	
-	public void Start() {
-		timert.Start();
-		System.out.println("Timer has started");
-	}
-	
-	public void Stop() {
-		timert.Stop();
-		System.out.println("Timer has stopped");
+	public void run() {
+		running = true;
+		tick();
 	}
 
-	public boolean isTimer() {
-		return timer;
+	public void tick() {
+		while(true) {
+			Game.tick();
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				running = false;
+			}
+		}
 	}
 
-	public void setTimer(boolean timer) {
-		this.timer = timer;
+	public boolean isRunning() {
+		return running;
 	}
 }

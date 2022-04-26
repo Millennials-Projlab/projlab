@@ -54,6 +54,11 @@ public class Virologist {
     	currentField = f;
     }
 
+    public void tick() {
+        for(Agent agent : agents) {
+            agent.tick(this);
+        }
+    }
     
     public void produceAgent(String[] args) throws IncorrectParameterException {
         Genetics genetic;
