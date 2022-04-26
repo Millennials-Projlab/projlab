@@ -1,0 +1,53 @@
+	fieldInfo
+Ellenőrzi a mezők létrehozását és szomszédok beállítását.
+----
+fieldInfo field	
+---
+
+
+	loot
+A mezőn lévő kód felvételét teszteli.
+Létrehoz egy v1 nevű virológust.
+Rálépteti a dance mezőre, felszedi a dance kódot
+ és ellenőrzi ezeket a v1 adatainak kilistázásával.
+----
+createVirologist v1 3 3 warehouse
+move v1 dance
+lootField v1
+virologistInfo v1
+---
+
+
+	move virologist
+A virológus mozgását teszteli.
+Létrehoz egy virológust v1 néven, 
+3 max felszerelési számmal, 3 felvehető anyagszámmal 
+és a field mezőre rakja.
+Majd a v1 virológust a gloves mezőre lépteti.
+Ellenőrzi, hogy a v1 virológus valóban rálépett a megadott mezőre.
+----
+createVirologist v1 3 3 field
+move v1 gloves
+virologistInfo v1
+---
+
+
+	produceAgent
+Az ágens létrehozását teszteli.
+Amnesia ágenst hoz létre és ellenőrzi a virológus adatainak kiírásával.
+----
+createVirologist v1 3 3 field
+produceAgent v1 AmnesiaAgent
+virologistInfo v1
+---
+
+
+	infect
+Teszteli a megfertőzést. 
+v1 megfertőzi v2-t a poison ágenssel.
+----
+createVirologist v1 3 3 field
+createVirologist v2 3 3 poison
+move v2 field
+infect v1 v2 PoisonAgent
+---
