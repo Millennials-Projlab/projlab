@@ -5,10 +5,10 @@
 public class Amino extends Substance {
 	/**
 	* Felvenni az amino-t
-	* @param v
+	* @param virologist
 	*/
-    public void PickUp(Virologist v) {
-    	v.addSubstance(this);
+    public void pickUp(Virologist virologist) throws MaximumSubstanceException {
+    	virologist.addSubstance(this);
 		System.out.println("Amino has been picked up.");
 	}
 }

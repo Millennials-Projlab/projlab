@@ -4,10 +4,10 @@
 public class Nukleotid extends Substance {
 	/**
 	* Felvenni az nukleotido-t
-	* @param v
+	* @param virologist
 	*/
-    public void PickUp(Virologist v) {
-    	v.addSubstance(this);
+    public void pickUp(Virologist virologist) throws MaximumSubstanceException {
+    	virologist.addSubstance(this);
 		System.out.println("Nukleotid has been picked up.");
 	}
 }

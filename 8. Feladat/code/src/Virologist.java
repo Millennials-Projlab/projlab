@@ -65,10 +65,10 @@ public class Virologist {
 		    liveTime = rand.nextInt(100);
         }
         else {
-            liveTime = Integer.parseInt(args[1]);
+            liveTime = Integer.parseInt(args[2]);
         }
     	
-    	switch(args[0]) {
+    	switch(args[1]) {
     		case "AmnesiaAgent":
                 genetic = getLearnedGenetic(new AmnesiaGenetic());
     			break;
@@ -176,7 +176,10 @@ public class Virologist {
     /** 
      * @param substance
      */
-    public void addSubstance(Substance substance){
+    public void addSubstance(Substance substance) throws MaximumSubstanceException {
+        if(maxSubstance == substances.size()) {
+            throw new MaximumSubstanceException("");
+        }
         substances.add(substance);
     }
 
@@ -250,10 +253,10 @@ public class Virologist {
     public boolean checkGenetics(Genetics genetic) {
     	for(Genetics g : genetics) {
             if(g.isSame(genetic)) {
-            	return false;
+            	return true;
             }
     	}
-         return true;
+         return false;
     }
 	
     /** 
@@ -361,7 +364,7 @@ public class Virologist {
 
     
     /** 
-     * A virolügus megtámadja a paraméterként megadott virológust a paraméterként megadott tipusú ágenssel
+     * A virológus megtámadja a paraméterként megadott virológust a paraméterként megadott tipusú ágenssel
      * @param target
      * @param agent
      */
@@ -404,6 +407,12 @@ public class Virologist {
         String returnString = "";
         returnString += "Name: " + name + "\n";
         returnString += "Field: " + currentField.getName() + "\n";
+
+        returnString += "Agents: ";
+        for(Agent agent : agents) {
+            returnString += agent.toString() + " ";
+        }
+        returnString += "\n";
 
         returnString += "Equipments: ";
         for(Equipment equipment : equipments) {

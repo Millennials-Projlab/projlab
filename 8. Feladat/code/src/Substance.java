@@ -13,5 +13,5 @@ public abstract class Substance {
 		return false;
 	}
 
-    public void Pickup(){}
+    public void pickUp(Virologist virologist) throws MaximumSubstanceException {}
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 /**
 * Warehouse osztály
 */
@@ -60,5 +61,18 @@ public class Warehouse extends Field{
 		returnString += "Nukleotid: " + countSubstance(new Nukleotid());
 
 		return returnString;
+	}
+
+	public void lootItem(Virologist virologist) {
+		Iterator<Substance> iter = substances.iterator();
+		while(iter.hasNext()) {
+			Substance substance = iter.next();
+			try {
+				substance.pickUp(virologist);
+				iter.remove();
+			} catch(MaximumSubstanceException e) {
+				return;
+			}
+		}
 	}
 }
