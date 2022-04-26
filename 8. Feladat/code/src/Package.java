@@ -13,11 +13,11 @@ public class Package extends Equipment {
 	 * @param virologist
 	 */
 	public void startEffect(Virologist virologist) {
-		virologist.setMaxEquipments(virologist.getMaxEquipments() + 5);
+		virologist.setMaxSubstance(virologist.getMaxSubstance() + 5);
 	}
 
 	public void endEffect(Virologist virologist) {
-		virologist.setMaxEquipments(virologist.getMaxEquipments() - 5);
+		virologist.setMaxSubstance(virologist.getMaxSubstance() - 5);
 	}
 
 	public String toString() {

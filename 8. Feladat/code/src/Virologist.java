@@ -383,19 +383,8 @@ public class Virologist {
 	}
 
 	
-    /** 
-     * @return int
-     */
-    public int getMaxEquipments() {
-		return maxEquipments;
-	}
-
-	
-    /** 
-     * @param maxEquipments
-     */
-    public void setMaxEquipments(int maxEquipments) {
-		this.maxEquipments = maxEquipments;
+    public void setMaxSubstance(int maxSubstance) {
+        this.maxSubstance = maxSubstance;
     }
 	
     /** 
@@ -403,6 +392,10 @@ public class Virologist {
      */
     public int getMaxSubstance() {
 		return maxSubstance;
+    }
+
+    public int getMaxEquipments() {
+        return maxEquipments;
     }
 
     
