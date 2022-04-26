@@ -1,15 +1,16 @@
+import java.util.Iterator;
 
 /**
 * Agens osztály
 */
 public abstract class Agent {
-	private Genetics Genetic;
+	private Genetics genetic;
 	private int livetime;
+	protected boolean effect = false;
 	
 	public Agent(Genetics g, int l) {
-		Genetic = g;
+		genetic = g;
 		livetime = l;
-		
 	}
 	
 	public void Generate() {
@@ -19,15 +20,21 @@ public abstract class Agent {
 		}
 	}
 
-	public void tick(Virologist virologist) {
+	public void tick(Virologist virologist, Iterator<Agent> iter) {
 		livetime -= 1;
 		if(livetime == 0) {
-			virologist.removeAgent(this);
+			if(effect) {
+				iter.remove();
+				endEffect(virologist);
+				return;
+			}
+			iter.remove();
 		}
 	}
 	
-	public abstract void Effect(Virologist virologist);
+	public void startEffect(Virologist virologist) {}
 	
+	public void endEffect(Virologist virologist) {}
 	
 	/**
 	 * @return boolean
@@ -42,14 +49,14 @@ public abstract class Agent {
 	 * @return Genetics
 	 */
 	public Genetics getGenetic() {
-		return Genetic;
+		return genetic;
 	}
 	
 	/** 
 	 * @param genetic
 	 */
 	public void setGenetic(Genetics genetic) {
-		Genetic = genetic;
+		this.genetic = genetic;
 	}
 	
 	/** 

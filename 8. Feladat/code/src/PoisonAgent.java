@@ -13,7 +13,6 @@ public class PoisonAgent extends Agent{
 	 * @param virologist
 	 */
 	public void Effect(Virologist virologist) {
-		virologist.setPoisoned(true);
 		System.out.println("Poison Agent has its effect on  "+virologist.getName()+".");
 	}
 

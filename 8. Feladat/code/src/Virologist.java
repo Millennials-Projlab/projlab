@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -8,6 +9,7 @@ import java.util.Random;
 public class Virologist {
     private ArrayList<Substance> substances;
     private ArrayList<Agent> agents;
+    private ArrayList<Agent> effects;
     private ArrayList<Equipment> equipments;
     private ArrayList<Genetics> genetics;
 
@@ -16,8 +18,14 @@ public class Virologist {
     private int maxSubstance;
     private Field currentField;
     private int defenseRating;
+
+    /**
+     * 0: no effect
+     * 1: dance/poisoned
+     * 2: bear dance
+     * 3: immunity (not to be confused with Cape!)
+    */
     private int effectFlag;
-    private boolean poisoned;
 
 	/**
 	 * virologus konstruktor
@@ -29,13 +37,13 @@ public class Virologist {
     public Virologist(String name, int maxEquipments, int maxSubstance, Field currentField){
         substances = new ArrayList<Substance>();
         agents = new ArrayList<Agent>();
+        effects = new ArrayList<Agent>();
         equipments = new ArrayList<Equipment>();
         genetics = new ArrayList<Genetics>();
         this.name = name;
         this.maxEquipments = maxEquipments;
         this.maxSubstance = maxSubstance;
         this.currentField = currentField;
-        setPoisoned(false);
     }
     
     /** 
@@ -45,7 +53,7 @@ public class Virologist {
         return name;
     }
     
-    public Field getcurrentfield() {
+    public Field getCurrentField() {
     	return currentField;
     }
     
@@ -54,9 +62,17 @@ public class Virologist {
     }
 
     public void tick() {
-        for(Agent agent : agents) {
-            agent.tick(this);
-        }
+        Iterator<Agent> agentIter = agents.iterator();
+		while(agentIter.hasNext()) {
+			Agent agent = agentIter.next();
+			agent.tick(this, agentIter);	
+		}
+
+        Iterator<Agent> effectIter = effects.iterator();
+		while(effectIter.hasNext()) {
+			Agent effect = effectIter.next();
+			effect.tick(this, effectIter);	
+		}
     }
     
     public void produceAgent(String[] args) throws IncorrectParameterException {
@@ -114,6 +130,9 @@ public class Virologist {
      * @param agentName
      */
     public void infect(Virologist target, String agentName) {
+        if(isVirologistPoisoned()) {
+            return;
+        }
         if(!isTargetTouchable(target)) {
             return;
         }
@@ -128,8 +147,16 @@ public class Virologist {
         System.out.println("Virologist does not have that Agent.");
     }
 
+    private boolean isVirologistPoisoned() {
+        if(effectFlag < 0 && effectFlag < 3) {
+            System.out.println("Virologist is poisoned and can't interact right now.");
+            return true;
+        }
+        return false;
+    }
+
     private boolean isTargetTouchable(Virologist target) {
-        if(target.getcurrentfield() != currentField) {
+        if(target.getCurrentField() != currentField) {
             System.out.println("Target virologist is not on the same field.");
             return false;
         }
@@ -155,6 +182,10 @@ public class Virologist {
         if(nextField == null) {
             throw new IncorrectParameterException("Field does not exist.");
         }
+
+        if(isVirologistPoisoned()) {
+            return;
+        }
         
         if(nextField.equals(currentField)) {
             System.out.println("Virologist is already on that field.");
@@ -176,6 +207,9 @@ public class Virologist {
      * A virológus kilootolja a mezőt, amin áll
      */
     public void loot(){
+        if(isVirologistPoisoned()) {
+            return;
+        }
         currentField.lootItem(this);
     }
 
@@ -407,15 +441,27 @@ public class Virologist {
         effectFlag = flag;
     }
 
+    public int getEffectFlag() {
+        return effectFlag;
+    }
 
-	public boolean isPoisoned() {
-		return poisoned;
-	}
+    public void addEffect(Agent effect) {
+        effects.add(effect);
+    }
 
+    public void removeEffect(Agent effect) {
+        effects.remove(effect);
+    }
 
-	public void setPoisoned(boolean poisoned) {
-		this.poisoned = poisoned;
-	}
+    // true, ha van még bénító effect a virológuson
+    public boolean checkPoisonEffects() {
+        for(Agent effect : effects) {
+            if(effect.isSame("DanceAgent") || effect.isSame("PoisonAgent")) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public String toString() {
         String returnString = "";

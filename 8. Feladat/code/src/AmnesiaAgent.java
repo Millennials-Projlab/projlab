@@ -2,10 +2,8 @@
 * Amnesia Agens osztály
 */
 public class AmnesiaAgent extends Agent {
-	//int liveTime;
 	public AmnesiaAgent(Genetics g, int l) {
 		super(g, l);
-		//liveTime = 
 	}
 	
 	/** 
@@ -22,7 +20,10 @@ public class AmnesiaAgent extends Agent {
 	 * @param target
 	 */
 	public void infect(Virologist target) {
-		target.clearCollectedGenetics();
+		if(target.getEffectFlag() < 3) {
+			target.clearCollectedGenetics();
+		}
+		System.out.println("Target is immune and can not be infected.");
 	}
 
 	public boolean isSame(String agentName) {

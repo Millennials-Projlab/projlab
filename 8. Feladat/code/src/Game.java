@@ -25,9 +25,9 @@ public final class Game {
 	 * Elinditja a jatekot
 	 */
 	public static void Start() {
-		Map = new Map();
-		players = new ArrayList<Virologist>();
-		timer = new Timer();
+		//Map = new Map();
+		//players = new ArrayList<Virologist>();
+		//timer = new Timer();
 		timer.start();
 	}
 	
