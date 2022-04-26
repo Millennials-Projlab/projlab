@@ -9,22 +9,15 @@ public class Gloves extends Equipment {
 	}
 	
 	/** 
-	 * A virologus felveszi a felszerelest a mezorol
-	 * @param s
-	 * @param v
-	 */
-	public void PickUp(Shelter s, Virologist v) {
-		s.lootItem(v);
-		s.Clear();
-		System.out.print("Gloves has been picked up");
-	}
-	
-	/** 
 	 * Elvégzi a felszerelés hatását
-	 * @param v
+	 * @param virologist
 	 */
-	public void Effect(Virologist v) {
-		v.setEquipmentflag(1);
+	public void startEffect(Virologist virologist) {
+		
+	}
+
+	public void endEffect(Virologist virologist) {
+		
 	}
 
 	public String toString() {

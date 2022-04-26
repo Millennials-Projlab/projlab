@@ -250,8 +250,7 @@ public class Virologist {
      */
     public void addEquipment(Equipment equipment){
         equipments.add(equipment);
-
-        equipment.Effect(this);
+        equipment.startEffect(this);
     }
 
     

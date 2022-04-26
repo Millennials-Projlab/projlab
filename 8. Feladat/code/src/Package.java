@@ -5,26 +5,19 @@ public class Package extends Equipment {
 	/** 
 	 * Konstruktor
 	 */
-	public Package() {
-	}
+	public Package() {}
 	
-	/** 
-	 * A virologus felveszi a felszerelest a mezorol
-	 * @param s
-	 * @param v
-	 */
-	public void PickUp(Shelter s, Virologist v) {
-		s.lootItem(v);
-		s.Clear();
-		System.out.print("Package has been picked up");
-	}
-	
+
 	/** 
 	 * Elvégzi a felszerelés hatását
-	 * @param v
+	 * @param virologist
 	 */
-	public void Effect(Virologist v) {
-		v.setMaxEquipments(v.getMaxEquipments() + 1);
+	public void startEffect(Virologist virologist) {
+		virologist.setMaxEquipments(virologist.getMaxEquipments() + 5);
+	}
+
+	public void endEffect(Virologist virologist) {
+		virologist.setMaxEquipments(virologist.getMaxEquipments() - 5);
 	}
 
 	public String toString() {

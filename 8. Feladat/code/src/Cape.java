@@ -9,22 +9,15 @@ public class Cape extends Equipment {
 	}
 	
 	/** 
-	 * A virologus felveszi a felszerelest a mezorol
-	 * @param s
-	 * @param v
+	 * Elvégzi a felszerelés hatását
+	 * @param virologist
 	 */
-	public void PickUp(Shelter s, Virologist v) {
-		s.lootItem(v);
-		s.Clear();
-		System.out.print("Cape has been picked up");
+	public void startEffect(Virologist virologist) {
+		
 	}
 
-	/** 
-	 * Elvégzi a felszerelés hatását
-	 * @param v
-	 */
-	public void Effect(Virologist v) {
-		v.setDefenseRating(v.getDefenseRating() + 1);
+	public void endEffect(Virologist virologist) {
+		
 	}
 
 	public String toString() {
