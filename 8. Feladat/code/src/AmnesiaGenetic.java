@@ -4,11 +4,14 @@ import java.util.Random;
 * Amnesia osztály
 */
 public class AmnesiaGenetic extends Genetics {
+	public AmnesiaGenetic() {
+    }
+
     public AmnesiaGenetic(int aminoCount, int nukleoCount) {
 		super(aminoCount, nukleoCount);
-	}
+	}	
 
-	public void PickUp() {
+    public void PickUp() {
 		System.out.println("Amnesia has been learned.");
 	}
 		
@@ -16,17 +19,13 @@ public class AmnesiaGenetic extends Genetics {
 	 * Elkészíti az ágenst
 	 * @return AmnesiaAgent
 	 */
-	public Agent generate(Virologist v) {
-		Random rand = new Random();
-		int amino = recipe.get(new Amino());
-		int nukleotid = recipe.get(new Nukleotid());
-		int amnesiaagent = rand.nextInt(100);
-		if ((v.countSubstance(new Amino()) >= amino) && (v.countSubstance(new Nukleotid()) >= nukleotid)) {
-			v.setAmino(new AmnesiaAgent(this, amnesiaagent));
-			v.setNukleotid(new AmnesiaAgent(this, amnesiaagent));
-			return new AmnesiaAgent(this, amnesiaagent);
+	public Agent generate(Virologist virologist, int liveTime) {
+		if(!virologist.checkSubstanceRequirements(this)) {
+			System.out.println("Virologist does not have enough substances to make this Agent.");
+			return null;
 		}
-		return null;
+		virologist.removeMaterials(this);
+		return new AmnesiaAgent(this, liveTime);
 	}
 
 	public String toString() {

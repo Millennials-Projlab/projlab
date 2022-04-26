@@ -4,6 +4,10 @@ import java.util.Random;
 * Dance osztály
 */
 public class DanceGenetic extends Genetics{
+	public DanceGenetic() {
+
+	}
+	
     public DanceGenetic(int aminoCount, int nukleoCount) {
 		super(aminoCount, nukleoCount);
 	}
@@ -16,17 +20,13 @@ public class DanceGenetic extends Genetics{
 	 * Elkészíti az ágenst
 	 * @return AmnesiaAgent
 	 */
-	public Agent generate(Virologist v) {
-		Random rand = new Random();
-		int amino = recipe.get(new Amino());
-		int nukleotid = recipe.get(new Nukleotid());
-		int danceaagent = rand.nextInt(100);
-		if ((v.countSubstance(new Amino()) >= amino) && (v.countSubstance(new Nukleotid()) >= nukleotid)) {
-			v.setAmino(new DanceAgent(this, danceaagent));
-			v.setNukleotid(new DanceAgent(this, danceaagent));
-			return new DanceAgent(this, danceaagent);
+	public Agent generate(Virologist virologist, int liveTime) {
+		if(!virologist.checkSubstanceRequirements(this)) {
+			System.out.println("Virologist does not have enough substances to make this Agent.");
+			return null;
 		}
-		return null;
+		virologist.removeMaterials(this);
+		return new DanceAgent(this, liveTime);
 	}
 
 	public String toString() {

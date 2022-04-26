@@ -4,6 +4,10 @@ import java.util.Random;
 * Defence osztály
 */
 public class DefenceGenetic extends Genetics{
+	public DefenceGenetic() {
+
+	}
+	
     public DefenceGenetic(int aminoCount, int nukleoCount) {
 		super(aminoCount, nukleoCount);
 	}
@@ -16,17 +20,13 @@ public class DefenceGenetic extends Genetics{
 	 * Elkészíti az ágenst
 	 * @return AmnesiaAgent
 	 */
-	public Agent generate(Virologist v) {
-		Random rand = new Random();
-		int amino = recipe.get(new Amino());
-		int nukleotid = recipe.get(new Nukleotid());
-		int defenceaagent = rand.nextInt(100);
-		if ((v.countSubstance(new Amino()) >= amino) && (v.countSubstance(new Nukleotid()) >= nukleotid)) {
-			v.setAmino(new DefenceAgent(this, defenceaagent));
-			v.setNukleotid(new DefenceAgent(this, defenceaagent));
-			return new DefenceAgent(this, defenceaagent);
+	public Agent generate(Virologist virologist, int liveTime) {
+		if(!virologist.checkSubstanceRequirements(this)) {
+			System.out.println("Virologist does not have enough substances to make this Agent.");
+			return null;
 		}
-		return null;
+		virologist.removeMaterials(this);
+		return new DefenceAgent(this, liveTime);
 	}
 
 	public String toString() {

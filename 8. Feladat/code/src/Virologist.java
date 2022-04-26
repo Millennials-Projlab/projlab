@@ -55,43 +55,62 @@ public class Virologist {
     }
 
     
-    public void produceAgent(String[] args) throws IncorrectParameterException{
+    public void produceAgent(String[] args) throws IncorrectParameterException {
+        Genetics genetic;
     	Agent agent;
-    	Random rand = new Random();
-		int liveTime = rand.nextInt(100);
+        int liveTime;
+
+        if(Game.random) {
+            Random rand = new Random();
+		    liveTime = rand.nextInt(100);
+        }
+        else {
+            liveTime = Integer.parseInt(args[1]);
+        }
     	
     	switch(args[0]) {
-    		case "Amnesia":
-    			agent = new AmnesiaAgent(agent.getGenetic(), liveTime);
-    			this.addAgent(agent);
+    		case "AmnesiaAgent":
+                genetic = getLearnedGenetic(new AmnesiaGenetic());
     			break;
     			
     		case "DanceAgent":
-    			agent = new DanceAgent(agent.getGenetic(), liveTime);
-    			this.addAgent(agent);
+                genetic = getLearnedGenetic(new DanceGenetic());
     			break;
     			
     		case "DefenceAgent":
-    			agent = new DefenceAgent(agent.getGenetic(), liveTime);
-    			this.addAgent(agent);
+                genetic = getLearnedGenetic(new DefenceGenetic());
     			break;
     			
     		case "PoisonAgent":
-    			agent = new PoisonAgent(agent.getGenetic(), liveTime);
-    			this.addAgent(agent);
+                genetic = getLearnedGenetic(new PoisonGenetic());
     			break;
     			
     		default:
-    			break;
+                throw new IncorrectParameterException("This type of genetic does not exist.");
     	}
+
+        agent = genetic.generate(this, liveTime);
+        if(agent != null) {
+            this.addAgent(agent);
+        }
+    }
+
+    private Genetics getLearnedGenetic(Genetics pgenetic) throws IncorrectParameterException {
+        for(Genetics genetic : genetics) {
+            if(pgenetic.isSame(genetic)) {
+            	return genetic;
+            }
+    	}
+        throw new IncorrectParameterException("Virologist does not have that genetic learned.");
     }
     
-    
-    public boolean checkIfEnoughGenetics(Agent agent) {
-    	Genetics requiredGenetic = agent.getGenetic();
-    	//???végigmegy a genetikákon és ha isSame, akkor return false?
-    	return checkGenetics(requiredGenetic);
-    	
+    public void removeMaterials(Genetics genetic) {
+        HashMap<Substance, Integer> recipe = genetic.getRecipe();
+        for(Substance key : recipe.keySet()) {
+            for(int i = 0; i < recipe.get(key); i++) {
+                removeSubstance(key);
+            }
+        }
     }
     
     /** 
@@ -194,26 +213,16 @@ public class Virologist {
         genetics.clear();
     }
     
-    /** 
-     * @param genetic
-     */
-    public void generateAgent(Genetics genetic){
-        for(Genetics g : genetics) {
-            if(g.isSame(genetic)) {
-                HashMap<Substance, Integer> recipe = g.getRecipe();
-                for(Substance key : recipe.keySet()) {
-                    if(countSubstance(key) < 1) {
-                        return;
-                    } 
-                }
 
-                Agent agent = g.generate(this);
+    public boolean checkSubstanceRequirements(Genetics genetic) {
+        HashMap<Substance, Integer> recipe = genetic.getRecipe();
 
-                addAgent(agent);
-
-                break;
+        for(Substance key : recipe.keySet()) {
+            if(countSubstance(key) < recipe.get(key)) {
+                return false;
             }
-        }
+        } 
+        return true;
     }
 
     
@@ -246,30 +255,6 @@ public class Virologist {
     	}
          return true;
     }
-
-    
-    /** 
-     * @param agent
-     */
-    public void setNukleotid(Agent agent){
-        //TODO
-    	for (int i = 0; i < agent.getGenetic().recipe.get(new Nukleotid()); i++) {
-    		this.Substances.remove(new Nukleotid());
-    	}
-    	System.out.println("Number of Nukleotid has been changed.");
-    }
-
-    /** 
-     * @param agent
-     */
-    public void setAmino(Agent agent){
-        //TODO
-    	for (int i = 0; i < agent.getGenetic().recipe.get(new Amino()); i++) {
-    		this.Substances.remove(new Amino());
-    	}
-    	System.out.println("Number of Amino has been changed.");
-    }
-
 	
     /** 
      * @return ArrayList<Substance>

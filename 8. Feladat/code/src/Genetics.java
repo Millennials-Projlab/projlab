@@ -6,13 +6,17 @@ import java.util.HashMap;
 public abstract class Genetics {
 	HashMap<Substance, Integer> recipe;
 
+	public Genetics() {
+		recipe = null;
+	}
+
 	public Genetics(int aminoCount, int nukleoCount) {
 		recipe = new HashMap<Substance, Integer>();
 		recipe.put(new Amino(), aminoCount);
 		recipe.put(new Nukleotid(), nukleoCount);
 	}
 
-	public abstract Agent generate(Virologist v);
+	public abstract Agent generate(Virologist virologist, int liveTime);
 
 	
 	/** 

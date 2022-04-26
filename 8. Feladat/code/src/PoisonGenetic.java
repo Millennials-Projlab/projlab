@@ -4,6 +4,10 @@ import java.util.Random;
 * poison osztaly
 */
 public class PoisonGenetic extends Genetics {
+	public PoisonGenetic() {
+
+	}
+	
     public PoisonGenetic(int aminoCount, int nukleoCount) {
 		super(aminoCount, nukleoCount);
 	}
@@ -16,17 +20,13 @@ public class PoisonGenetic extends Genetics {
 	 * Elkészíti az ágenst
 	 * @return AmnesiaAgent
 	 */
-	public Agent generate(Virologist v) {
-		Random rand = new Random();
-		int amino = recipe.get(new Amino());
-		int nukleotid = recipe.get(new Nukleotid());
-		int poisonagent = rand.nextInt(100);
-		if ((v.countSubstance(new Amino()) >= amino) && (v.countSubstance(new Nukleotid()) >= nukleotid)) {
-			v.setAmino(new PoisonAgent(this, poisonagent));
-			v.setNukleotid(new PoisonAgent(this, poisonagent));
-			return new PoisonAgent(this, poisonagent);
+	public Agent generate(Virologist virologist, int liveTime) {
+		if(!virologist.checkSubstanceRequirements(this)) {
+			System.out.println("Virologist does not have enough substances to make this Agent.");
+			return null;
 		}
-		return null;
+		virologist.removeMaterials(this);
+		return new PoisonAgent(this, liveTime);
 	}
 
 	public String toString() {
