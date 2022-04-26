@@ -26,4 +26,8 @@ public class Axe extends Equipment {
 	public void Effect(Virologist v) {
 		
 	}
+
+	public String toString() {
+		return "Axe";
+	}
 }

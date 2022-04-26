@@ -94,5 +94,23 @@ public class Field {
 	}
 	
 	public void lootItem(Virologist virologist) {}
+
+	public String toString() {
+		String returnString = "";
+		returnString += "Name: " + name + "\n";
+		returnString += "Type: " + this.getClass().getSimpleName() + "\n";
+		returnString += "Neighbors: ";
+		for(int i = 0; i < neighbours.size(); i++) {
+			returnString += neighbours.get(i).getName() + " ";
+		}
+		returnString += "\n";
+
+		returnString += "Virologists: ";
+		for(int i = 0; i < virologists.size(); i++) {
+			returnString += virologists.get(i).getName() + " ";
+		}
+
+		return returnString;
+	}
 	
 }

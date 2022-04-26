@@ -17,4 +17,8 @@ public class DanceGenetic extends Genetics{
 	public DanceAgent generate() {
 		return new DanceAgent();
 	}
+
+	public String toString() {
+		return "DanceGenetic";
+	}
 }

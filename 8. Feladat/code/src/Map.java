@@ -17,10 +17,6 @@ public class Map {
 	public ArrayList<Field> getFields() {
 		return Fields;
 	}
-	
-	
-	
-	
 
 	public void createField(String[] args) throws IncorrectParameterException {
 		checkFieldExistence(args[0]);

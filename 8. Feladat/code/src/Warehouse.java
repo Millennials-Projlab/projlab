@@ -39,4 +39,26 @@ public class Warehouse extends Field{
 	public void setSubstances(ArrayList<Substance> substances) {
 		substances = substances;
 	}   
+
+	/** 
+     * Megszámolja, hogy mennyi van a paraméterként megadott anyagból
+     * @param target
+     * @return int
+     */
+    public int countSubstance(Substance target) {
+        int substanceCount = 0;
+        for(Substance substance : substances) {
+            if(substance.isSame(target))
+                substanceCount++;
+        }
+        return substanceCount;
+    }
+
+	public String toString() {
+		String returnString = super.toString();
+		returnString += "\nAmino: " + countSubstance(new Amino()) + "\n";
+		returnString += "Nukleotid: " + countSubstance(new Nukleotid());
+
+		return returnString;
+	}
 }

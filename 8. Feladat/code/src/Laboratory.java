@@ -4,7 +4,6 @@ import java.util.ArrayList;
 * Laboratory osztály
 */
 public class Laboratory extends Field {
-	private String name;
 	private Genetics genetic;
 	
 	public Laboratory(String name) {
@@ -13,10 +12,10 @@ public class Laboratory extends Field {
 
 	/** 
 	 * Elhelyezi a genetikai kódot a mezőn
-	 * @param Genetic
+	 * @param genetic
 	 */
-	public void place(Genetics Genetic) {
-		this.genetic = Genetic;
+	public void place(Genetics genetic) {
+		this.genetic = genetic;
 	}
 
 	
@@ -29,10 +28,10 @@ public class Laboratory extends Field {
 
 	
 	/** 
-	 * @param Genetic2
+	 * @param genetic
 	 */
-	public void setGenetic(Genetics Genetic2) {
-		genetic = Genetic2;
+	public void setGenetic(Genetics genetic) {
+		this.genetic = genetic;
 	}
     
 	
@@ -41,11 +40,19 @@ public class Laboratory extends Field {
 	 * @param virologist
 	 */
 	public void lootItem(Virologist virologist) {
-		ArrayList<Genetics> learnedGenetics = virologist.getGenetics();
-
-		//if genetic has been learned
-		if(virologist.checkGenetics(genetic) == false) {
+		// if genetic has been learned
+		if(!virologist.checkGenetics(genetic)) {
 			virologist.addGenetics(genetic);	
+			return;
 		}
+
+		System.out.println("The virologist has already learned that genetic.");
+	}
+
+	public String toString() {
+		String returnString = super.toString();
+		returnString += "\nGenetic: " + genetic.toString();
+
+		return returnString;
 	}
 }

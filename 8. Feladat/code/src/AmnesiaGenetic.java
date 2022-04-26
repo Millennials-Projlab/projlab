@@ -17,4 +17,8 @@ public class AmnesiaGenetic extends Genetics {
 	public AmnesiaAgent generate() {
 		return new AmnesiaAgent();
 	}
+
+	public String toString() {
+		return "AmnesiaGenetic";
+	}
 }

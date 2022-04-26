@@ -26,4 +26,8 @@ public class Gloves extends Equipment {
 	public void Effect(Virologist v) {
 		v.setEquipmentflag(1);
 	}
+
+	public String toString() {
+		return "Gloves";
+	}
 }
