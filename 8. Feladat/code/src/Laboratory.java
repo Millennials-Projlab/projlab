@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
 * Laboratory osztály
 */

@@ -1,5 +1,3 @@
-import java.util.Random;
-
 /**
 * Defence osztály
 */
@@ -18,7 +16,7 @@ public class DefenceGenetic extends Genetics{
 	
 	/** 
 	 * Elkészíti az ágenst
-	 * @return AmnesiaAgent
+	 * @return DefenceAgent
 	 */
 	public Agent generate(Virologist virologist, int liveTime) {
 		if(!virologist.checkSubstanceRequirements(this)) {

@@ -1,5 +1,3 @@
-import java.util.Random;
-
 /**
 * Dance osztály
 */
@@ -18,7 +16,7 @@ public class DanceGenetic extends Genetics{
 	
 	/** 
 	 * Elkészíti az ágenst
-	 * @return AmnesiaAgent
+	 * @return DanceAgent
 	 */
 	public Agent generate(Virologist virologist, int liveTime) {
 		if(!virologist.checkSubstanceRequirements(this)) {

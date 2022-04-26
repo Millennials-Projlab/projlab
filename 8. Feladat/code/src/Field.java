@@ -65,7 +65,7 @@ public class Field {
 	 * @param virologists
 	 */
 	public void setVirologists(ArrayList<Virologist> virologists) {
-		virologists = virologists;
+		this.virologists = virologists;
 		System.out.println("Virologists have been set");
 	}
 

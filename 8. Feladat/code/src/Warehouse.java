@@ -37,7 +37,7 @@ public class Warehouse extends Field{
 	 * @param substances
 	 */
 	public void setSubstances(ArrayList<Substance> substances) {
-		substances = substances;
+		this.substances = substances;
 	}   
 
 	/** 
