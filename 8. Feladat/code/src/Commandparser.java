@@ -18,6 +18,7 @@ public class Commandparser {
         commands.put("createVirologist", Game::createVirologist);
         commands.put("move", (args) -> Game.getVirologist(args[0]).move(Game.getMap().getField(args[1])));
         commands.put("virologistInfo", (args) -> System.out.println(Game.getVirologist(args[0])));
+        commands.put("gameInfo", (args) -> Game.gameInfo());
     }
 
     public void parse(String command) {

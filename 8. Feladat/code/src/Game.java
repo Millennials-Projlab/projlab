@@ -103,4 +103,21 @@ public final class Game {
 		}
 		players.add(virologist);
 	}
+
+	public static void gameInfo() {
+		String infoString = "";
+
+		infoString += "Fields: ";
+		for(Field field : getMap().getFields()) {
+			infoString += field.getName() + " ";			
+		}
+		infoString += "\n";
+
+		infoString += "Virologists: ";
+		for(Virologist virologist : players) {
+			infoString += virologist.getName();
+		}
+
+		System.out.println(infoString);
+	}
 }
