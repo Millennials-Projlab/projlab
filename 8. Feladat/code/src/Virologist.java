@@ -1,15 +1,14 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 /**
 * Virológus osztály
 */
 public class Virologist {
-    private ArrayList<Substance> Substances;
-    private ArrayList<Agent> Agents;
-    private ArrayList<Equipment> Equipments;
-    private ArrayList<Genetics> Genetics;
+    private ArrayList<Substance> substances;
+    private ArrayList<Agent> agents;
+    private ArrayList<Equipment> equipments;
+    private ArrayList<Genetics> genetics;
 
     private int maxEquipments;
     private String name;
@@ -27,10 +26,10 @@ public class Virologist {
      * @param currentField a mező, amelyre a virológus létrehozás után kerül
 	 */
     public Virologist(String name, int maxEquipments, int maxSubstance, Field currentField){
-        Substances = new ArrayList<Substance>();
-        Agents = new ArrayList<Agent>();
-        Equipments = new ArrayList<Equipment>();
-        Genetics = new ArrayList<Genetics>();
+        substances = new ArrayList<Substance>();
+        agents = new ArrayList<Agent>();
+        equipments = new ArrayList<Equipment>();
+        genetics = new ArrayList<Genetics>();
         this.name = name;
         this.maxEquipments = maxEquipments;
         this.maxSubstance = maxSubstance;
@@ -101,7 +100,7 @@ public class Virologist {
      * @param agent
      */
     public void addAgent(Agent agent){
-        Agents.add(agent);
+        agents.add(agent);
     }
 
     
@@ -109,7 +108,7 @@ public class Virologist {
      * @param equipment
      */
     public void addEquipment(Equipment equipment){
-        Equipments.add(equipment);
+        equipments.add(equipment);
 
         equipment.Effect(this);
     }
@@ -119,7 +118,7 @@ public class Virologist {
      * @param substance
      */
     public void addSubstance(Substance substance){
-        Substances.add(substance);
+        substances.add(substance);
     }
 
     
@@ -127,7 +126,7 @@ public class Virologist {
      * @param agent
      */
     public void removeAgent(Agent agent){
-        Agents.remove(agent);
+        agents.remove(agent);
     }
 
     
@@ -135,31 +134,31 @@ public class Virologist {
      * @param equipment
      */
     public void removeEquipment(Equipment equipment){
-        Equipments.remove(equipment);
+        equipments.remove(equipment);
     }
     /** 
      * @param substance
      */
     public void removeSubstance(Substance substance){
-        Substances.remove(substance);
+        substances.remove(substance);
     }
 
     /** 
      * @param genetics
      */
     public void addGenetics(Genetics genetics){
-        Genetics.add(genetics);
+        this.genetics.add(genetics);
     }
   
     public void removeAllGenetics(){
-        Genetics.clear();
+        genetics.clear();
     }
     
     /** 
      * @param genetic
      */
     public void generateAgent(Genetics genetic){
-        for(Genetics g : Genetics) {
+        for(Genetics g : genetics) {
             if(g.isSame(genetic)) {
                 HashMap<Substance, Integer> recipe = g.getRecipe();
                 for(Substance key : recipe.keySet()) {
@@ -182,7 +181,7 @@ public class Virologist {
      * @return ArrayList<Equipment>
      */
     public ArrayList<Equipment> getEquipments(){
-        return Equipments;
+        return equipments;
     }    
     
     /** 
@@ -200,7 +199,7 @@ public class Virologist {
      * @return boolean
      */
     public boolean checkGenetics(Genetics genetic) {
-    	for(Genetics g : Genetics) {
+    	for(Genetics g : genetics) {
             if(g.isSame(genetic)) {
             	return false;
             }
@@ -231,7 +230,7 @@ public class Virologist {
      * @return ArrayList<Substance>
      */
     public ArrayList<Substance> getSubstances() {
-		return Substances;
+		return substances;
 	}
 
 	
@@ -239,7 +238,7 @@ public class Virologist {
      * @param substances
      */
     public void setSubstances(ArrayList<Substance> substances) {
-		Substances = substances;
+		this.substances = substances;
 	}
 
 	
@@ -247,7 +246,7 @@ public class Virologist {
      * @return ArrayList<Agent>
      */
     public ArrayList<Agent> getAgents() {
-		return Agents;
+		return agents;
 	}
 
 	
@@ -255,7 +254,7 @@ public class Virologist {
      * @param agents
      */
     public void setAgents(ArrayList<Agent> agents) {
-		Agents = agents;
+		this.agents = agents;
 	}
 
 	
@@ -263,7 +262,7 @@ public class Virologist {
      * @return ArrayList<Genetics>
      */
     public ArrayList<Genetics> getGenetics() {
-		return Genetics;
+		return genetics;
 	}
 
 	
@@ -271,7 +270,7 @@ public class Virologist {
      * @param genetics
      */
     public void setGenetics(ArrayList<Genetics> genetics) {
-		Genetics = genetics;
+		this.genetics = genetics;
 	}
 
 	
@@ -305,7 +304,7 @@ public class Virologist {
      */
     public int countSubstance(Substance target) {
         int substanceCount = 0;
-        for(Substance substance : Substances) {
+        for(Substance substance : substances) {
             if(substance.isSame(target))
                 substanceCount++;
         }
@@ -337,7 +336,7 @@ public class Virologist {
      * @param agent
      */
     public void attack(Virologist target, Agent agent) {
-        for(Agent a : Agents) {
+        for(Agent a : agents) {
             if(a.isSame(agent)) {
                 a.infect(target);
                 return;
@@ -346,7 +345,7 @@ public class Virologist {
     }
 
     public void clearCollectedGenetics() {
-        Genetics.clear();
+        genetics.clear();
     }
 
     public void dance() {
@@ -370,4 +369,30 @@ public class Virologist {
 	public void setPoisoned(boolean poisoned) {
 		this.poisoned = poisoned;
 	}
+
+    public String toString() {
+        String returnString = "";
+        returnString += "Name: " + name + "\n";
+        returnString += "Field: " + currentField.getName() + "\n";
+
+        returnString += "Equipments: ";
+        for(Equipment equipment : equipments) {
+            returnString += equipment.toString() + " ";
+        }
+        returnString += equipments.size() + "/" + maxEquipments + "\n";
+
+        returnString += "Genetics: ";
+        for(Genetics genetic : genetics) {
+            returnString += genetic.toString() + " ";
+        }
+        returnString += "\n";
+
+        returnString += "Substances:\n";
+        returnString += "\tAmino: " + countSubstance(new Amino()) + "\n";
+        returnString += "\tNukleotid: " + countSubstance(new Nukleotid()) + "\n";
+
+        // TODO: Effects
+
+        return returnString;
+    }
 }
