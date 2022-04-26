@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
 * poison osztaly
 */
@@ -12,10 +14,19 @@ public class PoisonGenetic extends Genetics {
 	
 	/** 
 	 * Elkészíti az ágenst
-	 * @return PoisonAgent
+	 * @return AmnesiaAgent
 	 */
-	public PoisonAgent generate() {
-		return new PoisonAgent();
+	public Agent generate(Virologist v) {
+		Random rand = new Random();
+		int amino = recipe.get(new Amino());
+		int nukleotid = recipe.get(new Nukleotid());
+		int poisonagent = rand.nextInt(100);
+		if ((v.countSubstance(new Amino()) >= amino) && (v.countSubstance(new Nukleotid()) >= nukleotid)) {
+			v.setAmino(new PoisonAgent(this, poisonagent));
+			v.setNukleotid(new PoisonAgent(this, poisonagent));
+			return new PoisonAgent(this, poisonagent);
+		}
+		return null;
 	}
 
 	public String toString() {
