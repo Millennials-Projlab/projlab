@@ -56,10 +56,6 @@ public class Virologist {
     public Field getCurrentField() {
     	return currentField;
     }
-    
-    public void setcurrentfield(Field f) {
-    	currentField = f;
-    }
 
     public void tick() {
         Iterator<Agent> agentIter = agents.iterator();
@@ -176,16 +172,7 @@ public class Virologist {
             }
         }
     }
-    
-    public void removeMaterials(Genetics genetic) {
-        HashMap<Substance, Integer> recipe = genetic.getRecipe();
-        for(Substance key : recipe.keySet()) {
-            for(int i = 0; i < recipe.get(key); i++) {
-                removeSubstance(key);
-            }
-        }
-    }
-    
+     
     /** 
      * A virológus a paraméterként megadott mezőre lép
      * @param nf új mező
@@ -224,16 +211,6 @@ public class Virologist {
         }
         currentField.lootItem(this);
     }
-
-
-    /** 
-     * @param enemy
-     */
-    public void stealEquipment(Virologist enemy){
-    	this.addEquipment(enemy.getEquipments().get(0));
-    	enemy.getEquipments().remove(0);
-    }
-
     
     /** 
      * @param agent
@@ -242,7 +219,6 @@ public class Virologist {
         agents.add(agent);
     }
 
-    
     /** 
      * @param equipment
      */
@@ -251,7 +227,6 @@ public class Virologist {
         equipment.startEffect(this);
     }
 
-    
     /** 
      * @param substance
      */
@@ -261,27 +236,12 @@ public class Virologist {
         }
         substances.add(substance);
     }
-
-    
-    /** 
-     * @param agent
-     */
-    public void removeAgent(Agent agent){
-        agents.remove(agent);
-    }
-
     
     /** 
      * @param equipment
      */
-    public void removeEquipment(Equipment equipment){
+    public void removeEquipment(Equipment equipment) {
         equipments.remove(equipment);
-    }
-    /** 
-     * @param substance
-     */
-    public void removeSubstance(Substance substance){
-        substances.remove(substance);
     }
 
     /** 
@@ -302,7 +262,6 @@ public class Virologist {
         return true;
     }
 
-    
     /** 
      * @return ArrayList<Equipment>
      */
@@ -319,7 +278,6 @@ public class Virologist {
         return true;
     }
 
-    
     /** 
      * @param genetic
      * @return boolean
@@ -332,55 +290,7 @@ public class Virologist {
     	}
          return false;
     }
-	
-    /** 
-     * @return ArrayList<Substance>
-     */
-    public ArrayList<Substance> getSubstances() {
-		return substances;
-	}
 
-	
-    /** 
-     * @param substances
-     */
-    public void setSubstances(ArrayList<Substance> substances) {
-		this.substances = substances;
-	}
-
-	
-    /** 
-     * @return ArrayList<Agent>
-     */
-    public ArrayList<Agent> getAgents() {
-		return agents;
-	}
-
-	
-    /** 
-     * @param agents
-     */
-    public void setAgents(ArrayList<Agent> agents) {
-		this.agents = agents;
-	}
-
-	
-    /** 
-     * @return ArrayList<Genetics>
-     */
-    public ArrayList<Genetics> getGenetics() {
-		return genetics;
-	}
-
-	
-    /** 
-     * @param genetics
-     */
-    public void setGenetics(ArrayList<Genetics> genetics) {
-		this.genetics = genetics;
-	}
-
-	
     public void setMaxSubstance(int maxSubstance) {
         this.maxSubstance = maxSubstance;
     }
@@ -395,7 +305,6 @@ public class Virologist {
     public int getMaxEquipments() {
         return maxEquipments;
     }
-
     
     /** 
      * Megszámolja, hogy mennyi van a paraméterként megadott anyagból
@@ -424,8 +333,6 @@ public class Virologist {
     public double getDefenseRating() {
         return defenseRating;
     }
-
-
 
     public void clearCollectedGenetics() {
         genetics.clear();

@@ -16,7 +16,6 @@ public class Laboratory extends Field {
 		this.genetic = genetic;
 	}
 
-	
 	/** 
 	 * @return Genetics
 	 */
@@ -24,7 +23,6 @@ public class Laboratory extends Field {
 		return genetic;
 	}
 
-	
 	/** 
 	 * @param genetic
 	 */
