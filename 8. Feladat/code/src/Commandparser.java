@@ -38,6 +38,7 @@ public class Commandparser {
     private void execute(String commandName, String[] parameters) {
         try {
             commands.get(commandName).execute(parameters);
+            System.out.println("EXECUTED: " + commandName);
         } 
         catch(NullPointerException e) {
             System.out.println("RUNTIME ERROR: command does not exist");

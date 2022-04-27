@@ -28,6 +28,8 @@ public class Map {
 
 		Field field = new Field(args[0]);
 		Fields.add(field);
+
+		System.out.println("CREATED: Field " + args[0]);
 	}
 
 	
@@ -84,6 +86,9 @@ public class Map {
 
 		laboratory.place(genetic);
 		Fields.add(laboratory);
+
+		System.out.println("CREATED: " + genetic);
+		System.out.println("CREATED: Laboratory " + laboratory.getName());
 	}
 
 	
@@ -112,14 +117,18 @@ public class Map {
 		for(int i = 0; i < aminoNum; i++) {
 			Amino a = new Amino();
 			substances.add(a);
+			System.out.println("CREATED: Amino");
 		}
 		for(int i = 0; i < nukleoNum; i++) {
 			Nukleotid n = new Nukleotid();
 			substances.add(n);
+			System.out.println("CREATED: Nukleotid");
 		}
 
 		warehouse.place(substances);
 		Fields.add(warehouse);
+
+		System.out.println("CREATED: Warehouse " + warehouse.getName());
 	}
 
 	
@@ -176,6 +185,9 @@ public class Map {
 
 		shelter.place(equipment);
 		Fields.add(shelter);
+
+		System.out.println("CREATED: " + equipment);
+		System.out.println("CREATED: Shelter " + shelter.getName());
 	}
 
 	

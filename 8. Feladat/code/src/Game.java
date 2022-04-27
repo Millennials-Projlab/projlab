@@ -162,6 +162,8 @@ public final class Game {
 			virologist = new Virologist(args[0], rand.nextInt(1,5), rand.nextInt(5,10), field);
 		}
 		players.add(virologist);
+
+		System.out.println("CREATED: Virologist " + virologist.getName());
 	}
 
 	public static void gameInfo() {

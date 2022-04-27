@@ -17,7 +17,6 @@ public class Warehouse extends Field{
 	 */
 	public void place(ArrayList<Substance> Substances) {
         for(Substance i: Substances){
-            System.out.println("\t"+i.toString()+" "+"has been placed");
 			substances.add(i);
         }
 	}

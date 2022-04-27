@@ -119,6 +119,8 @@ public class Virologist {
         if(agent != null) {
             this.addAgent(agent);
         }
+
+        System.out.println("CREATED: " + agent);
     }
 
     
@@ -234,6 +236,7 @@ public class Virologist {
      */
     public void loot(){
         if(isVirologistPoisoned()) {
+            System.out.println("Virologist is poisoned");
             return;
         }
         currentField.lootItem(this);
