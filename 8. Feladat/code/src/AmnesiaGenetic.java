@@ -26,6 +26,10 @@ public class AmnesiaGenetic extends Genetics {
 		return new AmnesiaAgent(this, liveTime);
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "AmnesiaGenetic";
 	}

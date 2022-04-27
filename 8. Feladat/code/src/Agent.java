@@ -13,13 +13,11 @@ public abstract class Agent {
 		livetime = l;
 	}
 	
-	public void Generate() {
-		if (check()) {
-			System.out.println("Agent has been Generated");
-			
-		}
-	}
-
+	/** 
+	 * megvalósítja az ágens időlépését
+	 * @param virologist virológus, amelynél/amelyen az ágens van
+	 * @param iter ágens lista iterátora
+	 */
 	public void tick(Virologist virologist, Iterator<Agent> iter) {
 		livetime -= 1;
 		if(livetime == 0) {
@@ -35,14 +33,6 @@ public abstract class Agent {
 	public void startEffect(Virologist virologist) {}
 	
 	public void endEffect(Virologist virologist) {}
-	
-	/**
-	 * @return boolean
-	 */
-	public boolean check() {
-		System.out.println("Checked");
-		return true;
-	}
 	
 	
 	/** 

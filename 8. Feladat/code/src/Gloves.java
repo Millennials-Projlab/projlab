@@ -18,6 +18,11 @@ public class Gloves extends Equipment {
 
 	public void endEffect(Virologist virologist) {}
 
+	
+	/** 
+	 * Használja a kesztyűt
+	 * @param virologist
+	 */
 	public void use(Virologist virologist) {
 		uses -= 1;
 		if(uses == 0) {
@@ -25,6 +30,10 @@ public class Gloves extends Equipment {
 		}
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "Gloves";
 	}

@@ -16,6 +16,11 @@ public class PoisonAgent extends Agent{
 		virologist.setEffectFlag(1);
 	}
 
+	
+	/** 
+	 * Leállítja az ágens hatását
+	 * @param virologist
+	 */
 	public void endEffect(Virologist virologist) {
 		if(virologist.getEffectFlag() < 2 && !virologist.checkPoisonEffects()) {
 			virologist.setEffectFlag(0);
@@ -31,10 +36,19 @@ public class PoisonAgent extends Agent{
 		startEffect(target);
 	}
 
+	
+	/** 
+	 * @param agentName
+	 * @return boolean
+	 */
 	public boolean isSame(String agentName) {
 		return agentName.equals("PoisonAgent") ? true : false;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "PoisonAgent";
 	}

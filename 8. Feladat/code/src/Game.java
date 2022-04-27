@@ -35,6 +35,11 @@ public final class Game {
 		System.out.println("Game has ended.");
 	}
 
+	
+	/** 
+	 * Elindítja az időt
+	 * @param args
+	 */
 	public static void startTimer(String[] args) {
 		if(timer.isRunning()) {
 			System.out.println("Timer is already running.");
@@ -44,6 +49,11 @@ public final class Game {
 		timer.start();
 	}
 
+	
+	/** 
+	 * Megállítja az időt
+	 * @param args
+	 */
 	public static void stopTimer(String[] args) {
 		if(!timer.isRunning()) {
 			System.out.println("Timer is already stopped.");
@@ -65,6 +75,12 @@ public final class Game {
 		return Map;
 	}
 	
+	
+	/** 
+	 * @param name
+	 * @return Virologist
+	 * @throws IncorrectParameterException
+	 */
 	public static Virologist getVirologist(String name) throws IncorrectParameterException {
 		for(Virologist virologist : players) {
 			if (virologist.getName().equals(name)) {
@@ -90,6 +106,10 @@ public final class Game {
 		players.add(v);
 	}
 
+	
+	/** 
+	 * @param v
+	 */
 	public static void removePlayer(Virologist v) {
 		players.remove(v);
 	}
@@ -107,6 +127,11 @@ public final class Game {
 		}
 	}
 
+	
+	/** 
+	 * Ellenőrzi, hogy a megadott nevű virológus létezik-e
+	 * @param name
+	 */
 	private static void checkVirologistExistence(String name) {
 		try {
 			Game.getVirologist(name);
@@ -114,6 +139,11 @@ public final class Game {
 		} catch(IncorrectParameterException e) {}
 	}
 
+	
+	/** 
+	 * Létrehoz egy új virológust a megadott paraméterekkel
+	 * @param args
+	 */
 	public static void createVirologist(String[] args) {
 		Virologist virologist;
 		if(!random) {

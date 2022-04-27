@@ -16,10 +16,19 @@ public class Cape extends Equipment {
 		virologist.setDefenseRating(virologist.getDefenseRating() * 0.177);
 	}
 
+	
+	/** 
+	 * Leállítja a felszerelés hatását
+	 * @param virologist
+	 */
 	public void endEffect(Virologist virologist) {
 		virologist.setDefenseRating(virologist.getDefenseRating() / 0.177);
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "Cape";
 	}

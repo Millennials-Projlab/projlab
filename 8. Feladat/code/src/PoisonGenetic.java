@@ -10,10 +10,6 @@ public class PoisonGenetic extends Genetics {
 		super(aminoCount, nukleoCount);
 	}
 
-	public void PickUp() {
-		System.out.println("Poison has been learned.");
-	}
-	
 	/** 
 	 * Elkészíti az ágenst
 	 * @return PoisonAgent
@@ -27,6 +23,9 @@ public class PoisonGenetic extends Genetics {
 		return new PoisonAgent(this, liveTime);
 	}
 
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "PoisonGenetic";
 	}

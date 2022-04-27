@@ -16,13 +16,26 @@ public class Axe extends Equipment {
 	 */
 	public void startEffect(Virologist virologist) {}
 
+	/** 
+	 * Leállítja a felszerelés hatását
+	 * @param virologist
+	 */
 	public void endEffect(Virologist virologist) {}
 
+	
+	/** 
+	 * Felhasználja a baltát
+	 * @param target
+	 */
 	public void use(Virologist target) {
 		usable = false;
 		target.axeHit();
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "Axe";
 	}

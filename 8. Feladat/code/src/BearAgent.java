@@ -16,11 +16,22 @@ public class BearAgent extends Agent {
 		virologist.setEffectFlag(2);
 	}
 
+	
+	/** 
+	 * Leállítja az ágens hatását
+	 * @param virologist
+	 */
 	public void endEffect(Virologist virologist) {
 		Game.removePlayer(virologist);
         System.out.println("Virologist " + virologist.getName() + " died.");
 	}
 
+	
+	/** 
+	 * Megvalósítja az ágent időlépését
+	 * @param virologist
+	 * @param iter
+	 */
 	public void tick(Virologist virologist, Iterator<Agent> iter) {
 		if(effect) {
 			Random rand = new Random();
@@ -57,10 +68,19 @@ public class BearAgent extends Agent {
 		startEffect(target);
 	}
 
+	
+	/** 
+	 * @param agentName
+	 * @return boolean
+	 */
 	public boolean isSame(String agentName) {
 		return agentName.equals("DanceAgent") ? true : false;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "BearAgent";
 	}

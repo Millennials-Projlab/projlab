@@ -21,7 +21,11 @@ public class Field {
 		neighbours = new ArrayList<Field>();
     }
 	
-    public String getName() {
+    
+	/** 
+	 * @return String
+	 */
+	public String getName() {
         return name;
     }
 	
@@ -97,6 +101,10 @@ public class Field {
 	
 	public void lootItem(Virologist virologist) {}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		String returnString = "";
 		returnString += "Name: " + name + "\n";
@@ -115,6 +123,11 @@ public class Field {
 		return returnString;
 	}
 	
+	
+	/** 
+	 * @param field
+	 * @return boolean
+	 */
 	public boolean isSame(Field field) {
 		if(this.getClass() == field.getClass()) {
 			return true;

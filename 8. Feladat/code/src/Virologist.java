@@ -53,6 +53,10 @@ public class Virologist {
         return name;
     }
     
+    
+    /** 
+     * @return Field
+     */
     public Field getCurrentField() {
     	return currentField;
     }
@@ -71,6 +75,12 @@ public class Virologist {
 		}
     }
     
+    
+    /** 
+     * Elkészíti a megadott ágenst, ha a virológus ismeri a genetikai kódját és van elég anyaga
+     * @param args
+     * @throws IncorrectParameterException
+     */
     public void produceAgent(String[] args) throws IncorrectParameterException {
         Genetics genetic;
     	Agent agent;
@@ -111,6 +121,12 @@ public class Virologist {
         }
     }
 
+    
+    /** 
+     * @param pgenetic
+     * @return Genetics
+     * @throws IncorrectParameterException
+     */
     private Genetics getLearnedGenetic(Genetics pgenetic) throws IncorrectParameterException {
         for(Genetics genetic : genetics) {
             if(pgenetic.isSame(genetic)) {
@@ -148,6 +164,11 @@ public class Virologist {
         System.out.println("Virologist does not have that Agent.");
     }
 
+    
+    /** 
+     * Visszaadja, hogy a virológus le van-e bénulva
+     * @return boolean
+     */
     private boolean isVirologistPoisoned() {
         if(effectFlag < 0 && effectFlag < 3) {
             System.out.println("Virologist is poisoned and can't interact right now.");
@@ -156,6 +177,12 @@ public class Virologist {
         return false;
     }
 
+    
+    /** 
+     * Visszaadja, hogy a célpont érinthető-e
+     * @param target
+     * @return boolean
+     */
     private boolean isTargetTouchable(Virologist target) {
         if(target.getCurrentField() != currentField) {
             System.out.println("Target virologist is not on the same field.");
@@ -245,12 +272,25 @@ public class Virologist {
     }
 
     /** 
+     * @param substance
+     */
+    public void removeSubstance(Substance substance){
+        substances.remove(substance);
+    }
+
+    /** 
      * @param genetics
      */
     public void addGenetics(Genetics genetics){
         this.genetics.add(genetics);
     }
   
+    
+    /** 
+     * Ellenőrzi, hogy van-e elég anyag az ágens létrehozásához
+     * @param genetic
+     * @return boolean
+     */
     public boolean checkSubstanceRequirements(Genetics genetic) {
         HashMap<Substance, Integer> recipe = genetic.getRecipe();
 
@@ -291,6 +331,10 @@ public class Virologist {
          return false;
     }
 
+    
+    /** 
+     * @param maxSubstance
+     */
     public void setMaxSubstance(int maxSubstance) {
         this.maxSubstance = maxSubstance;
     }
@@ -302,6 +346,10 @@ public class Virologist {
 		return maxSubstance;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getMaxEquipments() {
         return maxEquipments;
     }
@@ -345,10 +393,19 @@ public class Virologist {
         effectFlag = flag;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getEffectFlag() {
         return effectFlag;
     }
 
+    
+    /** 
+     * @param effect
+     * @param sender
+     */
     public void addEffect(Agent effect, Virologist sender) {
         if(hasEquipment("Cape")) {
             Random rand = new Random();
@@ -367,6 +424,10 @@ public class Virologist {
         effects.add(effect);
     }
 
+    
+    /** 
+     * @param effect
+     */
     public void removeEffect(Agent effect) {
         effects.remove(effect);
     }
@@ -380,6 +441,12 @@ public class Virologist {
         }
     }
 
+    
+    /** 
+     * Ellenőrzi a megadott felszerelés meglétét
+     * @param name
+     * @return boolean
+     */
     public boolean hasEquipment(String name) {
         for(Equipment equipment : equipments) {
             if(equipment.toString().equals(name)) {
@@ -389,6 +456,11 @@ public class Virologist {
         return false;
     }
 
+    
+    /** 
+     * Használja a baltát, ha van
+     * @param target
+     */
     public void useAxe(Virologist target) {
         if(hasEquipment("Axe")) {
             for(Equipment equipment : equipments) {
@@ -400,7 +472,11 @@ public class Virologist {
         }
     }
 
-    // true, ha van még bénító effect a virológuson
+    
+    /** 
+     * true, ha van még bénító effect a virológuson
+     * @return boolean
+     */
     public boolean checkPoisonEffects() {
         for(Agent effect : effects) {
             if(effect.isSame("DanceAgent") || effect.isSame("PoisonAgent")) {
@@ -410,6 +486,23 @@ public class Virologist {
         return false;
     }
 
+    
+    /** 
+     * Eltávolítja az anyagokat a virológus zsákjából
+     * @param genetic
+     */
+    public void removeMaterials(Genetics genetic) {
+        HashMap<Substance, Integer> recipe = genetic.getRecipe();
+        for(Substance key : recipe.keySet()) {
+            for(int i = 0; i < recipe.get(key); i++) {
+                removeSubstance(key);
+            }
+        }
+    }
+    
+    /** 
+     * @return String
+     */
     public String toString() {
         String returnString = "";
         returnString += "Name: " + name + "\n";

@@ -55,6 +55,10 @@ public class Warehouse extends Field{
         return substanceCount;
     }
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		String returnString = super.toString();
 		returnString += "\nAmino: " + countSubstance(new Amino()) + "\n";
@@ -63,6 +67,10 @@ public class Warehouse extends Field{
 		return returnString;
 	}
 
+	
+	/** 
+	 * @param virologist
+	 */
 	public void lootItem(Virologist virologist) {
 		Iterator<Substance> iter = substances.iterator();
 		while(iter.hasNext()) {

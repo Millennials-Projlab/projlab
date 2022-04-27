@@ -19,12 +19,23 @@ public class DanceAgent extends Agent{
 		virologist.setEffectFlag(1);
 	}
 
+	
+	/** 
+	 * Leállítja az ágens hatását
+	 * @param virologist
+	 */
 	public void endEffect(Virologist virologist) {
 		if(virologist.getEffectFlag() < 2 && !virologist.checkPoisonEffects()) {
 			virologist.setEffectFlag(0);
 		}
 	}
 
+	
+	/** 
+	 * Megvalósítja az ágens időlépését
+	 * @param virologist
+	 * @param iter
+	 */
 	public void tick(Virologist virologist, Iterator<Agent> iter) {
 		super.tick(virologist, iter);
 
@@ -55,10 +66,19 @@ public class DanceAgent extends Agent{
 		startEffect(target);
 	}
 
+	
+	/** 
+	 * @param agentName
+	 * @return boolean
+	 */
 	public boolean isSame(String agentName) {
 		return agentName.equals("DanceAgent") ? true : false;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "DanceAgent";
 	}

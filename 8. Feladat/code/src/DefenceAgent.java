@@ -15,6 +15,11 @@ public class DefenceAgent extends Agent {
 		virologist.setEffectFlag(3);
 	}
 
+	
+	/** 
+	 * Leállítja az ágens hatását
+	 * @param virologist
+	 */
 	public void endEffect(Virologist virologist) {
 		virologist.setEffectFlag(0);
 	}
@@ -28,10 +33,19 @@ public class DefenceAgent extends Agent {
 		startEffect(target);
 	}
 
+	
+	/** 
+	 * @param agentName
+	 * @return boolean
+	 */
 	public boolean isSame(String agentName) {
 		return agentName.equals("DefenceAgent") ? true : false;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "DefenceAgent";
 	}

@@ -27,6 +27,10 @@ public class DanceGenetic extends Genetics{
 		return new DanceAgent(this, liveTime);
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "DanceGenetic";
 	}

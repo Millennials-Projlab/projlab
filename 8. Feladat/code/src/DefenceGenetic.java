@@ -27,6 +27,10 @@ public class DefenceGenetic extends Genetics{
 		return new DefenceAgent(this, liveTime);
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "DefenceGenetic";
 	}

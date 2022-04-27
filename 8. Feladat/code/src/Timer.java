@@ -17,6 +17,11 @@ public class Timer extends Thread {
 		}
 	}
 
+	
+	/** 
+	 * Visszaadja, hogy az időzító fut-e
+	 * @return boolean
+	 */
 	public boolean isRunning() {
 		return running;
 	}

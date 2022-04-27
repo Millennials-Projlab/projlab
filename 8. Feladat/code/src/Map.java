@@ -18,6 +18,11 @@ public class Map {
 		return Fields;
 	}
 
+	
+	/** 
+	 * @param args
+	 * @throws IncorrectParameterException
+	 */
 	public void createField(String[] args) throws IncorrectParameterException {
 		checkFieldExistence(args[0]);
 
@@ -25,6 +30,11 @@ public class Map {
 		Fields.add(field);
 	}
 
+	
+	/** 
+	 * @param args
+	 * @throws IncorrectParameterException
+	 */
 	public void createLaboratory(String[] args) throws IncorrectParameterException  {
 		checkFieldExistence(args[0]);
 
@@ -76,6 +86,11 @@ public class Map {
 		Fields.add(laboratory);
 	}
 
+	
+	/** 
+	 * @param args
+	 * @throws IncorrectParameterException
+	 */
 	public void createWarehouse(String[] args) throws IncorrectParameterException  {
 		checkFieldExistence(args[0]);
 
@@ -107,6 +122,11 @@ public class Map {
 		Fields.add(warehouse);
 	}
 
+	
+	/** 
+	 * @param args
+	 * @throws IncorrectParameterException
+	 */
 	public void createShelter(String[] args) throws IncorrectParameterException  {
 		checkFieldExistence(args[0]);
 
@@ -158,6 +178,11 @@ public class Map {
 		Fields.add(shelter);
 	}
 
+	
+	/** 
+	 * @param args
+	 * @throws IncorrectParameterException
+	 */
 	public void setNeighbor(String[] args) throws IncorrectParameterException  {
 		Field field1 = getField(args[0]);
 		Field field2 = getField(args[1]);
@@ -173,12 +198,23 @@ public class Map {
 		field2.setNeighbour(field1);
 	}
 
+	
+	/** 
+	 * Ellenőrzi, hogy létezik-e már mező a megadott névvel
+	 * @param name
+	 * @throws IncorrectParameterException
+	 */
 	private void checkFieldExistence(String name) throws IncorrectParameterException {
 		if(Game.getMap().getField(name) != null) {
 			throw new IncorrectParameterException("field with name " + "\""+ name +"\" already exists");
 		}
 	}
 
+	
+	/** 
+	 * @param name
+	 * @return Field
+	 */
 	public Field getField(String name) {
 		for (Field field : Fields) {
 			if(field.getName().equals(name)) {

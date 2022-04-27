@@ -24,10 +24,19 @@ public class AmnesiaAgent extends Agent {
 		System.out.println("Target is immune and can not be infected.");
 	}
 
+	
+	/** 
+	 * @param agentName
+	 * @return boolean
+	 */
 	public boolean isSame(String agentName) {
 		return agentName.equals("AmnesiaAgent") ? true : false;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String toString() {
 		return "AmnesiaAgent";
 	}
