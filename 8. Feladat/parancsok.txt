@@ -1,0 +1,72 @@
+A játékban található összes parancs
+Az opcionális paraméterek (zárójelben) vannak, ezekre csak a random kikapcsolása esetén van szükség
+
+startGame
+	elindítja a játékot az időzítővel együtt
+
+exit
+	kilép a játékból
+
+toggleRandom
+	ki/be kapcsolja a véletlenszerűséget a játékban
+	ha ki van kapcsolva, egyes parancsoknál több bemenetre van szükség
+
+createField mezőnév
+	létrehoz egy mezőt a megadott névvel
+
+createLaboratory mezőnév (genetika)
+	létrehoz egy laboratóriumot a megadott névvel és belerakja a megadott genetikai kódot
+	érvényes genetikai kódok: AmnesiaGenetic, DanceGenetic, DefenceGenetic, BearGenetic
+
+
+createWarehouse mezőnév (amino) (nukleotid)
+	létrehoz egy raktárt a megadott névvel és megadott számú aminoval/nukleotiddal
+
+createShelter mezőnév (felszerelés)
+	létrehoz egy óvóhelyet a megadott névvel és felszereléssel
+	érvényes felszerelések: Cape, Gloves, Package, Axe
+
+setNeighbor mező1 mező2
+	szomszédossá teszi a paraméterként megadott két mezőt
+
+lootField virológusnév
+	a virológus felveszi a mezőn lévő genetikai kódot/felszerelést/anyagokat
+
+fieldInfo mezőnév
+	kilistázza a megadott nevű mező típusát és a rajta található tárgyakat
+
+createVirologist virológusnév maxfelszerelés maxanyag mezőnév
+	új virológust hoz létre megadott névvel, max felszerelési számmal, max felvehető anyagszámmal és lerakja a megadott nevű mezőre
+
+move virológusfév mezőnév
+	rálépteti a virológust a mezőre, ha a mező szomszédos
+
+virologistInfo virológusnév
+	kilistázza a megadott nevű virológus adatait
+
+gameInfo
+	kiírja a játék állását
+
+produceAgent virológusnév ágens idő
+	a virológus létrehoz egy ágenst, ha ismeri a genetikai kódját és van elég anyaga. Paraméterek a virológus neve, az ágens neve és a lejárati ideje.
+	érvényes ágens nevek: AmnesiaAgent, DanceAgent, DefenceAgent, PoisonAgent 
+	BearAgent ilyen módon nem készíthető!
+
+startTimer
+	elindítja a számlálót
+
+stopTimer
+	megállítja a számlálót
+
+infect virológus1 virológus2 ágensnév
+	virológus1 megfertőzi virológus2-t a megadott ágenssel
+	érvényes ágens nevek: lásd: produceAgent
+
+
+
+
+
+
+
+
+
