@@ -13,11 +13,11 @@ public class Cape extends Equipment {
 	 * @param virologist
 	 */
 	public void startEffect(Virologist virologist) {
-		
+		virologist.setDefenseRating(virologist.getDefenseRating() * 0.177);
 	}
 
 	public void endEffect(Virologist virologist) {
-		
+		virologist.setDefenseRating(virologist.getDefenseRating() / 0.177);
 	}
 
 	public String toString() {

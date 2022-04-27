@@ -17,7 +17,7 @@ public class Virologist {
     private String name;
     private int maxSubstance;
     private Field currentField;
-    private int defenseRating;
+    private double defenseRating;
 
     /**
      * 0: no effect
@@ -413,21 +413,23 @@ public class Virologist {
 
     public void setEquipmentflag(int flag) {}
 
-    
+
+ 
     /** 
-     * @return int
+     * @param defenseRating
      */
-    public int getDefenseRating() {
+    public void setDefenseRating(double defenseRating) {
+        this.defenseRating = defenseRating;
+    }
+
+    /** 
+     * @return double defenseRating
+     */
+    public double getDefenseRating() {
         return defenseRating;
     }
 
-    
-    /** 
-     * @param dr
-     */
-    public void setDefenseRating(int dr) {
-        defenseRating = dr;
-    }
+
 
     public void clearCollectedGenetics() {
         genetics.clear();
@@ -445,6 +447,13 @@ public class Virologist {
     }
 
     public void addEffect(Agent effect, Virologist sender) {
+        if(hasCape()) {
+            Random rand = new Random();
+            if(rand.nextDouble(0, 100) > defenseRating) {
+                effect.endEffect(this);
+                return;
+            }   
+        }
         if(hasGloves()) {
             useGloves();
             effect.endEffect(this);
@@ -475,6 +484,15 @@ public class Virologist {
                 return;
             }
         }
+    }
+
+    public boolean hasCape() {
+        for(Equipment equipment : equipments) {
+            if(equipment.toString().equals("Cape")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // true, ha van még bénító effect a virológuson
