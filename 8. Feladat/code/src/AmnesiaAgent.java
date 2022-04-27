@@ -11,7 +11,7 @@ public class AmnesiaAgent extends Agent {
 	 * @param target
 	 */
 	public void infect(Virologist target, Virologist sender) {
-		if(target.hasGloves()) {
+		if(target.hasEquipment("Gloves")) {
 			target.useGloves();
 			target.addAgent(this);
 			target.infect(sender, toString());

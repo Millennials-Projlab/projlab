@@ -410,10 +410,6 @@ public class Virologist {
         }
         return substanceCount;
     }
-
-    public void setEquipmentflag(int flag) {}
-
-
  
     /** 
      * @param defenseRating
@@ -447,14 +443,14 @@ public class Virologist {
     }
 
     public void addEffect(Agent effect, Virologist sender) {
-        if(hasCape()) {
+        if(hasEquipment("Cape")) {
             Random rand = new Random();
             if(rand.nextDouble(0, 100) > defenseRating) {
                 effect.endEffect(this);
                 return;
             }   
         }
-        if(hasGloves()) {
+        if(hasEquipment("Gloves")) {
             useGloves();
             effect.endEffect(this);
             addAgent(effect);
@@ -468,15 +464,6 @@ public class Virologist {
         effects.remove(effect);
     }
 
-    public boolean hasGloves() {
-        for(Equipment equipment : equipments) {
-            if(equipment.toString().equals("Gloves")) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public void useGloves() {
         for(Equipment equipment : equipments) {
             if(equipment.toString().equals("Gloves")) {
@@ -486,13 +473,24 @@ public class Virologist {
         }
     }
 
-    public boolean hasCape() {
+    public boolean hasEquipment(String name) {
         for(Equipment equipment : equipments) {
-            if(equipment.toString().equals("Cape")) {
+            if(equipment.toString().equals(name)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public void useAxe(Virologist target) {
+        if(hasEquipment("Axe")) {
+            for(Equipment equipment : equipments) {
+                if(equipment.toString().equals("Axe")) {
+                    ((Axe)equipment).use(this);
+                    return;
+                }
+            }
+        }
     }
 
     // true, ha van még bénító effect a virológuson
