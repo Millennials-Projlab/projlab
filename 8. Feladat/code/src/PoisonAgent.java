@@ -26,12 +26,16 @@ public class PoisonAgent extends Agent{
 	 * Megfertőzi a paraméterként megadott virológust.
 	 * @param target
 	 */
-	public void infect(Virologist target) {
-		target.addEffect(this);
+	public void infect(Virologist target, Virologist sender) {
+		target.addEffect(this, sender);
 		startEffect(target);
 	}
 
 	public boolean isSame(String agentName) {
 		return agentName.equals("PoisonAgent") ? true : false;
+	}
+
+	public String toString() {
+		return "PoisonAgent";
 	}
 }

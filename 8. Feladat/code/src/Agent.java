@@ -87,5 +87,5 @@ public abstract class Agent {
 
 	public abstract boolean isSame(String agentName);
 
-	public abstract void infect(Virologist target);
+	public abstract void infect(Virologist target, Virologist sender);
 }

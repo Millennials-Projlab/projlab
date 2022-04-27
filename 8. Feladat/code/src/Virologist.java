@@ -140,13 +140,13 @@ public class Virologist {
         for(Agent agent : agents) {
             if(agent.isSame(agentName)) {
                 agents.remove(agent);
-                agent.infect(target);
+                agent.infect(target, this);
                 return;
             }
         }
 
         if(agentName.equals("BearAgent") && effectFlag == 2) {
-            new BearAgent().infect(target);
+            new BearAgent().infect(target, this);
         }
 
         System.out.println("Virologist does not have that Agent.");
@@ -165,8 +165,6 @@ public class Virologist {
             System.out.println("Target virologist is not on the same field.");
             return false;
         }
-        
-        // TODO: egyeb effektek
         return true;
     }
 
@@ -240,7 +238,7 @@ public class Virologist {
     /** 
      * @param agent
      */
-    public void addAgent(Agent agent){
+    public void addAgent(Agent agent) {
         agents.add(agent);
     }
 
@@ -248,7 +246,7 @@ public class Virologist {
     /** 
      * @param equipment
      */
-    public void addEquipment(Equipment equipment){
+    public void addEquipment(Equipment equipment) {
         equipments.add(equipment);
         equipment.startEffect(this);
     }
@@ -434,11 +432,6 @@ public class Virologist {
     public void clearCollectedGenetics() {
         genetics.clear();
     }
-
-    public void dance() {
-        // TODO
-    }
-
     
     /** 
      * @param flag
@@ -451,12 +444,37 @@ public class Virologist {
         return effectFlag;
     }
 
-    public void addEffect(Agent effect) {
+    public void addEffect(Agent effect, Virologist sender) {
+        if(hasGloves()) {
+            useGloves();
+            effect.endEffect(this);
+            addAgent(effect);
+            infect(sender, effect.toString());
+            return;
+        }
         effects.add(effect);
     }
 
     public void removeEffect(Agent effect) {
         effects.remove(effect);
+    }
+
+    public boolean hasGloves() {
+        for(Equipment equipment : equipments) {
+            if(equipment.toString().equals("Gloves")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void useGloves() {
+        for(Equipment equipment : equipments) {
+            if(equipment.toString().equals("Gloves")) {
+                ((Gloves)equipment).use(this);
+                return;
+            }
+        }
     }
 
     // true, ha van még bénító effect a virológuson
@@ -480,6 +498,12 @@ public class Virologist {
         }
         returnString += "\n";
 
+        returnString += "Effects: ";
+        for(Agent effect : effects) {
+            returnString += effect.toString() + " ";
+        }
+        returnString += "\n";
+
         returnString += "Equipments: ";
         for(Equipment equipment : equipments) {
             returnString += equipment.toString() + " ";
@@ -495,8 +519,6 @@ public class Virologist {
         returnString += "Substances:\n";
         returnString += "\tAmino: " + countSubstance(new Amino()) + "\n";
         returnString += "\tNukleotid: " + countSubstance(new Nukleotid()) + "\n";
-
-        // TODO: Effects
 
         return returnString;
     }
