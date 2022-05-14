@@ -1,0 +1,90 @@
+CREATED: AmnesiaGenetic
+CREATED: Laboratory amnesia
+EXECUTED: createLaboratory
+CREATED: DefenceGenetic
+CREATED: Laboratory defence
+EXECUTED: createLaboratory
+CREATED: DanceGenetic
+CREATED: Laboratory dance
+EXECUTED: createLaboratory
+CREATED: PoisonGenetic
+CREATED: Laboratory poison
+EXECUTED: createLaboratory
+CREATED: Cape
+CREATED: Shelter cape
+EXECUTED: createShelter
+CREATED: Axe
+CREATED: Shelter axe
+EXECUTED: createShelter
+CREATED: Gloves
+CREATED: Shelter gloves
+EXECUTED: createShelter
+CREATED: Package
+CREATED: Shelter package
+EXECUTED: createShelter
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Amino
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Nukleotid
+CREATED: Warehouse warehouse
+EXECUTED: createWarehouse
+CREATED: Field field
+EXECUTED: createField
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: setNeighbor
+EXECUTED: startGame
+CREATED: Virologist v
+EXECUTED: createVirologist
+EXECUTED: move
