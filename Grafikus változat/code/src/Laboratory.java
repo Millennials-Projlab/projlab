@@ -29,6 +29,23 @@ public class Laboratory extends Field {
 	public void setGenetic(Genetics genetic) {
 		this.genetic = genetic;
 	}
+
+
+	/** 
+	 * Belépteti a virológust a mezőre, ha medvevírus van a mezőn, akkor megfertőzi vele a virológust
+	 * @param virologist
+	 */
+	public void enter(Virologist virologist) {
+		super.enter(virologist);
+		
+		if(genetic.isSame(new BearGenetic())) {
+			infect(virologist, new BearAgent());
+		}
+	}
+
+	public void infect(Virologist target, BearAgent agent) {
+		agent.infect(target);
+	}
     
 	
 	/** 
