@@ -3,7 +3,7 @@ package subjects;
 import java.util.ArrayList;
 
 
-public class Field {
+public class Field extends Subject {
     private String name;
 	private ArrayList<Virologist> virologists;
 	private ArrayList<Field> neighbours;
