@@ -71,7 +71,7 @@ public class ww {
 		frmVirologistWithoutAny = new JFrame();
 		frmVirologistWithoutAny.setResizable(false);
 		frmVirologistWithoutAny.setTitle("Virologist without any hope\r\n\r\n");
-		frmVirologistWithoutAny.setIconImage(Toolkit.getDefaultToolkit().getImage("images\\main_icon.png"));
+		frmVirologistWithoutAny.setIconImage(Toolkit.getDefaultToolkit().getImage("images/main_icon.png"));
 		frmVirologistWithoutAny.setBounds(100, 100, 1100, 1100);
 		frmVirologistWithoutAny.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmVirologistWithoutAny.getContentPane().setLayout(null);
@@ -120,7 +120,7 @@ public class ww {
 		txtPlayer.setColumns(10);
 		
 		JLabel virologist_panel_virologist_icon = new JLabel("");
-		virologist_panel_virologist_icon.setIcon(new ImageIcon("C:\\Users\\balaz\\eclipse-workspace\\projlab_graphics\\images\\virologist_icon_field.png"));
+		virologist_panel_virologist_icon.setIcon(new ImageIcon("images/virologist_icon_field.png"));
 		virologist_panel_virologist_icon.setBounds(75, 61, 124, 112);
 		virologist_panel.add(virologist_panel_virologist_icon);
 		
@@ -259,7 +259,7 @@ public class ww {
 		virologist_panel_1.add(textField_2);
 		
 		JLabel virologist_panel_virologist_icon_1 = new JLabel("");
-		virologist_panel_virologist_icon_1.setIcon(new ImageIcon("C:\\Users\\balaz\\eclipse-workspace\\projlab_graphics\\images\\virologist_icon_field.png"));
+		virologist_panel_virologist_icon_1.setIcon(new ImageIcon("images/virologist_icon_field.png"));
 		virologist_panel_virologist_icon_1.setBounds(75, 61, 124, 112);
 		virologist_panel_1.add(virologist_panel_virologist_icon_1);
 		
@@ -420,13 +420,13 @@ public class ww {
 		field_panel.add(field_virologist_icon);
 		
 		JLabel field_type_icon = new JLabel("");
-		field_type_icon.setIcon(new ImageIcon("C:\\Users\\balaz\\eclipse-workspace\\projlab_graphics\\images\\field_shelter_icon.png"));
+		field_type_icon.setIcon(new ImageIcon("images/field_shelter_icon.png"));
 		field_type_icon.setBounds(10, 11, 124, 112);
 		field_panel.add(field_type_icon);
 		
 		JLabel map_label = new JLabel("");
 		map_label.setFocusable(false);
-		map_label.setIcon(new ImageIcon("C:\\Users\\balaz\\eclipse-workspace\\projlab_graphics\\images\\map.png"));
+		map_label.setIcon(new ImageIcon("images/map.png"));
 		map_label.setBounds(299, 0, 795, 945);
 		frmVirologistWithoutAny.getContentPane().add(map_label);
 		
