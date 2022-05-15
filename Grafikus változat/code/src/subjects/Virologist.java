@@ -9,7 +9,7 @@ import main.*;
 /**
 * Virológus osztály
 */
-public class Virologist {
+public class Virologist extends Subject {
     private ArrayList<Substance> substances;
     private ArrayList<Agent> agents;
     private ArrayList<Agent> effects;
