@@ -28,8 +28,10 @@ public class Axe extends Equipment {
 	 * @param target
 	 */
 	public void use(Virologist target) {
-		usable = false;
-		target.axeHit();
+		if(usable) {
+			usable = false;
+			target.axeHit();
+		}
 	}
 
 	

@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class BearAgent extends Agent {
     public BearAgent() {
-		super(null, 0);
+		super(null, -1);
 	}
 
 	/** 
@@ -65,6 +65,11 @@ public class BearAgent extends Agent {
 	 */
 	public void infect(Virologist target, Virologist sender) {
 		target.addEffect(this, sender);
+		startEffect(target);
+	}
+
+	public void infect(Virologist target) {
+		target.addEffect(this, null);
 		startEffect(target);
 	}
 

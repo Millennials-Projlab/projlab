@@ -421,7 +421,9 @@ public class Virologist {
             useGloves();
             effect.endEffect(this);
             addAgent(effect);
-            infect(sender, effect.toString());
+            try {
+                infect(sender, effect.toString());
+            } catch(NullPointerException e) {}
             return;
         }
         effects.add(effect);
