@@ -8,7 +8,7 @@ import main.Package;
 /**
 * Map osztály
 */
-public class Map {
+public class Map extends Subject {
 	private ArrayList<Field> Fields;
 	
 	public Map() {
