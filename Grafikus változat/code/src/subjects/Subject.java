@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import observers.*;
 
 public abstract class Subject {
-    private ArrayList<Observer> observerList;
+    protected ArrayList<Observer> observerList;
+
+    public Subject() {
+        observerList = new ArrayList<Observer>();
+    }
 
     public void attach(Observer observer) {
         observerList.add(observer);
