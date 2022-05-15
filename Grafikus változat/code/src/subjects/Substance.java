@@ -4,7 +4,7 @@ import main.MaximumSubstanceException;
 /**
 * Substance osztály
 */
-public abstract class Substance {
+public abstract class Substance extends Subject {
 	/** 
 	 * Összehasonlítja a paraméterként megadott anyagot a jelenlegi objektummal
 	 * @param g
