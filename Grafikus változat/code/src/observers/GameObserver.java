@@ -1,7 +1,7 @@
 package observers;
 import subjects.*;
 
-public class GameObserver extends Observer {
+public class GameObserver {
     public void update(Subject subject) {
         return;
     }
