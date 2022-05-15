@@ -20,7 +20,7 @@ public abstract class Subject {
 
     public void notifyObservers() {
         for(Observer observer : observerList) {
-            observer.update(this);
+            observer.update();
         }
     }
 }

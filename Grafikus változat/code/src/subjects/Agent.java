@@ -1,8 +1,7 @@
 package subjects;
 import java.util.Iterator;
 
-
-public abstract class Agent {
+public abstract class Agent extends Subject {
 	private Genetics genetic;
 	private int livetime;
 	protected boolean effect = false;

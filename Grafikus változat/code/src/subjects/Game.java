@@ -20,7 +20,6 @@ public final class Game {
 
 		random = true;
 		System.out.println("RANDOMIZER ON");
-		notifyObservers();
 	}
 	
 	/** 
