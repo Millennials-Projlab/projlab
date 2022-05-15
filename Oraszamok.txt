@@ -73,27 +73,45 @@ no data óra - György Márk Attila
 4 óra - Wang Yinnan
 TOT 37
 
+9://
+ÉRT 5x1 óra +
+1,5 óra - Berényi Henrik Dániel
+5 óra - Zólomy Balázs Attila
+no data óra - György Márk Attila
+no data óra - Li Jiaxiang
+5 óra - Wang Yinnan
+TOT 16,5
+
+10://
+ÉRT 5x1 óra +
+no data óra - Berényi Henrik Dániel
+no data óra - Zólomy Balázs Attila
+no data óra - György Márk Attila
+no data óra - Li Jiaxiang
+no data óra - Wang Yinnan
+TOT no data
+
 //
-TOTAL: 183,5
+TOTAL: 200
 
 //
 Meeting/fo
-8,5
+9,5
 
 //
 Emberenkent:
-54,5 óra - Berényi Henrik Dániel
-44,5 óra - Zólomy Balázs Attila
-26 óra - György Márk Attila
-27,5 óra - Li Jiaxiang
-31 óra - Wang Yinnan
+57 óra - Berényi Henrik Dániel
+50,5 óra - Zólomy Balázs Attila
+27 óra - György Márk Attila
+28,5 óra - Li Jiaxiang
+37 óra - Wang Yinnan
 
 //Szazalek
-30% - Berényi Henrik Dániel
-24% - Zólomy Balázs Attila
-14% - György Márk Attila
-15% - Li Jiaxiang
-17% - Wang Yinnan
+28% - Berényi Henrik Dániel
+26% - Zólomy Balázs Attila
+13% - György Márk Attila
+14% - Li Jiaxiang
+19% - Wang Yinnan
 
 
 
