@@ -3,7 +3,7 @@ import java.util.HashMap;
 import main.Amino;
 import main.Nukleotid;
 
-public abstract class Genetics {
+public abstract class Genetics extends Subject {
 	HashMap<Substance, Integer> recipe;
 
 	public Genetics() {
