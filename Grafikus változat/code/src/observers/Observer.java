@@ -2,7 +2,11 @@ package observers;
 import subjects.*;
 
 public abstract class Observer {
-    private Subject subject;
+    protected Subject subject;
 
-    public abstract void update(Subject subject);
+    public Observer(Subject subject) {
+        this.subject = subject;
+    }
+
+    public abstract void update();
 }

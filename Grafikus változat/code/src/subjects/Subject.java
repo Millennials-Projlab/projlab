@@ -3,8 +3,12 @@ import java.util.ArrayList;
 
 import observers.*;
 
-public abstract class Subject {
-    private ArrayList<Observer> observerList;
+public abstract class Subject implements ISubject {
+    protected ArrayList<Observer> observerList;
+
+    public Subject() {
+        observerList = new ArrayList<Observer>();
+    }
 
     public void attach(Observer observer) {
         observerList.add(observer);
@@ -16,7 +20,7 @@ public abstract class Subject {
 
     public void notifyObservers() {
         for(Observer observer : observerList) {
-            observer.update(this);
+            observer.update();
         }
     }
 }
