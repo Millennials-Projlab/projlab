@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 import observers.*;
 
-public abstract class Subject {
+public abstract class Subject implements ISubject {
     protected ArrayList<Observer> observerList;
 
     public Subject() {
