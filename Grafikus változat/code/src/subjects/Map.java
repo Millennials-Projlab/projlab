@@ -27,67 +27,44 @@ public class Map extends Subject {
 	 * @param args
 	 * @throws IncorrectParameterException
 	 */
-	public void createField(String[] args) throws IncorrectParameterException {
-		checkFieldExistence(args[0]);
+	public void createField(String name) throws IncorrectParameterException {
+		checkFieldExistence(name);
 
-		Field field = new Field(args[0]);
+		Field field = new Field(name);
 		Fields.add(field);
 
-		System.out.println("CREATED: Field " + args[0]);
+		System.out.println("CREATED: Field " + name);
 	}
-
 	
 	/** 
 	 * @param args
 	 * @throws IncorrectParameterException
 	 */
-	public void createLaboratory(String[] args) throws IncorrectParameterException  {
-		checkFieldExistence(args[0]);
+	public void createLaboratory(String name, String geneticName) throws IncorrectParameterException  {
+		checkFieldExistence(name);
 
-		Laboratory laboratory = new Laboratory(args[0]);
+		Laboratory laboratory = new Laboratory(name);
 		Genetics genetic;
 
-		if(!Game.random) {
-			switch(args[1]) {
-				case "DanceGenetic":
-					genetic = new DanceGenetic(1, 1);
-					break;
-				case "DefenceGenetic":
-					genetic = new DefenceGenetic(1, 1);
-					break;
-				case "PoisonGenetic":
-					genetic = new PoisonGenetic(1, 1);
-					break;
-				case "AmnesiaGenetic":
-					genetic = new AmnesiaGenetic(1, 1);
-					break;
-				default:
-					throw new IncorrectParameterException("Invalid genetic name");
-			}	
+		switch(geneticName) {
+			case "DanceGenetic":
+				genetic = new DanceGenetic(1, 1);
+				break;
+			case "DefenceGenetic":
+				genetic = new DefenceGenetic(1, 1);
+				break;
+			case "PoisonGenetic":
+				genetic = new PoisonGenetic(1, 1);
+				break;
+			case "AmnesiaGenetic":
+				genetic = new AmnesiaGenetic(1, 1);
+				break;
+			case "BearGenetic":
+				genetic = new BearGenetic();
+				break;
+			default:
+				throw new IncorrectParameterException("Invalid genetic name");
 		}
-		else {
-			Random rand = new Random();
-			int geneticNum = rand.nextInt(3);
-
-			switch(geneticNum) {
-				case 0:
-					genetic = new DanceGenetic(rand.nextInt(5), rand.nextInt(5));
-					break;
-				case 1:
-					genetic = new DefenceGenetic(rand.nextInt(5), rand.nextInt(5));
-					break;
-				case 2:
-					genetic = new PoisonGenetic(rand.nextInt(5), rand.nextInt(5));
-					break;
-				case 3:
-					genetic = new AmnesiaGenetic(rand.nextInt(5), rand.nextInt(5));
-					break;
-				default:
-					genetic = null;
-					break;
-			}	
-		}
-
 		laboratory.place(genetic);
 		Fields.add(laboratory);
 
@@ -100,23 +77,17 @@ public class Map extends Subject {
 	 * @param args
 	 * @throws IncorrectParameterException
 	 */
-	public void createWarehouse(String[] args) throws IncorrectParameterException  {
-		checkFieldExistence(args[0]);
+	public void createWarehouse(String name) throws IncorrectParameterException  {
+		checkFieldExistence(name);
 
-		Warehouse warehouse = new Warehouse(args[0]);
+		Warehouse warehouse = new Warehouse(name);
 		ArrayList<Substance> substances = new ArrayList<Substance>();
 
 		int aminoNum, nukleoNum;
 
-		if(!Game.random) {
-			aminoNum = Integer.parseInt(args[1]);
-			nukleoNum = Integer.parseInt(args[2]);
-		}
-		else {
-			Random rand = new Random();
-			aminoNum = rand.nextInt(5);
-			nukleoNum = rand.nextInt(5);
-		}
+		Random rand = new Random();
+		aminoNum = rand.nextInt(5);
+		nukleoNum = rand.nextInt(5);
 
 		for(int i = 0; i < aminoNum; i++) {
 			Amino a = new Amino();
@@ -140,53 +111,28 @@ public class Map extends Subject {
 	 * @param args
 	 * @throws IncorrectParameterException
 	 */
-	public void createShelter(String[] args) throws IncorrectParameterException  {
-		checkFieldExistence(args[0]);
+	public void createShelter(String name, String equipmentName) throws IncorrectParameterException  {
+		checkFieldExistence(name);
 
-		Shelter shelter = new Shelter(args[0]);
+		Shelter shelter = new Shelter(name);
 		Equipment equipment;
 
-		if(!Game.random) {
-			switch(args[1]) {
-				case "Package":
-					equipment = new Package();
-					break;
-				case "Axe":
-					equipment = new Axe();
-					break;
-				case "Gloves":
-					equipment = new Gloves();
-					break;
-				case "Cape":
-					equipment = new Cape();
-					break;
-				default:
-					throw new IncorrectParameterException("Invalid equipment name");
-			}
+		switch(equipmentName) {
+			case "Package":
+				equipment = new Package();
+				break;
+			case "Axe":
+				equipment = new Axe();
+				break;
+			case "Gloves":
+				equipment = new Gloves();
+				break;
+			case "Cape":
+				equipment = new Cape();
+				break;
+			default:
+				throw new IncorrectParameterException("Invalid equipment name");
 		}
-		else {
-			Random rand = new Random();
-			int equipmentNum = rand.nextInt(3);
-
-			switch(equipmentNum) {
-				case 0:
-					equipment = new Package();
-					break;
-				case 1:
-					equipment = new Axe();
-					break;
-				case 2:
-					equipment = new Gloves();
-					break;
-				case 3:
-					equipment = new Cape();
-					break;
-				default:
-					equipment = null;
-					break;
-			}
-		}
-
 		shelter.place(equipment);
 		Fields.add(shelter);
 
@@ -199,15 +145,15 @@ public class Map extends Subject {
 	 * @param args
 	 * @throws IncorrectParameterException
 	 */
-	public void setNeighbor(String[] args) throws IncorrectParameterException  {
-		Field field1 = getField(args[0]);
-		Field field2 = getField(args[1]);
+	public void setNeighbor(String fieldName1, String fieldName2) throws IncorrectParameterException  {
+		Field field1 = getField(fieldName1);
+		Field field2 = getField(fieldName2);
 
 		if(field1 == null) {
-			throw new IncorrectParameterException("field with name " + "\""+ args[0] +"\" does not exist");
+			throw new IncorrectParameterException("field with name " + "\""+ fieldName1 +"\" does not exist");
 		}
 		if(field2 == null) {
-			throw new IncorrectParameterException("field with name " + "\""+ args[1] +"\" does not exist");
+			throw new IncorrectParameterException("field with name " + "\""+ fieldName2 +"\" does not exist");
 		}
 
 		field1.setNeighbour(field2);

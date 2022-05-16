@@ -30,6 +30,7 @@ public final class Game {
 		//players = new ArrayList<Virologist>();
 		//timer = new Timer();
 		timer.start();
+		buildMap();
 		System.out.println("Game has started.");
 	}
 	
@@ -75,6 +76,87 @@ public final class Game {
 	 */
 	public static Map getMap() {
 		return Map;
+	}
+
+	/*
+	F1 F2 W1 F3 L1
+	F4 S1 F5 L2 W2
+	L3 W3 L4 F6 L5
+	F7 S2 F8 S3 L6
+	L7 S4 F9 W4 S5
+	*/
+	private static void buildMap() {
+		try {
+			Map.createField("F1");
+			Map.createField("F2");
+			Map.createWarehouse("W1");
+			Map.createField("F3");
+			Map.createLaboratory("L1", "DanceGenetic");
+			Map.createField("F4");
+			Map.createShelter("S1", "Package");
+			Map.createField("F5");
+			Map.createLaboratory("L2", "DefenceGenetic");
+			Map.createWarehouse("W2");
+			Map.createLaboratory("L3", "PoisonGenetic");
+			Map.createWarehouse("W3");
+			Map.createLaboratory("L4", "AmnesiaGenetic");
+			Map.createField("F6");
+			Map.createLaboratory("L5", "BearGenetic");
+			Map.createField("F7");
+			Map.createShelter("S2", "Axe");
+			Map.createField("F8");
+			Map.createShelter("S3", "Gloves");
+			Map.createLaboratory("L6", "DefenceGenetic");
+			Map.createLaboratory("L7", "AmnesiaGenetic");
+			Map.createShelter("S4", "Cape");
+			Map.createField("F9");
+			Map.createWarehouse("W4");
+			Map.createShelter("S5", "Package");
+
+			Map.setNeighbor("F1", "F2");
+			Map.setNeighbor("F2", "W1");
+			Map.setNeighbor("W1", "F3");
+			Map.setNeighbor("F3", "L1");
+			Map.setNeighbor("F1", "F4");
+			Map.setNeighbor("F2", "S1");
+			Map.setNeighbor("W1", "F5");
+			Map.setNeighbor("F3", "L2");
+			Map.setNeighbor("L1", "W2");
+			Map.setNeighbor("F4", "S1");
+			Map.setNeighbor("S1", "F5");
+			Map.setNeighbor("F5", "L2");
+			Map.setNeighbor("L2", "W2");
+			Map.setNeighbor("F4", "L3");
+			Map.setNeighbor("S1", "W3");
+			Map.setNeighbor("F5", "L4");
+			Map.setNeighbor("L2", "F6");
+			Map.setNeighbor("W2", "L5");
+			Map.setNeighbor("L3", "W3");
+			Map.setNeighbor("W3", "L4");
+			Map.setNeighbor("L4", "F6");
+			Map.setNeighbor("F6", "L5");
+			Map.setNeighbor("L3", "F7");
+			Map.setNeighbor("W3", "S2");
+			Map.setNeighbor("L4", "F8");
+			Map.setNeighbor("F6", "S3");
+			Map.setNeighbor("L5", "L6");
+			Map.setNeighbor("F7", "S2");
+			Map.setNeighbor("S2", "F8");
+			Map.setNeighbor("F8", "S3");
+			Map.setNeighbor("S3", "L6");
+			Map.setNeighbor("F7", "L7");
+			Map.setNeighbor("S2", "S4");
+			Map.setNeighbor("F8", "F9");
+			Map.setNeighbor("S3", "W4");
+			Map.setNeighbor("L6", "S5");
+			Map.setNeighbor("L7", "S4");
+			Map.setNeighbor("S4", "F9");
+			Map.setNeighbor("F9", "W4");
+			Map.setNeighbor("W4", "S5");
+		} catch(IncorrectParameterException e) {
+			errorMessage(e.getMessage());
+		}
+		
 	}
 	
 	
@@ -189,5 +271,9 @@ public final class Game {
 		for(GameObserver observer : observerList) {
             observer.update();
         }
+	}
+
+	public static void errorMessage(String error) {
+		System.out.println("ERROR: " + error);
 	}
 }
