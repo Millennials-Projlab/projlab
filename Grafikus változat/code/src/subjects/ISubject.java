@@ -1,5 +1,4 @@
 package subjects;
-import java.util.ArrayList;
 import observers.Observer;
 
 public interface ISubject {
