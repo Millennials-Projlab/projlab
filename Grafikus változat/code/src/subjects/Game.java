@@ -2,14 +2,14 @@ package subjects;
 import java.util.ArrayList;
 import java.util.Random;
 import main.IncorrectParameterException;
-import observers.GameObserver;
+import observers.Observer;
 
 public final class Game {
 	public static boolean random = false;
 	private static Map Map = new Map();
 	private static ArrayList<Virologist> players = new ArrayList<Virologist>();
 	private static Timer timer = new Timer();
-	private static ArrayList<GameObserver> observerList = new ArrayList<GameObserver>();
+	private static ArrayList<Observer> observerList = new ArrayList<Observer>();
 
 	public static void toggleRandom() {
 		if(random) {
@@ -156,7 +156,6 @@ public final class Game {
 		} catch(IncorrectParameterException e) {
 			errorMessage(e.getMessage());
 		}
-		
 	}
 	
 	
@@ -268,9 +267,13 @@ public final class Game {
 	}
 
 	public static void notifyObservers() {
-		for(GameObserver observer : observerList) {
+		for(Observer observer : observerList) {
             observer.update();
         }
+	}
+
+	public static void attach(Observer observer) {
+		observerList.add(observer);
 	}
 
 	public static void errorMessage(String error) {

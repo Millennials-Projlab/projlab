@@ -4,10 +4,6 @@ import java.util.Random;
 import main.*;
 import main.Package;
 
-
-/**
-* Map osztály
-*/
 public class Map extends Subject {
 	private ArrayList<Field> Fields;
 	
@@ -34,6 +30,7 @@ public class Map extends Subject {
 		Fields.add(field);
 
 		System.out.println("CREATED: Field " + name);
+		notifyObservers();
 	}
 	
 	/** 
@@ -70,6 +67,7 @@ public class Map extends Subject {
 
 		System.out.println("CREATED: " + genetic);
 		System.out.println("CREATED: Laboratory " + laboratory.getName());
+		notifyObservers();
 	}
 
 	
@@ -104,6 +102,7 @@ public class Map extends Subject {
 		Fields.add(warehouse);
 
 		System.out.println("CREATED: Warehouse " + warehouse.getName());
+		notifyObservers();
 	}
 
 	
@@ -138,6 +137,7 @@ public class Map extends Subject {
 
 		System.out.println("CREATED: " + equipment);
 		System.out.println("CREATED: Shelter " + shelter.getName());
+		notifyObservers();
 	}
 
 	
@@ -158,6 +158,7 @@ public class Map extends Subject {
 
 		field1.setNeighbour(field2);
 		field2.setNeighbour(field1);
+		notifyObservers();
 	}
 
 	

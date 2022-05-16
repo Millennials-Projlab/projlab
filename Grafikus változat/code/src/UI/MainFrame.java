@@ -6,8 +6,10 @@ import javax.swing.JLabel;
 import javax.swing.ScrollPaneConstants;
 
 import java.awt.Toolkit;
+import observers.Observer;
+import subjects.Game;
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements Observer {
     public MainFrame() {
         setResizable(false);
         setTitle("A világtalan virológusok világa\r\n\r\n");
@@ -75,11 +77,12 @@ public class MainFrame extends JFrame {
 		virologist_panel_scrollpane.setBounds(0, 0, 300, 960);
 		player_selection_panel.add(virologist_panel_scrollpane);
 
-        MapPanel map_panel = new MapPanel();
+        MapPanel map_panel = new MapPanel(Game.getMap());
         getContentPane().add(map_panel);
+        Game.getMap().attach(map_panel);
+        //Game.getMap().attach(this);
 
-        FieldPanel field_panel = new FieldPanel();
-        map_panel.add(field_panel);
+
 
         MenuBar menuBar = new MenuBar();
 		setJMenuBar(menuBar);
@@ -92,5 +95,9 @@ public class MainFrame extends JFrame {
 
 
         setVisible(true);
+    }
+
+    public void update() {
+        //revalidate();
     }
 }

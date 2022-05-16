@@ -26,6 +26,12 @@ public class MenuBar extends JMenuBar {
 				Game.Start();
 			}
 		}
+
+		class ExitActionListener implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		}
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Start");
 		mntmNewMenuItem.setForeground(new Color(51, 0, 153));
@@ -37,5 +43,6 @@ public class MenuBar extends JMenuBar {
 		mntmExit.setForeground(new Color(51, 0, 153));
 		mntmExit.setFont(new Font("SansSerif", Font.BOLD, 15));
 		mnNewMenu.add(mntmExit);
+		mntmExit.addActionListener(new ExitActionListener());
     }
 }
