@@ -228,6 +228,7 @@ public class Virologist extends Subject {
             currentField.leave(this);
             nextField.enter(this);
             currentField = nextField;
+            notifyObservers();
             return;
 		}
         System.out.println(nextField.getName() + " is not a neighbor of " + currentField.getName());

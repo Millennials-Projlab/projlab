@@ -40,6 +40,7 @@ public class MainFrame extends JFrame implements Observer {
 
         MapPanel map_panel = new MapPanel(Game.getMap());
         getContentPane().add(map_panel);
+        Game.attach(map_panel);
         Game.getMap().attach(map_panel);
 
         MenuBar menuBar = new MenuBar();

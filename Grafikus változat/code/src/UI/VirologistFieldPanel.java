@@ -7,20 +7,19 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import main.Coordinate;
-import main.IncorrectParameterException;
-import subjects.Field;
 import subjects.Game;
+import subjects.Virologist;
 
 import java.awt.Color;
 import java.awt.event.*;
 
-public class FieldPanel extends JPanel {
-	Field field;
-	JLabel field_type_icon;
+public class VirologistFieldPanel extends JPanel {
+    Virologist virologist;
+    JLabel field_type_icon;
 	JButton field_select_button;
 
-    public FieldPanel(Coordinate coordinate, Field field) {
-		this.field = field;
+    public VirologistFieldPanel(Coordinate coordinate, Virologist virologist) {
+        this.virologist = virologist;
 		setOpaque(false);
 		setFocusable(false);
 		setBackground(Color.WHITE);
@@ -31,6 +30,7 @@ public class FieldPanel extends JPanel {
 		field_type_icon = new JLabel("");
 		field_type_icon.setIcon(new ImageIcon(""));
 		field_type_icon.setBounds(10, 11, 124, 112);
+        field_type_icon.setIcon(new ImageIcon("images/virologist_icon_field.png"));
 		add(field_type_icon);
 
 		field_select_button = new JButton("");
@@ -41,26 +41,12 @@ public class FieldPanel extends JPanel {
 		field_select_button.setBackground(null);
 		add(field_select_button);
 		
-		field_select_button.addActionListener(new MoveActionListener(field));
+		field_select_button.addActionListener(new VirologistActionListener());
     }
 
-	class MoveActionListener implements ActionListener {
-		private Field field;
-		public MoveActionListener(Field field) {
-			this.field = field;
-		}
-		
+    class VirologistActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			try {
-				Game.selectedVirologist.move(field);
-				Game.selectedVirologist = null;
-			} 
-			catch(IncorrectParameterException ex) {
-				Game.errorMessage(ex.getMessage());
-			}
-			catch(NullPointerException ex) {
-				Game.errorMessage("No virologist is selected");
-			}
+            Game.selectedVirologist = virologist;
 		}
 	}
 }

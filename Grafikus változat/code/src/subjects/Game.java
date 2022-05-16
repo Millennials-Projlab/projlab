@@ -11,6 +11,8 @@ public final class Game {
 	private static Timer timer = new Timer();
 	private static ArrayList<Observer> observerList = new ArrayList<Observer>();
 
+	public static Virologist selectedVirologist;
+
 	public static void toggleRandom() {
 		if(random) {
 			random = false;
@@ -241,10 +243,14 @@ public final class Game {
 		}
 		
 		virologist = new Virologist(name, rand.nextInt(1,5), rand.nextInt(5,10), field);
-		
+
+		for(Observer observer : observerList) {
+			virologist.attach(observer);
+		}
+
 		players.add(virologist);
 
-		System.out.println("CREATED: Virologist " + virologist.getName());
+		System.out.println("CREATED: Virologist " + virologist.getName() + " Field: " + field.getName());
 		notifyObservers();
 	}
 

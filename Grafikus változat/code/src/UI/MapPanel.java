@@ -53,24 +53,31 @@ public class MapPanel extends JPanel implements Observer {
 
 	public void update() {
 		removeAll();
+
 		ArrayList<Field> fields = map.getFields();
+		ArrayList<Virologist> virologists = Game.getPlayers();
+		for(Virologist virologist : virologists) {
+			VirologistFieldPanel virologist_panel = new VirologistFieldPanel(coordinates[fields.indexOf(virologist.getCurrentField())], virologist);
+			add(virologist_panel);
+		}
+
 		for(int i = 0; i < fields.size(); i++) {
 			FieldPanel field_panel;
 			if(fields.get(i).isSame(new Laboratory(""))) {
-				field_panel = new FieldPanel(coordinates[i], "field_lab_icon.png");
+				field_panel = new LaboratoryPanel(coordinates[i], fields.get(i));
 			}
 			else if(fields.get(i).isSame(new Warehouse(""))) {
-				field_panel = new FieldPanel(coordinates[i], "field_warehouse_icon.png");
+				field_panel = new WarehousePanel(coordinates[i], fields.get(i));
 			}
 			else if(fields.get(i).isSame(new Shelter(""))) {
-				field_panel = new FieldPanel(coordinates[i], "field_shelter_icon.png");
+				field_panel = new ShelterPanel(coordinates[i], fields.get(i));
 			}
 			else {
-				field_panel = new FieldPanel(coordinates[i], "");
+				field_panel = new FieldPanel(coordinates[i], fields.get(i));
 			}
 			
 			add(field_panel);	
-			}
+		}
 		revalidate();
 		repaint();
 	}
