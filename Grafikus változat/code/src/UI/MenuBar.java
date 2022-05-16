@@ -1,8 +1,14 @@
 package UI;
 
+import javax.swing.Action;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import subjects.Game;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -15,11 +21,18 @@ public class MenuBar extends JMenuBar {
 		mnNewMenu.setForeground(new Color(51, 0, 153));
 		mnNewMenu.setFont(new Font("SansSerif", Font.BOLD, 15));
 		add(mnNewMenu);
+
+		class StartActionListener implements ActionListener {
+			public void actionPerformed(ActionEvent e) {
+				Game.Start();
+			}
+		}
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Start");
 		mntmNewMenuItem.setForeground(new Color(51, 0, 153));
 		mntmNewMenuItem.setFont(new Font("SansSerif", Font.BOLD, 15));
 		mnNewMenu.add(mntmNewMenuItem);
+		mntmNewMenuItem.addActionListener(new StartActionListener());
 		
 		JMenuItem mntmExit = new JMenuItem("Exit");
 		mntmExit.setForeground(new Color(51, 0, 153));

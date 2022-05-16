@@ -30,6 +30,7 @@ public final class Game {
 		//players = new ArrayList<Virologist>();
 		//timer = new Timer();
 		timer.start();
+		System.out.println("Game has started.");
 	}
 	
 	public static void End() {
