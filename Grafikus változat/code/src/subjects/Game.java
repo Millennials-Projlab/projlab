@@ -227,26 +227,25 @@ public final class Game {
 	 * Létrehoz egy új virológust a megadott paraméterekkel
 	 * @param args
 	 */
-	public static void createVirologist(String[] args) {
+	public static void createVirologist(String name) {
 		Virologist virologist;
-		if(!random) {
-			checkVirologistExistence(args[0]);
-			virologist = new Virologist(args[0], Integer.parseInt(args[1]), Integer.parseInt(args[2]), getMap().getField(args[3]));
+
+		checkVirologistExistence(name);
+
+		Random rand = new Random();
+		Field field;
+		try {
+			field = getMap().getFields().get(rand.nextInt(getMap().getFields().size()-1));
+		} catch(IllegalArgumentException e) { // csak egy field van
+			field = getMap().getFields().get(0);
 		}
-		else {
-			Random rand = new Random();
-			Field field;
-			try {
-				field = getMap().getFields().get(rand.nextInt(getMap().getFields().size()-1));
-			} catch(IllegalArgumentException e) { // csak egy field van
-				field = getMap().getFields().get(0);
-			}
-			
-			virologist = new Virologist(args[0], rand.nextInt(1,5), rand.nextInt(5,10), field);
-		}
+		
+		virologist = new Virologist(name, rand.nextInt(1,5), rand.nextInt(5,10), field);
+		
 		players.add(virologist);
 
 		System.out.println("CREATED: Virologist " + virologist.getName());
+		notifyObservers();
 	}
 
 	public static void gameInfo() {
