@@ -1,6 +1,8 @@
 package subjects;
 import java.util.ArrayList;
 import java.util.Random;
+
+import UI.EndGameDialog;
 import main.IncorrectParameterException;
 import main.Message;
 import observers.Observer;
@@ -38,8 +40,9 @@ public final class Game {
 		System.out.println("Game has started.");
 	}
 	
-	public static void End() {
+	public static void End(String virologist) {
 		System.out.println("Game has ended.");
+		new EndGameDialog(virologist);
 	}
 
 	
@@ -208,7 +211,7 @@ public final class Game {
 	public void Tick() {
 		for(Virologist virologist : players) {
 			if (virologist.collectedAllGenetics() == true) {
-				End();
+				End(virologist.getName());
 				return;
 			}
 		}
