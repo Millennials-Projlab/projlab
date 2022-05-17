@@ -56,10 +56,12 @@ public class Laboratory extends Field {
 		// if genetic has been learned
 		if(!virologist.checkGenetics(genetic)) {
 			virologist.addGenetics(genetic);	
+			Game.infoMessage(this.toString());
 			return;
 		}
 
 		System.out.println("The virologist has already learned that genetic.");
+		Game.errorMessage("The virologist has already learned that genetic.");
 	}
 
 	

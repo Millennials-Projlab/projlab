@@ -2,6 +2,7 @@ package subjects;
 import java.util.ArrayList;
 import java.util.Random;
 import main.IncorrectParameterException;
+import main.Message;
 import observers.Observer;
 
 public final class Game {
@@ -10,6 +11,7 @@ public final class Game {
 	private static ArrayList<Virologist> players = new ArrayList<Virologist>();
 	private static Timer timer = new Timer();
 	private static ArrayList<Observer> observerList = new ArrayList<Observer>();
+	private static Message message = new Message();
 
 	public static Virologist selectedVirologist;
 
@@ -281,7 +283,19 @@ public final class Game {
 		observerList.add(observer);
 	}
 
-	public static void errorMessage(String error) {
-		System.out.println("ERROR: " + error);
+	public static void errorMessage(String messageText) {
+		System.out.println("ERROR: " + message);
+		message.setMessage("ERROR: " + messageText, true);
+		notifyObservers();
+	}
+
+	public static void infoMessage(String messageText) {
+		message.setMessage(messageText, false);
+		System.out.println(messageText);
+		notifyObservers();
+	}
+
+	public static Message getMessage() {
+		return message;
 	}
 }

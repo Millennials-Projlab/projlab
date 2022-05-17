@@ -3,14 +3,13 @@ package UI;
 import javax.swing.JComboBox;
 
 import main.Coordinate;
-import subjects.Equipment;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.util.ArrayList;
 
 public class ItemComboBox extends JComboBox<String> {
-    public ItemComboBox(ArrayList<Equipment> data,  Coordinate coordinate) {
+    public ItemComboBox(String[] data, Coordinate coordinate) {
+		super(data);
 		setFocusable(false);
 		setMaximumRowCount(4);
 		setBackground(Color.WHITE);

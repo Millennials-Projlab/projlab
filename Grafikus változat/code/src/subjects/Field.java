@@ -33,6 +33,7 @@ public class Field extends Subject {
 	 */
 	public void enter(Virologist virologist) {
 		virologists.add(virologist);
+		Game.infoMessage(this.toString());
 	}
 	
 	
@@ -107,11 +108,13 @@ public class Field extends Subject {
 		String returnString = "";
 		returnString += "Name: " + name + "\n";
 		returnString += "Type: " + this.getClass().getSimpleName() + "\n";
+		/* 		
 		returnString += "Neighbors: ";
 		for(int i = 0; i < neighbours.size(); i++) {
 			returnString += neighbours.get(i).getName() + " ";
-		}
+		} 
 		returnString += "\n";
+		*/
 
 		returnString += "Virologists: ";
 		for(int i = 0; i < virologists.size(); i++) {

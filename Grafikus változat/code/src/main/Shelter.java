@@ -38,6 +38,7 @@ public class Shelter extends Field {
 	public void lootItem(Virologist virologist) {
 		if(equipment == null) {
 			System.out.println("Shelter does not have an equipment in it.");
+			Game.errorMessage("Shelter does not have an equipment in it.");
 			return;
 		}
 
@@ -45,10 +46,12 @@ public class Shelter extends Field {
 			virologist.addEquipment(equipment);
 
 			equipment = null;
+			Game.infoMessage(this.toString());
 			return;
 		}
 
 		System.out.println("Virologist does not have enough space.");
+		Game.errorMessage("Virologist does not have enough space.");
 	}
 
 	

@@ -241,9 +241,11 @@ public class Virologist extends Subject {
     public void loot(){
         if(isVirologistPoisoned()) {
             System.out.println("Virologist is poisoned");
+            Game.errorMessage("Virologist is poisoned");
             return;
         }
         currentField.lootItem(this);
+        notifyObservers();
     }
     
     /** 
@@ -546,5 +548,29 @@ public class Virologist extends Subject {
         returnString += "\tNukleotid: " + countSubstance(new Nukleotid()) + "\n";
 
         return returnString;
+    }
+
+    public String[] getLearnedGenetics() {
+        String[] returnArray = new String[genetics.size()];
+        for(int i = 0; i < genetics.size(); i++) {
+            returnArray[i] = genetics.get(i).toString();
+        }
+        return returnArray;
+    }
+
+    public String[] getAgents() {
+        String[] returnArray = new String[agents.size()];
+        for(int i = 0; i < agents.size(); i++) {
+            returnArray[i] = agents.get(i).toString();
+        }
+        return returnArray;
+    }
+
+    public String[] getEquipmentList() {
+        String[] returnArray = new String[equipments.size()];
+        for(int i = 0; i < equipments.size(); i++) {
+            returnArray[i] = equipments.get(i).toString();
+        }
+        return returnArray;
     }
 }

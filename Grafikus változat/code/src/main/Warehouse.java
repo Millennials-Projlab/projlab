@@ -3,7 +3,7 @@ import subjects.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Warehouse extends Field{
+public class Warehouse extends Field {
 	private ArrayList<Substance> substances;
 	
 	public Warehouse(String name) {
@@ -81,6 +81,7 @@ public class Warehouse extends Field{
 				return;
 			}
 		}
+		Game.infoMessage(this.toString());
 	}
 
 	public void clear() {

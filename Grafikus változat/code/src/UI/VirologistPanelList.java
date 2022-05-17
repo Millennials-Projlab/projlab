@@ -8,6 +8,7 @@ import main.Coordinate;
 import main.Nukleotid;
 
 import java.awt.GridLayout;
+import java.awt.event.*;
 
 import observers.Observer;
 import subjects.Game;
@@ -39,23 +40,27 @@ public class VirologistPanelList extends JPanel implements Observer {
 			NukleotidText nukleotid_text = new NukleotidText(Integer.toString(virologist.countSubstance(new Nukleotid())));
 			virologist_panel.add(nukleotid_text);
 	
-			ItemComboBox learned_genetics = new ItemComboBox(virologist.getEquipments(), new Coordinate(10, 308));
+			ItemComboBox learned_genetics = new ItemComboBox(virologist.getLearnedGenetics(), new Coordinate(10, 290));
 			virologist_panel.add(learned_genetics);
-	
-			ItemComboBox equipments = new ItemComboBox(virologist.getEquipments(), new Coordinate(10, 394));
-			virologist_panel.add(equipments);
-	
-			ItemComboBox agents = new ItemComboBox(virologist.getEquipments(), new Coordinate(10, 480));
+
+			ItemComboBox agents = new ItemComboBox(virologist.getAgents(), new Coordinate(10, 360));
 			virologist_panel.add(agents);
 	
-			InteractButton btnagent_generate = new InteractButton("Generate", 10, 516, 260, 39);
+			ItemComboBox equipments = new ItemComboBox(virologist.getEquipmentList(), new Coordinate(10, 430));
+			virologist_panel.add(equipments);
+	
+			InteractButton btnagent_generate = new InteractButton("Generate", 10, 308, 260, 39);
 			virologist_panel.add(btnagent_generate);
 	
-			InteractButton btnagent_attack = new InteractButton("Attack", 10, 430, 260, 39);
+			InteractButton btnagent_attack = new InteractButton("Attack", 10, 383, 260, 39);
 			virologist_panel.add(btnagent_attack);
 	
-			InteractButton btnagent_use = new InteractButton("Use", 10, 344, 260, 39);
+			InteractButton btnagent_use = new InteractButton("Use", 10, 453, 260, 39);
 			virologist_panel.add(btnagent_use);
+
+			InteractButton btnagent_loot = new InteractButton("Loot", 10, 516, 260, 39);
+			btnagent_loot.addActionListener(new LootActionListener(virologist));
+			virologist_panel.add(btnagent_loot);
 	
 			EffectTextField effect1 = new EffectTextField(10, 196, 260, 20);
 			EffectTextField effect2 = new EffectTextField(10, 227, 260, 20);
@@ -66,6 +71,17 @@ public class VirologistPanelList extends JPanel implements Observer {
 		}
 		revalidate();
 		repaint();
+	}
+
+	class LootActionListener implements ActionListener {
+		Virologist virologist;
+		public LootActionListener(Virologist virologist) {
+			this.virologist = virologist;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			virologist.loot();
+		}
 	}
 
 }
