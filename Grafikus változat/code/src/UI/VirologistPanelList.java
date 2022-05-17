@@ -3,7 +3,9 @@ package UI;
 import java.awt.Color;
 import javax.swing.JPanel;
 
+import main.Amino;
 import main.Coordinate;
+import main.Nukleotid;
 
 import java.awt.GridLayout;
 
@@ -31,10 +33,10 @@ public class VirologistPanelList extends JPanel implements Observer {
 			VirologistIcon virologist_panel_virologist_icon = new VirologistIcon();
 			virologist_panel.add(virologist_panel_virologist_icon);
 	
-			AminoText amino_text = new AminoText();
+			AminoText amino_text = new AminoText(Integer.toString(virologist.countSubstance(new Amino())));
 			virologist_panel.add(amino_text);
 	
-			NukleotidText nukleotid_text = new NukleotidText();
+			NukleotidText nukleotid_text = new NukleotidText(Integer.toString(virologist.countSubstance(new Nukleotid())));
 			virologist_panel.add(nukleotid_text);
 	
 			ItemComboBox learned_genetics = new ItemComboBox(virologist.getEquipments(), new Coordinate(10, 308));

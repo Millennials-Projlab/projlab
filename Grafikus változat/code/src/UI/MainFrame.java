@@ -11,10 +11,10 @@ import subjects.Game;
 
 public class MainFrame extends JFrame implements Observer {
     public MainFrame() {
-        setResizable(false);
+        setResizable(true);
         setTitle("A világtalan virológusok világa\r\n\r\n");
         setIconImage(Toolkit.getDefaultToolkit().getImage("images/main_icon.png"));
-        setBounds(100, 100, 1100, 1100);
+        setBounds(100, 100, 1100, 900);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
     }

@@ -6,9 +6,8 @@ import java.awt.Font;
 import java.awt.Color;
 
 public class NukleotidText extends JTextField {
-    public NukleotidText() {
-        super();
-		setText("5");
+    public NukleotidText(String text) {
+		setText(text);
 		setForeground(new Color(51, 0, 153));
 	    setFont(new Font("SansSerif", Font.BOLD, 40));
 		setFocusable(false);
