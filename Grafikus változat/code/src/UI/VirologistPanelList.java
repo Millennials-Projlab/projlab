@@ -105,7 +105,6 @@ public class VirologistPanelList extends JPanel implements Observer {
 		}
 	}
 			
-
 	class AttackActionListener implements ActionListener {
 		Virologist virologist;
 		Virologist target;
@@ -124,5 +123,4 @@ public class VirologistPanelList extends JPanel implements Observer {
 
 		}
 	}
-
 }

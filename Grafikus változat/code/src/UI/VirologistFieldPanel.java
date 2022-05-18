@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import main.Coordinate;
+import main.IncorrectParameterException;
 import subjects.Game;
 import subjects.Virologist;
 
@@ -46,6 +47,15 @@ public class VirologistFieldPanel extends JPanel {
 
     class VirologistActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			if(Game.selectedVirologist != null) {
+				try {
+					Game.selectedVirologist.move(virologist.getCurrentField());
+					Game.selectedVirologist = null;
+				} catch(IncorrectParameterException ex) {
+					Game.errorMessage(ex.getMessage());
+				}
+				return;
+			}
             Game.selectedVirologist = virologist;
 		}
 	}
