@@ -156,6 +156,7 @@ public class Virologist extends Subject {
             if(agent.isSame(agentName)) {
                 agents.remove(agent);
                 agent.infect(target, this);
+                notifyObservers();
                 return;
             }
         }
@@ -582,5 +583,9 @@ public class Virologist extends Subject {
             returnArray[i] = equipments.get(i).toString();
         }
         return returnArray;
+    }
+
+    public ArrayList<Agent> getEffects() {
+        return effects;
     }
 }

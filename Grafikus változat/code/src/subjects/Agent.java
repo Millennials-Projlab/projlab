@@ -26,6 +26,7 @@ public abstract class Agent extends Subject {
 			}
 			iter.remove();
 		}
+		notifyObservers();
 	}
 	
 	public void startEffect(Virologist virologist) {}

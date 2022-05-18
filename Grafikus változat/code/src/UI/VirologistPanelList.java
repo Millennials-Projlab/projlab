@@ -12,6 +12,7 @@ import java.awt.GridLayout;
 import java.awt.event.*;
 
 import observers.Observer;
+import subjects.Agent;
 import subjects.Game;
 import subjects.Virologist;
 
@@ -64,13 +65,13 @@ public class VirologistPanelList extends JPanel implements Observer {
 			InteractButton btnagent_loot = new InteractButton("Loot", 10, 516, 260, 39);
 			btnagent_loot.addActionListener(new LootActionListener(virologist));
 			virologist_panel.add(btnagent_loot);
-	
-			EffectTextField effect1 = new EffectTextField(10, 196, 260, 20);
-			EffectTextField effect2 = new EffectTextField(10, 227, 260, 20);
-			EffectTextField effect3 = new EffectTextField(10, 258, 260, 20);
-			virologist_panel.add(effect1);
-			virologist_panel.add(effect2);
-			virologist_panel.add(effect3);
+
+
+			int i = 0;
+			for(Agent effect : virologist.getEffects()) {
+				virologist_panel.add(new EffectTextField(196+(31*i), effect));
+				i++;
+			}
 		}
 		revalidate();
 		repaint();
