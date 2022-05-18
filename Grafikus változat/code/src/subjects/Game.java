@@ -40,7 +40,7 @@ public final class Game {
 		System.out.println("Game has started.");
 	}
 	
-	public static void End(String virologist) {
+	public static void End(Virologist virologist) {
 		System.out.println("Game has ended.");
 		new EndGameDialog(virologist);
 	}
@@ -74,6 +74,10 @@ public final class Game {
 
 	public static void tick() {
 		for(Virologist virologist : players) {
+			if(virologist.collectedAllGenetics()) {
+				End(virologist);
+				return;
+			}
 			virologist.tick();
 		}
 	}
@@ -196,27 +200,12 @@ public final class Game {
 		players.add(v);
 	}
 
-	
 	/** 
 	 * @param v
 	 */
 	public static void removePlayer(Virologist v) {
 		players.remove(v);
 	}
-	
-	/** 
-	 * Tick-el a jatek, ha valamelyik virologus megtanulta az osszes genetikai kodot
-	 * @param v
-	 */
-	public void Tick() {
-		for(Virologist virologist : players) {
-			if (virologist.collectedAllGenetics() == true) {
-				End(virologist.getName());
-				return;
-			}
-		}
-	}
-
 	
 	/** 
 	 * Ellenőrzi, hogy a megadott nevű virológus létezik-e

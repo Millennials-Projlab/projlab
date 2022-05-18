@@ -2,13 +2,13 @@ package UI;
 
 import javax.swing.*;
 
-import subjects.Game;
+import subjects.Virologist;
 
 import java.awt.*;
 import java.awt.event.*;
 
 public class EndGameDialog extends JDialog{
-    public EndGameDialog(String virologist){
+    public EndGameDialog(Virologist virologist){
         setSize(300, 400);
         setLocation(400, 200);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -20,7 +20,7 @@ public class EndGameDialog extends JDialog{
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(0, 20, 20, 20));
 
-        JLabel nameLabel = new JLabel("A játékot "+virologist+" nyerte.");
+        JLabel nameLabel = new JLabel("A játékot "+ virologist.getName() +" nyerte.");
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(nameLabel);
 
@@ -32,8 +32,8 @@ public class EndGameDialog extends JDialog{
         add(panel);
         setVisible(true);
     }
+    
     class ExitButtonActionListener implements ActionListener {
-
         public void actionPerformed(ActionEvent e) {
             System.exit(0);
         }

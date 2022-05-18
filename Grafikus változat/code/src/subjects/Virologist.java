@@ -326,8 +326,11 @@ public class Virologist extends Subject {
      * @return boolean igaz, ha a virológus megtanulta az összes genetikai kódot
      */
     public boolean collectedAllGenetics(){
-        System.out.println("All genetics has been collected.");
-        return true;
+        if(genetics.size() == 4) {
+            Game.infoMessage("All genetics have been collected.");
+            return true;
+        }
+        return false;
     }
 
     /** 
