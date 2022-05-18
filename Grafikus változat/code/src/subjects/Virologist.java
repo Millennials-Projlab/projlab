@@ -6,9 +6,6 @@ import java.util.Random;
 
 import main.*;
 
-/**
-* Virológus osztály
-*/
 public class Virologist extends Subject {
     private ArrayList<Substance> substances;
     private ArrayList<Agent> agents;
@@ -84,33 +81,28 @@ public class Virologist extends Subject {
      * @param args
      * @throws IncorrectParameterException
      */
-    public void produceAgent(String[] args) throws IncorrectParameterException {
+    public void produceAgent(String geneticType) throws IncorrectParameterException {
         Genetics genetic;
     	Agent agent;
         int liveTime;
 
-        if(Game.random) {
-            Random rand = new Random();
-		    liveTime = rand.nextInt(100);
-        }
-        else {
-            liveTime = Integer.parseInt(args[2]);
-        }
+        Random rand = new Random();
+        liveTime = rand.nextInt(100);
     	
-    	switch(args[1]) {
-    		case "AmnesiaAgent":
+    	switch(geneticType) {
+    		case "AmnesiaGenetic":
                 genetic = getLearnedGenetic(new AmnesiaGenetic());
     			break;
     			
-    		case "DanceAgent":
+    		case "DanceGenetic":
                 genetic = getLearnedGenetic(new DanceGenetic());
     			break;
     			
-    		case "DefenceAgent":
+    		case "DefenceGenetic":
                 genetic = getLearnedGenetic(new DefenceGenetic());
     			break;
     			
-    		case "PoisonAgent":
+    		case "PoisonGenetic":
                 genetic = getLearnedGenetic(new PoisonGenetic());
     			break;
     			
@@ -122,8 +114,14 @@ public class Virologist extends Subject {
         if(agent != null) {
             this.addAgent(agent);
         }
+        else {
+            System.out.println("Not enough materials to make that agent.");
+            Game.errorMessage("Not enough materials to make that agent.");
+            return;
+        }
 
-        System.out.println("CREATED: " + agent);
+        Game.infoMessage("CREATED: " + agent);
+        notifyObservers();
     }
 
     
@@ -283,8 +281,13 @@ public class Virologist extends Subject {
     /** 
      * @param substance
      */
-    public void removeSubstance(Substance substance){
-        substances.remove(substance);
+    public void removeSubstance(Substance substance) {
+        for(Substance s : substances) {
+            if(s.isSame(substance)) {
+                substances.remove(s);
+                return;
+            }
+        }
     }
 
     /** 
@@ -509,6 +512,7 @@ public class Virologist extends Subject {
                 removeSubstance(key);
             }
         }
+        System.out.println(substances.size());
     }
     
     /** 

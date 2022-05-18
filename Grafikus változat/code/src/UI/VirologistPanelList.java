@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 
 import main.Amino;
 import main.Coordinate;
+import main.IncorrectParameterException;
 import main.Nukleotid;
 
 import java.awt.GridLayout;
@@ -50,6 +51,7 @@ public class VirologistPanelList extends JPanel implements Observer {
 			virologist_panel.add(equipments);
 	
 			InteractButton btnagent_generate = new InteractButton("Generate", 10, 308, 260, 39);
+			btnagent_generate.addActionListener(new GenerateActionListener(virologist, learned_genetics));
 			virologist_panel.add(btnagent_generate);
 	
 			InteractButton btnagent_attack = new InteractButton("Attack", 10, 383, 260, 39);
@@ -81,6 +83,24 @@ public class VirologistPanelList extends JPanel implements Observer {
 
 		public void actionPerformed(ActionEvent e) {
 			virologist.loot();
+		}
+	}
+
+	class GenerateActionListener implements ActionListener {
+		Virologist virologist;
+		ItemComboBox genetic;
+		public GenerateActionListener(Virologist virologist, ItemComboBox genetic) {
+			this.virologist = virologist;
+			this.genetic = genetic;
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			try {
+				virologist.produceAgent(genetic.getSelectedItem().toString());
+			} catch(IncorrectParameterException ex) {
+				Game.errorMessage("ERROR: " + ex.getMessage());
+			}
+			
 		}
 	}
 
