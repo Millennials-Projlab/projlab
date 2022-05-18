@@ -231,12 +231,12 @@ public final class Game {
 		Random rand = new Random();
 		Field field;
 		try {
-			field = getMap().getFields().get(rand.nextInt(getMap().getFields().size()-1));
+			field = getMap().getFields().get(getRandomNumber(getMap().getFields().size()-1));
 		} catch(IllegalArgumentException e) { // csak egy field van
 			field = getMap().getFields().get(0);
 		}
 		
-		virologist = new Virologist(name, rand.nextInt(1,5), rand.nextInt(5,10), field);
+		virologist = new Virologist(name, getRandomNumber(1,5), getRandomNumber(5,10), field);
 
 		for(Observer observer : observerList) {
 			virologist.attach(observer);
@@ -289,5 +289,17 @@ public final class Game {
 
 	public static Message getMessage() {
 		return message;
+	}
+
+	public static int getRandomNumber(int min, int max) {
+    	return (int) ((Math.random() * (max - min)) + min);
+	}
+
+	public static int getRandomNumber(int max) {
+		return getRandomNumber(0, max);
+	}
+
+	public static double getRandomNumber(double min, double max) {
+    	return ((Math.random() * (max - min)) + min);
 	}
 }

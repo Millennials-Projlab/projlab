@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 
+import java.lang.Math.*;
+
 import main.*;
 
 public class Virologist extends Subject {
@@ -431,8 +433,7 @@ public class Virologist extends Subject {
      */
     public void addEffect(Agent effect, Virologist sender) {
         if(hasEquipment("Cape")) {
-            Random rand = new Random();
-            if(rand.nextDouble(0, 100) > defenseRating) {
+            if(Game.getRandomNumber(0.0, 100.0) > defenseRating) {
                 effect.endEffect(this);
                 return;
             }   
