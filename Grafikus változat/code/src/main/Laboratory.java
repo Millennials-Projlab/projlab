@@ -39,7 +39,9 @@ public class Laboratory extends Field {
 		super.enter(virologist);
 		
 		if(genetic.isSame(new BearGenetic())) {
-			infect(virologist, new BearAgent());
+			if(virologist.getEffectFlag() != 2) {
+				infect(virologist, new BearAgent());
+			}
 		}
 	}
 

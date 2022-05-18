@@ -43,7 +43,7 @@ public class BearAgent extends Agent {
 				nextField = neighbors.get(0);
 			}
 			else {
-				nextField = neighbors.get(rand.nextInt(neighbors.size()-1));
+				nextField = neighbors.get(rand.nextInt(neighbors.size()));
 			}
 
 			try {

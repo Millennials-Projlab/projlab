@@ -226,6 +226,9 @@ public class Virologist extends Subject {
             currentField.leave(this);
             nextField.enter(this);
             currentField = nextField;
+            if(effectFlag != 1 && effectFlag != 2) {
+                Game.infoMessage(nextField.toString());
+            }
             notifyObservers();
             return;
 		}

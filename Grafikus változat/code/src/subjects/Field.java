@@ -33,7 +33,6 @@ public class Field extends Subject {
 	 */
 	public void enter(Virologist virologist) {
 		virologists.add(virologist);
-		Game.infoMessage(this.toString());
 	}
 	
 	
