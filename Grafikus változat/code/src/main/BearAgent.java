@@ -25,7 +25,7 @@ public class BearAgent extends Agent {
 	 */
 	public void endEffect(Virologist virologist) {
 		Game.removePlayer(virologist);
-        System.out.println("Virologist " + virologist.getName() + " died.");
+		Game.infoMessage("Virologist " + virologist.getName() + " died.");
 	}
 
 	
@@ -53,6 +53,9 @@ public class BearAgent extends Agent {
                 }
                 for(Virologist enemy : nextField.getVirologists()) {
                     if(!enemy.equals(virologist)) {
+						if(enemy.getEffectFlag() == 2) {
+							return; // already infected
+						}
                         virologist.infect(enemy, "BearAgent");
                     }
                 }

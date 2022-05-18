@@ -192,6 +192,9 @@ public class Virologist extends Subject {
             System.out.println("Target virologist is not on the same field.");
             return false;
         }
+        if(target.getEffectFlag() == 3) {
+            return false;
+        }
         return true;
     }
 
@@ -199,6 +202,7 @@ public class Virologist extends Subject {
         for(Agent agent : agents) {
             if(agent.isSame("BearAgent")) { 
                 agent.endEffect(this);
+                notifyObservers();
                 return;
             }
         }

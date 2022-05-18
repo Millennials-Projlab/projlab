@@ -60,6 +60,7 @@ public class VirologistPanelList extends JPanel implements Observer {
 			virologist_panel.add(btnagent_attack);
 	
 			InteractButton btnagent_use = new InteractButton("Use", 10, 453, 260, 39);
+			btnagent_use.addActionListener(new UseActionListener(virologist, equipments));
 			virologist_panel.add(btnagent_use);
 
 			InteractButton btnagent_loot = new InteractButton("Loot", 10, 516, 260, 39);
@@ -122,6 +123,27 @@ public class VirologistPanelList extends JPanel implements Observer {
 		public void actionPerformed(ActionEvent e) {
 			virologist.infect(target, agent);
 
+		}
+	}
+
+	class UseActionListener implements ActionListener {
+		Virologist virologist;
+		Virologist target;
+		ItemComboBox equipment;
+		public UseActionListener(Virologist virologist, ItemComboBox equipment) {
+			this.virologist = virologist;
+			this.equipment = equipment;
+			for(Virologist v: Game.getPlayers()){
+				if(!v.getName().contentEquals(virologist.getName())&&virologist.getCurrentField()==v.getCurrentField()){
+					this.target = v;
+				}
+			}
+		}
+
+		public void actionPerformed(ActionEvent e) {
+			if(equipment.getSelectedItem().toString().equals("Axe")) {
+				virologist.useAxe(target);
+			}
 		}
 	}
 }
