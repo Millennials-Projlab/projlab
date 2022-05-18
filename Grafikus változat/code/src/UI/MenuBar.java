@@ -23,7 +23,8 @@ public class MenuBar extends JMenuBar {
 
 		class NewVirologistActionListener implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
-				new NewVirologistDialog();
+				//new NewVirologistDialog();
+				new EndGameDialog("anyu");
 			}
 		}
 
