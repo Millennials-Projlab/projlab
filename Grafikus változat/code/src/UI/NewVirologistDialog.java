@@ -9,7 +9,7 @@ import java.awt.event.*;
 
 public class NewVirologistDialog extends JDialog {
     public NewVirologistDialog() {
-        setSize(300, 400);
+        setSize(300, 100);
         setLocation(400, 200);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setModalityType(ModalityType.APPLICATION_MODAL);
